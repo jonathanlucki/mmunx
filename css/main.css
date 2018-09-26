@@ -1,0 +1,85 @@
+/**
+ * Jonathan Lucki
+ * MMUNx
+ * File: main.css
+ * Purpose: Stylesheet for web application
+ * Created: 09/07/18
+ * Last Modified: 12/07/18
+ */
+
+/**
+ * ALL PAGES
+ */
+body {
+    background-image: url('../img/background.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+/**
+ * LOGIN PAGE
+ */
+#login-container {
+    max-width: 768px;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    margin: 50px auto 50px auto;
+    padding: 20px 20px 20px 20px;
+}
+
+/* When screen is smaller than 768px */
+@media only screen and (max-width: 768px) {
+    #login-container {
+        margin: 0 0 0 0;
+        border-radius: 0;
+        height: 100%;
+    }
+}
+
+
+/**
+ * SESSION PAGES
+ */
+#content-pane {
+    max-width: 992px;
+    background-color: white;
+    opacity: 0.9;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    margin: 50px auto 50px auto;
+    padding: 0 0 0 0;
+}
+
+/* When screen is smaller than 992px */
+@media only screen and (max-width: 992px) {
+    #content-pane {
+        margin: 0 0 0 0;
+        height: 100%;
+    }
+}
+
+#content-container {
+    padding: 20px 20px 20px 20px;
+}
+
+
+/**
+ * BOOTSTRAP
+ */
+.navbar {
+    position: relative;
+}
+/*
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.display-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}*/
