@@ -61,15 +61,15 @@ class resolution_box {
         echo '<div class="modal-footer">';
         switch($type){
             case 'create':
-                echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-                echo '<button type="button" class="btn btn-primary" data-dismiss="modal">Submit Amendment</button>';
+                echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+                echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-dismiss="modal">Submit Amendment</button>';
                 break;
             case 'view':
-                echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+                echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
                 break;
             case 'delete':
-                echo '<button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>';
-                echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>';
+                echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-dismiss="modal">Yes</button>';
+                echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">No</button>';
                 break;
         }
         echo '</div>';
@@ -115,15 +115,15 @@ class resolution_box {
         echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate
-            echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelcreate"> Create Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelcreate"> Create Amendment </button>';
         } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
             //#%id%%resolution%modelview
-            echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
             //#%id%%resolution%modeldelete
-            echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modeldelete"> Delete Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modeldelete"> Delete Amendment </button>';
         } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
             //#%id%%resolution%modelview
-            echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
         }
         echo '</div>';
         echo '</div>';
