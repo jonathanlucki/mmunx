@@ -149,6 +149,16 @@ function getAmendmentCountByCountryID($id) {
 
 
 /**
+ * Returns the number of amendments for country with id in the database
+ * @param int  $num  Resolution Number
+ * @return int
+ */
+function getAmendmentCountByResolutionNum($num) {
+    return fetchRowCount("SELECT * FROM amendments WHERE resolution='$num'");
+}
+
+
+/**
  * Returns the resolution row for the given resolution number
  * @param int  $num  Country ID number
  * @return array
