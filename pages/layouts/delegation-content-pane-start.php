@@ -36,6 +36,7 @@ include_once('../../resources/redirect.php');
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echo getCountryRow($_SESSION['countryID'])['name']?></span>
                 <button class="btn btn-outline-danger" type="button">Log out</button>
             </ul>
 
