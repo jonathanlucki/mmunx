@@ -11,6 +11,9 @@
 //Includes redirect file (redirect.php)
 include_once('../../resources/redirect.php');
 
+//Includes logout file (logout.php)
+include('../../resources/logout.php');
+
 ?>
 
 <div class="container" id="content-pane">
@@ -37,7 +40,9 @@ include_once('../../resources/redirect.php');
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echo getCountryRow($_SESSION['countryID'])['name']?></span>
-                <button class="btn btn-outline-danger" type="button">Log out</button>
+                <form id="logout" action="" method="post">
+                <button type="submit" class="btn btn-outline-danger" name="logoutButton">Log out</button>
+                </form>
             </ul>
 
         </div>
