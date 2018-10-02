@@ -12,19 +12,19 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Country Name</th>
+        <th scope="col">Resolution</th>
         <th scope="col">Amendment Count</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    for ($rowNum=1; $rowNum <= getCountryCount(); $rowNum++) {
+    for ($rowNum=1; $rowNum <= getResolutionCount(); $rowNum++) {
         echo '<tr>';
         echo '<td>';
-        echo '<a href="/pages/delegation/overview.php?countryID=' . $rowNum . '"> ' . getCountryRow($rowNum)['name'] . '</a>';
+        echo '<a href="/pages/delegation/resolution-overview.php?num=' . $rowNum . '"> Resolution ' . $rowNum . ': ' . getResolutionRow($rowNum)['title'] . '</a>';
         echo '</td>';
         echo '<td>';
-        echo getAmendmentCount($rowNum);
+        echo getAmendmentCountByResolutionNum($rowNum);
         echo '</td>';
         echo '</tr>';
     }
