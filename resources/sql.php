@@ -143,7 +143,7 @@ function getAmendmentRow($id,$resolution) {
  * @param int  $id  Country ID number
  * @return int
  */
-function getAmendmentCount($id) {
+function getAmendmentCountByCountryID($id) {
     return fetchRowCount("SELECT * FROM amendments WHERE country_id='$id'");
 }
 

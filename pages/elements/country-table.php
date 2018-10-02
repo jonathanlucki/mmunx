@@ -24,7 +24,7 @@
         echo '<a href="/pages/delegation/overview.php?countryID=' . $rowNum . '"> ' . getCountryRow($rowNum)['name'] . '</a>';
         echo '</td>';
         echo '<td>';
-        echo getAmendmentCount($rowNum);
+        echo getAmendmentCountByCountryID($rowNum);
         echo '</td>';
         echo '</tr>';
     }
