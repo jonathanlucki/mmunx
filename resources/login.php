@@ -8,9 +8,6 @@
  * Last Modified: 9/16/18
  */
 
-//Includes initialization file (init.php)
-include_once('../resources/init.php');
-
 //Includes database connection
 include('connection.php');
 
