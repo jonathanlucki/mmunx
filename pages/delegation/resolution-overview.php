@@ -29,5 +29,5 @@ $resolutionRow = getResolutionRow($_GET['num']);
 
 
 <?php
-include('../layouts/footer.php');
 include('../layouts/delegation-content-pane-end.php');
+include('../layouts/footer.php');

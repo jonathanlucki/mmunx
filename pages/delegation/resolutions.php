@@ -21,5 +21,5 @@ include('../layouts/delegation-content-pane-start.php');
 
 
 <?php
-include('../layouts/footer.php');
 include('../layouts/delegation-content-pane-end.php');
+include('../layouts/footer.php');

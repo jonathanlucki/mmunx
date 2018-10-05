@@ -26,5 +26,5 @@ $countryRow = getCountryRow($_SESSION['countryID']);
 <p class="lead text-center">To get started, navigate to <em>Country Overview</em> to submit an amendment.</p>
 
 <?php
-include('../layouts/footer.php');
 include('../layouts/delegation-content-pane-end.php');
+include('../layouts/footer.php');
