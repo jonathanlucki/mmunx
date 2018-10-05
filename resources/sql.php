@@ -14,7 +14,7 @@
  * @param string  $sql  SQL query
  * @return  array
  */
-function fetchData($sql) {
+function fetchDataArray($sql) {
 
     //Includes database connection
     include('connection.php');
@@ -22,11 +22,14 @@ function fetchData($sql) {
     //Retrieve row matching given code
     $result = $conn->query($sql);
     $conn->close();
-    $data = $result->fetch_assoc();
 
     //Check if data exists
     if($result->num_rows > 0) {
-        return $data;
+        $dataArray = array();
+        for ($i = 0; $i < $result->num_rows; $i++) {
+            array_push($dataArray,$result->fetch_assoc());
+        }
+        return $dataArray;
     } else {
         return null;
     }
@@ -115,6 +118,15 @@ function getCountryRow($id) {
  */
 function getCountryCount() {
     return fetchRowCount("SELECT * FROM countries");
+}
+
+
+/**
+ * Returns an array of all country rows
+ * @return array
+ */
+function getCountryArray() {
+    return fetchDataArray("SELECT * FROM countries");
 }
 
 
