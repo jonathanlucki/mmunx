@@ -27,12 +27,38 @@ class resolution_box {
 
 
     /**
-     * Echos a amendment resolution modal
-     * @param int  $resolution  Resolution number
-     * @param int  $id  Country ID number
+     * Echos required amendment resolution modals
+     */
+    function echoModals() {
+
+        //localizes class variables
+        $id = $this->countryID;
+        $resolution = $this->resolutionNum;
+
+        //get amendment row
+        $amendmentRow = getAmendmentRow($id,$resolution);
+
+        //determines type
+        if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
+            $this->echoModal('create');
+        } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
+            $this->echoModal('view');
+            $this->echoModal('delete');
+        } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
+            $this->echoModal('view');
+        }
+
+    }
+
+    /**
+     * Echos a amendment resolution modal based on type
      * @param string  $type  Either 'create', 'view', or 'delete';
      */
-    private function echoModal($resolution,$id,$type) {
+    private function echoModal($type) {
+
+        //localizes class variables
+        $id = $this->countryID;
+        $resolution = $this->resolutionNum;
 
         $modalID = $id . $resolution . 'modal' . $type;
         echo '<div class="modal fade" id="' . $modalID . '" tabindex="-1" role="dialog" aria-labelledby="' . $modalID . 'Label" aria-hidden="true">';
@@ -78,6 +104,11 @@ class resolution_box {
         echo '</div>';
         echo '</div>';
 
+        //append modal to body to make it focus properly
+        //echo '<script src="/js/modals.js"></script>';
+        //echo '<script>focusModal("' . $modalID . '")</script>';
+        //echo '<script>$("#' . $modalID . '").appendTo("body");</script>';
+
     }
 
 
@@ -90,7 +121,7 @@ class resolution_box {
         $id = $this->countryID;
         $resolution = $this->resolutionNum;
 
-        //get amendment row for box
+        //get amendment row and resolution row
         $amendmentRow = getAmendmentRow($id,$resolution);
         $resolutionRow = getResolutionRow($resolution);
 
@@ -115,27 +146,27 @@ class resolution_box {
         echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelcreate"> Create Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
         } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
             //#%id%%resolution%modeldelete
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modeldelete"> Delete Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modaldelete"> Delete Amendment </button>';
         } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modelview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
         }
         echo '</div>';
         echo '</div>';
 
         //modals
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
-
+            $this->echoModal($resolution,$id,'create');
         } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
-
-
+            $this->echoModal($resolution,$id,'view');
+            $this->echoModal($resolution,$id,'delete');
         } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
-
+            $this->echoModal($resolution,$id,'view');
         }
     }
 
