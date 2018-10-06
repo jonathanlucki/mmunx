@@ -158,28 +158,28 @@ function getCountryArray() {
  * @return array
  */
 function getSettingsRow() {
-    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)");
+    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version))");
 }
 
 
 /**
  * Returns the amendment row from the amendments database for country id and resolution number
- * @param int  $id  Country ID number
+ * @param int  $CountryID  Country ID number
  * @param int  $resolution  Resolution ID number
  * @return array
  */
-function getAmendmentRow($id,$resolution) {
-    return fetchRow("SELECT * FROM amendments WHERE country_id='$id' AND resolution='$resolution'");
+function getAmendmentRow($CountryID,$resolution) {
+    return fetchRow("SELECT * FROM amendments WHERE country_id='$CountryID' AND resolution='$resolution'");
 }
 
 
 /**
  * Returns the number of amendments for country with id in the database
- * @param int  $id  Country ID number
+ * @param int  $CountryID  Country ID number
  * @return int
  */
-function getAmendmentCountByCountryID($id) {
-    return fetchRowCount("SELECT * FROM amendments WHERE country_id='$id'");
+function getAmendmentCountByCountryID($CountryID) {
+    return fetchRowCount("SELECT * FROM amendments WHERE country_id='$CountryID'");
 }
 
 
@@ -190,6 +190,38 @@ function getAmendmentCountByCountryID($id) {
  */
 function getAmendmentCountByResolutionNum($num) {
     return fetchRowCount("SELECT * FROM amendments WHERE resolution='$num'");
+}
+
+
+/**
+ * Returns the next amendment ID number
+ * @return int
+ */
+function getNextAmendmentID() {
+    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id))")['amendment_id'];
+}
+
+
+
+/**
+ * Inserts an amendment with the given parameters into the amendment table
+ * @param int  $countryID  Country ID number
+ * @param int  $resolutionNum  Resolution number
+ * @param string  $type  type of amendment - either 'add', 'strike', or 'amend'
+ * @param int or null  $clause
+ * @param string  $details  Country ID number
+ * @return bool
+ */
+function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
+    if (getAmendmentRow($countryID,$resolutionNum) == null) {
+        $amendmentID = getNextAmendmentID();
+        $status = 'pending';
+        if ($type == 'add') {
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$status','$details')");
+        } else if (($type == 'strike') || ($type == 'amend')) {
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$clause','$status','$details')");
+        }
+    }
 }
 
 
