@@ -10,6 +10,29 @@
 
 
 /**
+ * Calls the SQL query $sql and returns true if successful, otherwise returns fasle
+ * @param string  $sql  SQL query
+ * @return  bool
+ */
+function makeQuery($sql) {
+
+    //Includes database connection
+    include('connection.php');
+
+    //Make database query
+    if ($conn->query($sql) === TRUE) {
+        $conn->close();
+        return true;
+    } else {
+        $conn->close();
+        echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+        return false;
+    }
+
+}
+
+
+/**
  * Returns an array of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
  * @return  array
