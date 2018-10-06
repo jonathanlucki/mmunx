@@ -114,8 +114,9 @@ class resolution_box {
 
     /**
      * Echos a amendment resolution box
+     * @param bool  $displayCountryName  true if box should display country name;
      */
-    function echoBox() {
+    function echoBox($displayCountryName) {
 
         //localizes class variables
         $id = $this->countryID;
@@ -141,8 +142,12 @@ class resolution_box {
         //card
         echo '<div class="card h-100">';
         echo '<div class="card-body">';
-        echo '<h4 class="card-title">Resolution ' . $resolutionRow['num'] . '</h4>';
-        echo '<h6 class="card-subtitle mb-2">' . $resolutionRow['title'] . '</h6>';
+        if ($displayCountryName) {
+            echo '<h4 class="card-title">' . getCountryRow($id)['name'] . '</h4>';
+        } else {
+            echo '<h4 class="card-title">Resolution ' . $resolutionRow['num'] . '</h4>';
+            echo '<h6 class="card-subtitle mb-2">' . $resolutionRow['title'] . '</h6>';
+        }
         echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate

@@ -51,7 +51,7 @@ for ($i=0; $i < getResolutionCount(); $i++) {
 
                 echo '<div class="col-lg">';
                 if ($resolutionNum <= getResolutionCount()) {
-                    $resolutionBox[($resolutionNum-1)]->echoBox();
+                    $resolutionBox[($resolutionNum-1)]->echoBox(false);
                 } else {
                     echo '<br>';
                 }
