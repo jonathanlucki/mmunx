@@ -151,15 +151,15 @@ class resolution_box {
         echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
         } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
             //#%id%%resolution%modeldelete
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modaldelete"> Delete Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modaldelete"> Delete Amendment </button>';
         } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
         }
         echo '</div>';
         echo '</div>';
