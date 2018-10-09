@@ -60,6 +60,9 @@ class resolution_box {
         $id = $this->countryID;
         $resolution = $this->resolutionNum;
 
+        //get amendment row
+        $amendmentRow = getAmendmentRow($id,$resolution);
+
         $modalID = $id . $resolution . 'modal' . $type;
         echo '<div class="modal fade" id="' . $modalID . '" tabindex="-1" role="dialog" aria-labelledby="' . $modalID . 'Label" aria-hidden="true">';
         echo '<div class="modal-dialog" role="document">';
@@ -76,7 +79,7 @@ class resolution_box {
             case 'create':
                 break;
             case 'view':
-                //add soon
+                echoAmendmentText($amendmentRow['amendment_id']);
                 break;
             case 'delete':
                 echo '<p>Are you sure sure you would like to delete this amendment?</p>';
