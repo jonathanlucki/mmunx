@@ -4,12 +4,16 @@
  * File: main.css
  * Purpose: Stylesheet for web application
  * Created: 07/09/18
- * Last Modified: 10/05/18
+ * Last Modified: 10/07/18
  */
 
 /**
  * ALL PAGES
  */
+html {
+    height: 100%;
+}
+
 body {
     background-image: url('../img/background.jpeg');
     background-position: center center;
