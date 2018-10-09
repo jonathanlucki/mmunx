@@ -158,7 +158,7 @@ function getCountryArray() {
  * @return array
  */
 function getSettingsRow() {
-    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version))");
+    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)");
 }
 
 
@@ -208,7 +208,7 @@ function getAmendmentCountByResolutionNum($num) {
  * @return int
  */
 function getNextAmendmentID() {
-    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id))")['amendment_id'];
+    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)")['amendment_id'];
 }
 
 
