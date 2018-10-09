@@ -123,13 +123,13 @@ class resolution_box {
 
         //Find amendment status
         if($amendmentRow == null){
-            $status = 'None submitted';
+            $status = '<span class="badge badge-secondary">None submitted</span>';
         } elseif ($amendmentRow['status'] == 'pending') {
-            $status = 'Pending approval';
+            $status = '<span class="badge badge-warning">Pending approval</span>';
         } elseif ($amendmentRow['status'] == 'approved') {
-            $status = 'Approved';
+            $status = '<span class="badge badge-success">Approved</span>';
         } elseif ($amendmentRow['status'] == 'declined') {
-            $status = 'Denied (See Tech Desk for Information)';
+            $status = '<span class="badge badge-danger">Denied (See Tech Desk for Information)</span>';
         } else {
             $status = null;
         }
@@ -141,9 +141,9 @@ class resolution_box {
             echo '<h4 class="card-title">' . getCountryRow($id)['name'] . '</h4>';
         } else {
             echo '<h4 class="card-title">Resolution ' . $resolutionRow['num'] . '</h4>';
-            echo '<h6 class="card-subtitle mb-2">' . $resolutionRow['title'] . '</h6>';
+            echo '<h6 class="card-subtitle mb-2"><em>' . $resolutionRow['title'] . '</em></h6>';
         }
-        echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
+        echo '<p class="card-text">Status: ' . $status . '</p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate
             echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
