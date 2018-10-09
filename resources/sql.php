@@ -212,6 +212,15 @@ function getNextAmendmentID() {
 }
 
 
+/**
+ * Deletes amendment with amendment ID number
+ * @param int  $amendmentID  Amendment ID number
+ * @return bool
+ */
+function deleteAmendmentByID($amendmentID) {
+    return makeQuery("DELETE FROM amentments WHERE amendment_id='$amendmentID'");
+}
+
 
 /**
  * Inserts an amendment with the given parameters into the amendment table
