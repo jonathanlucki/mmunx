@@ -218,7 +218,7 @@ function getNextAmendmentID() {
  * @return bool
  */
 function deleteAmendmentByID($amendmentID) {
-    return makeQuery("DELETE FROM amentments WHERE amendment_id='$amendmentID'");
+    return makeQuery("DELETE FROM amendments WHERE amendment_id='$amendmentID'");
 }
 
 
