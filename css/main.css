@@ -4,7 +4,7 @@
  * File: main.css
  * Purpose: Stylesheet for web application
  * Created: 07/09/18
- * Last Modified: 10/07/18
+ * Last Modified: 10/09/18
  */
 
 /**
@@ -29,8 +29,7 @@ body {
  */
 #login-container {
     max-width: 768px;
-    background-color: white;
-    opacity: 0.8;
+    background: rgba(255,255,255,0.8);
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     margin: 50px auto 50px auto;
@@ -52,8 +51,7 @@ body {
  */
 #content-pane {
     max-width: 992px;
-    background-color: white;
-    opacity: 0.9;
+    background: rgba(255,255,255,0.9);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     margin: 50px auto 50px auto;
     padding: 0 0 0 0;
@@ -78,13 +76,3 @@ body {
 .navbar {
     position: relative;
 }
-/*
-.row.display-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.row.display-flex > [class*='col-'] {
-    display: flex;
-    flex-direction: column;
-}*/
