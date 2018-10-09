@@ -104,11 +104,6 @@ class resolution_box {
         echo '</div>';
         echo '</div>';
 
-        //append modal to body to make it focus properly
-        //echo '<script src="/js/modals.js"></script>';
-        //echo '<script>focusModal("' . $modalID . '")</script>';
-        //echo '<script>$("#' . $modalID . '").appendTo("body");</script>';
-
     }
 
 
@@ -164,15 +159,6 @@ class resolution_box {
         echo '</div>';
         echo '</div>';
 
-        //modals
-        if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
-            $this->echoModal($resolution,$id,'create');
-        } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
-            $this->echoModal($resolution,$id,'view');
-            $this->echoModal($resolution,$id,'delete');
-        } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
-            $this->echoModal($resolution,$id,'view');
-        }
     }
 
     private function editable() {
