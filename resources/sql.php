@@ -174,6 +174,16 @@ function getAmendmentRow($CountryID,$resolution) {
 
 
 /**
+ * Returns the amendment row from the amendments database for amendmentID
+ * @param int  $amendmentID  Amendment ID number
+ * @return array
+ */
+function getAmendmentRowByID($amendmentID) {
+    return fetchRow("SELECT * FROM amendments WHERE amendment_id='$amendmentID'");
+}
+
+
+/**
  * Returns the number of amendments for country with id in the database
  * @param int  $CountryID  Country ID number
  * @return int
