@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 10/05/18
+ * Last Modified: 10/09/18
  */
 
 class resolution_box {
@@ -74,9 +74,34 @@ class resolution_box {
         echo '<span aria-hidden="true">&times;</span>';
         echo '</div>';
 
+        //for create form
+        if ($type == 'create') {
+            echo '<form id="submission" action="http://mmun.jonathanlucki.ca/pages/delegation/submit-amendment.php" method="post">';
+        }
+
         echo '<div class="modal-body">';
         switch($type){
             case 'create':
+                //amendment submission form
+                echo '<div class="form-group">';
+                echo '<label for="amendmentType">Amendment Type</label>';
+                echo '<select name="type" class="form-control" id="amendmentType">';
+                echo '<option value="amend">Amend clause</option>';
+                echo '<option value="add">Add clause</option>';
+                echo '<option value="strike">Strike clause</option>';
+                echo '</select>';
+                echo '</div>';
+
+                echo '<div class="form-group">';
+                echo '<label for="clause">Clause Number</label>';
+                echo '<input name="clause" type="number" class="form-control" id="clause">';
+                echo '</div>';
+
+                echo '<div class="form-group">';
+                echo '<label for="details">Details</label>';
+                echo '<textarea name="details" class="form-control" id="details" rows="5"></textarea>';
+                echo '</div>';
+
                 break;
             case 'view':
                 echoAmendmentText($amendmentRow['amendment_id']);
@@ -90,18 +115,33 @@ class resolution_box {
         echo '<div class="modal-footer">';
         switch($type){
             case 'create':
+                echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-                echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-dismiss="modal">Submit Amendment</button>';
+                echo '<button type="submit" name="submitButton"  style="margin-right:5px;" class="btn btn-primary">Submit Amendment</button>';
                 break;
             case 'view':
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
                 break;
             case 'delete':
-                echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-dismiss="modal">Yes</button>';
+                //delete button
+                echo '<form id="delete" action="http://mmun.jonathanlucki.ca/pages/delegation/delete-amendment.php" method="post">';
+                echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
+                echo '<button type="submit" name="deleteButton" style="margin-right:5px;" class="btn btn-danger">Yes</button>';
+                echo '</form>';
+                //non delete button
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">No</button>';
                 break;
         }
         echo '</div>';
+
+        //for create form
+        if ($type == 'create') {
+            echo '</form>';
+        }
 
         echo '</div>';
         echo '</div>';
