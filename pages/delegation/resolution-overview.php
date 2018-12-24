@@ -58,6 +58,8 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
     echo '</div>';
 } ?>
 
+    </div>
+
 
 <?php
 include('../layouts/content-pane-end.php');

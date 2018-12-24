@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 10/05/18
+ * Last Modified: 10/09/18
  */
 
 class resolution_box {
@@ -60,6 +60,9 @@ class resolution_box {
         $id = $this->countryID;
         $resolution = $this->resolutionNum;
 
+        //get amendment row
+        $amendmentRow = getAmendmentRow($id,$resolution);
+
         $modalID = $id . $resolution . 'modal' . $type;
         echo '<div class="modal fade" id="' . $modalID . '" tabindex="-1" role="dialog" aria-labelledby="' . $modalID . 'Label" aria-hidden="true">';
         echo '<div class="modal-dialog" role="document">';
@@ -71,12 +74,37 @@ class resolution_box {
         echo '<span aria-hidden="true">&times;</span>';
         echo '</div>';
 
+        //for create form
+        if ($type == 'create') {
+            echo '<form id="submission" action="http://mmun.jonathanlucki.ca/pages/delegation/submit-amendment.php" method="post">';
+        }
+
         echo '<div class="modal-body">';
         switch($type){
             case 'create':
+                //amendment submission form
+                echo '<div class="form-group">';
+                echo '<label for="amendmentType">Amendment Type</label>';
+                echo '<select name="type" class="form-control" id="amendmentType">';
+                echo '<option value="amend">Amend clause</option>';
+                echo '<option value="add">Add clause</option>';
+                echo '<option value="strike">Strike clause</option>';
+                echo '</select>';
+                echo '</div>';
+
+                echo '<div class="form-group">';
+                echo '<label for="clause">Clause Number</label>';
+                echo '<input name="clause" type="number" class="form-control" id="clause">';
+                echo '</div>';
+
+                echo '<div class="form-group">';
+                echo '<label for="details">Details</label>';
+                echo '<textarea name="details" class="form-control" id="details" rows="5"></textarea>';
+                echo '</div>';
+
                 break;
             case 'view':
-                //add soon
+                echoAmendmentText($amendmentRow['amendment_id']);
                 break;
             case 'delete':
                 echo '<p>Are you sure sure you would like to delete this amendment?</p>';
@@ -87,27 +115,37 @@ class resolution_box {
         echo '<div class="modal-footer">';
         switch($type){
             case 'create':
+                echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-                echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-dismiss="modal">Submit Amendment</button>';
+                echo '<button type="submit" name="submitButton"  style="margin-right:5px;" class="btn btn-primary">Submit Amendment</button>';
                 break;
             case 'view':
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
                 break;
             case 'delete':
-                echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-dismiss="modal">Yes</button>';
+                //delete button
+                echo '<form id="delete" action="http://mmun.jonathanlucki.ca/pages/delegation/delete-amendment.php" method="post">';
+                echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
+                echo '<button type="submit" name="deleteButton" style="margin-right:5px;" class="btn btn-danger">Yes</button>';
+                echo '</form>';
+                //non delete button
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">No</button>';
                 break;
         }
         echo '</div>';
 
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+        //for create form
+        if ($type == 'create') {
+            echo '</form>';
+        }
 
-        //append modal to body to make it focus properly
-        //echo '<script src="/js/modals.js"></script>';
-        //echo '<script>focusModal("' . $modalID . '")</script>';
-        //echo '<script>$("#' . $modalID . '").appendTo("body");</script>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
 
     }
 
@@ -128,13 +166,13 @@ class resolution_box {
 
         //Find amendment status
         if($amendmentRow == null){
-            $status = 'None submitted';
+            $status = '<span class="badge badge-secondary">None submitted</span>';
         } elseif ($amendmentRow['status'] == 'pending') {
-            $status = 'Pending approval';
+            $status = '<span class="badge badge-warning">Pending approval</span>';
         } elseif ($amendmentRow['status'] == 'approved') {
-            $status = 'Approved';
+            $status = '<span class="badge badge-success">Approved</span>';
         } elseif ($amendmentRow['status'] == 'declined') {
-            $status = 'Denied (See Tech Desk for Information)';
+            $status = '<span class="badge badge-danger">Denied (See Tech Desk for Information)</span>';
         } else {
             $status = null;
         }
@@ -146,33 +184,24 @@ class resolution_box {
             echo '<h4 class="card-title">' . getCountryRow($id)['name'] . '</h4>';
         } else {
             echo '<h4 class="card-title">Resolution ' . $resolutionRow['num'] . '</h4>';
-            echo '<h6 class="card-subtitle mb-2">' . $resolutionRow['title'] . '</h6>';
+            echo '<h6 class="card-subtitle mb-2"><em>' . $resolutionRow['title'] . '</em></h6>';
         }
-        echo '<p class="card-text">Amendment Status: <em>' . $status . '</em></p>';
+        echo '<p class="card-text">Status: ' . $status . '</p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
             //#%id%%resolution%modelcreate
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
         } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
             //#%id%%resolution%modeldelete
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modaldelete"> Delete Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-danger" data-toggle="modal" data-target="#' . $id . $resolution . 'modaldelete"> Delete Amendment </button>';
         } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
             //#%id%%resolution%modelview
-            echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
+            echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-secondary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalview"> View Amendment </button>';
         }
         echo '</div>';
         echo '</div>';
 
-        //modals
-        if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
-            $this->echoModal($resolution,$id,'create');
-        } elseif (($amendmentRow != null) and $this->editable()) { //if amendment does exist and is editable
-            $this->echoModal($resolution,$id,'view');
-            $this->echoModal($resolution,$id,'delete');
-        } elseif (($amendmentRow != null) and !$this->editable()) { //if amendment does exist and is not editable
-            $this->echoModal($resolution,$id,'view');
-        }
     }
 
     private function editable() {

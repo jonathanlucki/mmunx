@@ -10,6 +10,29 @@
 
 
 /**
+ * Calls the SQL query $sql and returns true if successful, otherwise returns fasle
+ * @param string  $sql  SQL query
+ * @return  bool
+ */
+function makeQuery($sql) {
+
+    //Includes database connection
+    include('connection.php');
+
+    //Make database query
+    if ($conn->query($sql) === TRUE) {
+        $conn->close();
+        return true;
+    } else {
+        $conn->close();
+        echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+        return false;
+    }
+
+}
+
+
+/**
  * Returns an array of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
  * @return  array
@@ -141,22 +164,32 @@ function getSettingsRow() {
 
 /**
  * Returns the amendment row from the amendments database for country id and resolution number
- * @param int  $id  Country ID number
+ * @param int  $CountryID  Country ID number
  * @param int  $resolution  Resolution ID number
  * @return array
  */
-function getAmendmentRow($id,$resolution) {
-    return fetchRow("SELECT * FROM amendments WHERE country_id='$id' AND resolution='$resolution'");
+function getAmendmentRow($CountryID,$resolution) {
+    return fetchRow("SELECT * FROM amendments WHERE country_id='$CountryID' AND resolution='$resolution'");
+}
+
+
+/**
+ * Returns the amendment row from the amendments database for amendmentID
+ * @param int  $amendmentID  Amendment ID number
+ * @return array
+ */
+function getAmendmentRowByID($amendmentID) {
+    return fetchRow("SELECT * FROM amendments WHERE amendment_id='$amendmentID'");
 }
 
 
 /**
  * Returns the number of amendments for country with id in the database
- * @param int  $id  Country ID number
+ * @param int  $CountryID  Country ID number
  * @return int
  */
-function getAmendmentCountByCountryID($id) {
-    return fetchRowCount("SELECT * FROM amendments WHERE country_id='$id'");
+function getAmendmentCountByCountryID($CountryID) {
+    return fetchRowCount("SELECT * FROM amendments WHERE country_id='$CountryID'");
 }
 
 
@@ -167,6 +200,47 @@ function getAmendmentCountByCountryID($id) {
  */
 function getAmendmentCountByResolutionNum($num) {
     return fetchRowCount("SELECT * FROM amendments WHERE resolution='$num'");
+}
+
+
+/**
+ * Returns the next amendment ID number
+ * @return int
+ */
+function getNextAmendmentID() {
+    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)")['amendment_id'];
+}
+
+
+/**
+ * Deletes amendment with amendment ID number
+ * @param int  $amendmentID  Amendment ID number
+ * @return bool
+ */
+function deleteAmendmentByID($amendmentID) {
+    return makeQuery("DELETE FROM amendments WHERE amendment_id='$amendmentID'");
+}
+
+
+/**
+ * Inserts an amendment with the given parameters into the amendment table
+ * @param int  $countryID  Country ID number
+ * @param int  $resolutionNum  Resolution number
+ * @param string  $type  type of amendment - either 'add', 'strike', or 'amend'
+ * @param int or null  $clause
+ * @param string  $details  Country ID number
+ * @return bool
+ */
+function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
+    if (getAmendmentRow($countryID,$resolutionNum) == null) {
+        $amendmentID = getNextAmendmentID();
+        $status = 'pending';
+        if ($type == 'add') {
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$status','$details')");
+        } else if (($type == 'strike') || ($type == 'amend')) {
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$clause','$status','$details')");
+        }
+    }
 }
 
 

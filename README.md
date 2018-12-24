@@ -1,5 +1,5 @@
 ## MMUNx
-[Click here](http://mmun.jonathanlucki.ca) to view the website. You may use the demo login: [TO BE ADDED BY SEPT 27]
+[Click here](http://mmun.jonathanlucki.ca) to view the website. You may use the demo login: demo123
 
 My old high school, Martingrove Collegiate Institute, annually holds the largest high school Model UN conference in Ontario. This conference is incredibly fun and is not your typical boring everyone sit at desks in a circle Model UN - instead there are over 400 people packed into the auditorium and its noisy and people are moving and there are debates going on - its a lot of fun!
 
