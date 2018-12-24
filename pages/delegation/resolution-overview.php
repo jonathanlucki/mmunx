@@ -12,7 +12,7 @@
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/content-pane-start.php');
+include('../layouts/delegation-content-pane-start.php');
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
@@ -62,7 +62,7 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
 
 
 <?php
-include('../layouts/content-pane-end.php');
+include('../layouts/delegation-content-pane-end.php');
 
 //modals for resolution box
 for ($i=0; $i < count($resolutionBox); $i++) {
