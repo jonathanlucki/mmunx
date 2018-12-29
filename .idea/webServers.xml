@@ -5,7 +5,7 @@
       <webServer id="a5bf2530-f866-4c15-928a-74ba21e7ebd5" name="MMUN site" url="http://mmun.jonathanlucki.ca">
         <fileTransfer host="ftp.jonathanlucki.ca" port="21" rootFolder="/public_html/mmun">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
           </advancedOptions>
           <option name="port" value="21" />
         </fileTransfer>

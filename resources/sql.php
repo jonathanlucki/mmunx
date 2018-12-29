@@ -10,14 +10,33 @@
 
 
 /**
+ * Returns a MySQLi database connection
+ * @return  mysqli
+ */
+function getConnection() {
+    //Establish Connection
+    $conn = new mysqli(CONFIG['db_host'], CONFIG['db_username'], CONFIG['db_password'], CONFIG['db_name']);
+
+    // Check connection
+    if ($conn->connect_error) {
+        echo "<script> alert('Database Connection Failed: " . $conn->connect_error . "'); </script>";
+        die();
+    }
+
+    return $conn;
+
+}
+
+
+/**
  * Calls the SQL query $sql and returns true if successful, otherwise returns fasle
  * @param string  $sql  SQL query
  * @return  bool
  */
 function makeQuery($sql) {
 
-    //Includes database connection
-    include('connection.php');
+    //gets database connection
+    $conn = getConnection();
 
     //Make database query
     if ($conn->query($sql) === TRUE) {
@@ -39,8 +58,8 @@ function makeQuery($sql) {
  */
 function fetchDataArray($sql) {
 
-    //Includes database connection
-    include('connection.php');
+    //gets database connection
+    $conn = getConnection();
 
     //Retrieve row matching given code
     $result = $conn->query($sql);
@@ -67,8 +86,8 @@ function fetchDataArray($sql) {
  */
 function fetchRow($sql) {
 
-    //Includes database connection
-    include('connection.php');
+    //gets database connection
+    $conn = getConnection();
 
     //Retrieve row matching given code
     $result = $conn->query($sql." LIMIT 1");
@@ -92,8 +111,8 @@ function fetchRow($sql) {
  */
 function fetchRowCount($sql) {
 
-    //Includes database connection
-    include('connection.php');
+    //gets database connection
+    $conn = getConnection();
 
     //Retrieve row matching given code
     $result = $conn->query($sql);

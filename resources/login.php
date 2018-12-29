@@ -8,9 +8,6 @@
  * Last Modified: 9/16/18
  */
 
-//Includes database connection
-include('connection.php');
-
 //Sets up error variable
 $error = "";
 
