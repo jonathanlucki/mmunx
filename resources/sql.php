@@ -29,7 +29,7 @@ function getConnection() {
 
 
 /**
- * Calls the SQL query $sql and returns true if successful, otherwise returns fasle
+ * Calls the SQL query $sql and returns true if successful, otherwise returns false
  * @param string  $sql  SQL query
  * @return  bool
  */
