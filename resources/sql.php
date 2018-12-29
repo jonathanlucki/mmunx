@@ -258,6 +258,8 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
             return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$status','$details')");
         } else if (($type == 'strike') || ($type == 'amend')) {
             return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$clause','$status','$details')");
+        } else {
+            return false;
         }
     }
 }
