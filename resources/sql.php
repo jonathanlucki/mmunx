@@ -31,21 +31,40 @@ function getConnection() {
 /**
  * Calls the SQL query $sql and returns true if successful, otherwise returns false
  * @param string  $sql  SQL query
+ * @param array  $params  SQL parameters
+ * @param array  $types  SQL parameters types
  * @return  bool
  */
-function makeQuery($sql) {
+function makeQuery($sql,$params,$types) {
 
     //gets database connection
     $conn = getConnection();
 
-    //Make database query
-    if ($conn->query($sql) === TRUE) {
-        $conn->close();
-        return true;
+    //creates prepared statement
+    if ($stmt = $conn->prepare($sql)) {
+
+        //binds parameters to statement
+        for ($i=0; $i<count($params); $i++) {
+            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
+            }
+        }
+
+        //Make database query
+        if ($stmt->execute() === TRUE) {
+            $stmt->close();
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+            return false;
+        }
+
     } else {
-        $conn->close();
-        echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
-        return false;
+        echo "<script> alert('Database Connection Failed: Failure created prepared statement'); </script>";
+        die();
     }
 
 }
@@ -54,26 +73,50 @@ function makeQuery($sql) {
 /**
  * Returns an array of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
+ * @param array  $params  SQL parameters
+ * @param array  $types  SQL parameters types
  * @return  array
  */
-function fetchDataArray($sql) {
+function fetchDataArray($sql,$params,$types) {
 
     //gets database connection
     $conn = getConnection();
 
-    //Retrieve row matching given code
-    $result = $conn->query($sql);
-    $conn->close();
+    //creates prepared statement
+    if ($stmt = $conn->prepare($sql)) {
 
-    //Check if data exists
-    if($result->num_rows > 0) {
-        $dataArray = array();
-        for ($i = 0; $i < $result->num_rows; $i++) {
-            array_push($dataArray,$result->fetch_assoc());
+        //binds parameters to statement
+        for ($i=0; $i<count($params); $i++) {
+            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
+            }
         }
-        return $dataArray;
+
+        //Make database query
+        if ($stmt->execute() === TRUE) {
+            $result = $stmt->get_result();
+            $stmt->close();
+            $conn->close();
+            //Check if data exists
+            if($result->num_rows > 0) {
+                $dataArray = array();
+                for ($i = 0; $i < $result->num_rows; $i++) {
+                    array_push($dataArray,$result->fetch_assoc());
+                }
+                return $dataArray;
+            } else {
+                return null;
+            }
+        } else {
+            $conn->close();
+            echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+            return null;
+        }
+
     } else {
-        return null;
+        echo "<script> alert('Database Connection Failed: Failure created prepared statement'); </script>";
+        die();
     }
 
 }
@@ -82,23 +125,59 @@ function fetchDataArray($sql) {
 /**
  * Returns an array of one row of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
+ * @param array  $params  SQL parameters
+ * @param array  $types  SQL parameters types
  * @return  array
  */
-function fetchRow($sql) {
+function fetchRow($sql,$params,$types) {
 
     //gets database connection
     $conn = getConnection();
 
-    //Retrieve row matching given code
-    $result = $conn->query($sql." LIMIT 1");
-    $conn->close();
-    $data = $result->fetch_assoc();
+    /*
+     * //Establish Connection
+    $conn = new mysqli(CONFIG['db_host'], CONFIG['db_username'], CONFIG['db_password'], CONFIG['db_name']);
 
-    //Check if data exists
-    if($result->num_rows == 1) {
-        return $data;
+    // Check connection
+    if ($conn->connect_error) {
+        echo "<script> alert('Database Connection Failed: " . $conn->connect_error . "'); </script>";
+        die();
+    }
+     */
+
+    //creates prepared statement
+    if ($stmt = $conn->prepare($sql." LIMIT 1")) {
+
+        //binds parameters to statement
+        for ($i=0; $i<count($params); $i++) {
+            $test = "demo123";
+            if ($stmt->bind_param("s",$test) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
+            }
+        }
+
+        //Make database query
+        if ($stmt->execute() === TRUE) {
+            $result = $stmt->get_result();
+            $stmt->close();
+            $conn->close();
+            $data = $result->fetch_assoc();
+            //Check if data exists
+            if($result->num_rows == 1) {
+                return $data;
+            } else {
+                return null;
+            }
+        } else {
+            $conn->close();
+            echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+            return null;
+        }
+
     } else {
-        return null;
+        echo "<script> alert('Database Connection Failed: Failure created prepared statement'); </script>";
+        die();
     }
 
 }
@@ -107,19 +186,42 @@ function fetchRow($sql) {
 /**
  * Returns the number of rows obtained corresponding to the $sql SQL query
  * @param string  $sql  SQL query
+ * @param array  $params  SQL parameters
+ * @param array  $types  SQL parameters types
  * @return  int
  */
-function fetchRowCount($sql) {
+function fetchRowCount($sql,$params,$types) {
 
     //gets database connection
     $conn = getConnection();
 
-    //Retrieve row matching given code
-    $result = $conn->query($sql);
-    $conn->close();
+    //creates prepared statement
+    if ($stmt = $conn->prepare($sql." LIMIT 1")) {
 
-    //Return number of rows
-    return $result->num_rows;
+        //binds parameters to statement
+        for ($i=0; $i<count($params); $i++) {
+            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
+            }
+        }
+
+        //Make database query
+        if ($stmt->execute() === TRUE) {
+            $result = $stmt->get_result();
+            $stmt->close();
+            $conn->close();
+           return $result->num_rows;
+        } else {
+            $conn->close();
+            echo "<script> alert('Database Query Error: " . $conn->error . "'); </script>";
+            return null;
+        }
+
+    } else {
+        echo "<script> alert('Database Connection Failed: Failure created prepared statement'); </script>";
+        die();
+    }
 
 }
 
@@ -136,11 +238,11 @@ function addLogEntry($entry) {
 
 /**
  * Returns the country row from the country database corresponding to its access code
- * @param int  $code  Access code of country
+ * @param string  $code  Access code of country
  * @return array
  */
 function getCountryRowByCode($code) {
-    return fetchRow("SELECT * FROM countries WHERE code='$code'");
+    return fetchRow("SELECT * FROM countries WHERE code=?",array("s"),array($code));
 }
 
 
