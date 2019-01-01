@@ -31,11 +31,10 @@ function getConnection() {
 /**
  * Calls the SQL query $sql and returns true if successful, otherwise returns false
  * @param string  $sql  SQL query
- * @param array or null  $params  SQL parameters
- * @param array or null  $types  SQL parameters types
+ * @param array or null  $params  parameters for SQL statement for bind_param
  * @return  bool
  */
-function makeQuery($sql,$types,$params) {
+function makeQuery($sql,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -43,13 +42,21 @@ function makeQuery($sql,$types,$params) {
     //creates prepared statement
     if ($stmt = $conn->prepare($sql)) {
 
-        //binds parameters to statement
+        /*//binds parameters to statement
         if ($params != null) {
             for ($i = 0; $i < count($params); $i++) {
                 if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
                     echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                     die();
                 }
+            }
+        }*/
+
+        //binds parameters to statement
+        if ($params != null) {
+            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
             }
         }
 
@@ -75,11 +82,10 @@ function makeQuery($sql,$types,$params) {
 /**
  * Returns an array of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
- * @param array or null  $params  SQL parameters
- * @param array or null  $types  SQL parameters types
+ * @param array or null  $params  parameters for SQL statement for bind_param
  * @return  array
  */
-function fetchDataArray($sql,$types,$params) {
+function fetchDataArray($sql,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -89,11 +95,9 @@ function fetchDataArray($sql,$types,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            for ($i = 0; $i < count($params); $i++) {
-                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
-                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                    die();
-                }
+            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
             }
         }
 
@@ -129,11 +133,10 @@ function fetchDataArray($sql,$types,$params) {
 /**
  * Returns an array of one row of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
- * @param array  $params  SQL parameters
- * @param array  $types  SQL parameters types
+ * @param array or null  $params  parameters for SQL statement for bind_param
  * @return  array
  */
-function fetchRow($sql,$types,$params) {
+function fetchRow($sql,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -143,11 +146,9 @@ function fetchRow($sql,$types,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            for ($i = 0; $i < count($params); $i++) {
-                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
-                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                    die();
-                }
+            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
             }
         }
 
@@ -180,11 +181,10 @@ function fetchRow($sql,$types,$params) {
 /**
  * Returns the number of rows obtained corresponding to the $sql SQL query
  * @param string  $sql  SQL query
- * @param array  $params  SQL parameters
- * @param array  $types  SQL parameters types
+ * @param array or null  $params  parameters for SQL statement for bind_param
  * @return  int
  */
-function fetchRowCount($sql,$types,$params) {
+function fetchRowCount($sql,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -194,11 +194,9 @@ function fetchRowCount($sql,$types,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            for ($i = 0; $i < count($params); $i++) {
-                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
-                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                    die();
-                }
+            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                die();
             }
         }
 
@@ -238,7 +236,7 @@ function addLogEntry($entry) {
  * @return array
  */
 function getCountryRowByCode($code) {
-    return fetchRow("SELECT * FROM countries WHERE code=?",array("s"),array($code));
+    return fetchRow("SELECT * FROM countries WHERE code=?",array("s",$code));
 }
 
 
@@ -248,7 +246,7 @@ function getCountryRowByCode($code) {
  * @return array
  */
 function getCountryRow($id) {
-    return fetchRow("SELECT * FROM countries WHERE id=?",array("i"),array($id));
+    return fetchRow("SELECT * FROM countries WHERE id=?",array("i",$id));
 }
 
 
@@ -257,7 +255,7 @@ function getCountryRow($id) {
  * @return int
  */
 function getCountryCount() {
-    return fetchRowCount("SELECT * FROM countries",null,null);
+    return fetchRowCount("SELECT * FROM countries",null);
 }
 
 
@@ -266,7 +264,7 @@ function getCountryCount() {
  * @return array
  */
 function getCountryArray() {
-    return fetchDataArray("SELECT * FROM countries",null,null);
+    return fetchDataArray("SELECT * FROM countries",null);
 }
 
 
@@ -275,7 +273,7 @@ function getCountryArray() {
  * @return array
  */
 function getSettingsRow() {
-    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)",null,null);
+    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)",null);
 }
 
 
@@ -286,7 +284,7 @@ function getSettingsRow() {
  * @return array
  */
 function getAmendmentRow($CountryID,$resolution) {
-    return fetchRow("SELECT * FROM amendments WHERE country_id=? AND resolution=?",array("i","i"),array($CountryID,$resolution));
+    return fetchRow("SELECT * FROM amendments WHERE country_id=? AND resolution=?",array("ii",$CountryID,$resolution));
 }
 
 
@@ -296,7 +294,7 @@ function getAmendmentRow($CountryID,$resolution) {
  * @return array
  */
 function getAmendmentRowByID($amendmentID) {
-    return fetchRow("SELECT * FROM amendments WHERE amendment_id=?",array("i"),array($amendmentID));
+    return fetchRow("SELECT * FROM amendments WHERE amendment_id=?",array("i",$amendmentID));
 }
 
 
@@ -306,7 +304,7 @@ function getAmendmentRowByID($amendmentID) {
  * @return int
  */
 function getAmendmentCountByCountryID($countryID) {
-    return fetchRowCount("SELECT * FROM amendments WHERE country_id=?",array("i"),array($countryID));
+    return fetchRowCount("SELECT * FROM amendments WHERE country_id=?",array("i",$countryID));
 }
 
 
@@ -316,7 +314,7 @@ function getAmendmentCountByCountryID($countryID) {
  * @return int
  */
 function getAmendmentCountByResolutionNum($num) {
-    return fetchRowCount("SELECT * FROM amendments WHERE resolution=?",array("i"),array($num));
+    return fetchRowCount("SELECT * FROM amendments WHERE resolution=?",array("i",$num));
 }
 
 
@@ -325,7 +323,7 @@ function getAmendmentCountByResolutionNum($num) {
  * @return int
  */
 function getNextAmendmentID() {
-    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)",null,null)['amendment_id'];
+    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)",null)['amendment_id'];
 }
 
 
@@ -335,7 +333,7 @@ function getNextAmendmentID() {
  * @return bool
  */
 function deleteAmendmentByID($amendmentID) {
-    return makeQuery("DELETE FROM amendments WHERE amendment_id=?",array("i"),array($amendmentID));
+    return makeQuery("DELETE FROM amendments WHERE amendment_id=?",array("i",$amendmentID));
 }
 
 
@@ -353,9 +351,9 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
         $amendmentID = getNextAmendmentID();
         $status = 'pending';
         if ($type == 'add') {
-            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES (?,?,?,?,?,?)",array("i","i","i","s","s","s"),array($amendmentID,$countryID,$resolutionNum,$type,$status,$details));
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES (?,?,?,?,?,?)",array("iiisss",$amendmentID,$countryID,$resolutionNum,$type,$status,$details));
         } else if (($type == 'strike') || ($type == 'amend')) {
-            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES (?,?,?,?,?,?,?)",array("i","i","i","s","i","s","s"),array($amendmentID,$countryID,$resolutionNum,$type,$clause,$status,$details));
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES (?,?,?,?,?,?,?)",array("iiisiss",$amendmentID,$countryID,$resolutionNum,$type,$clause,$status,$details));
         } else {
             return false;
         }
@@ -369,7 +367,7 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
  * @return array
  */
 function getResolutionRow($num) {
-    return fetchRow("SELECT * FROM resolutions WHERE num=?",array("i"),array($num));
+    return fetchRow("SELECT * FROM resolutions WHERE num=?",array("i",$num));
 }
 
 
@@ -378,5 +376,5 @@ function getResolutionRow($num) {
  * @return int
  */
 function getResolutionCount() {
-    return fetchRowCount("SELECT * FROM resolutions",null,null);
+    return fetchRowCount("SELECT * FROM resolutions",null);
 }
