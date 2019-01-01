@@ -31,8 +31,8 @@ function getConnection() {
 /**
  * Calls the SQL query $sql and returns true if successful, otherwise returns false
  * @param string  $sql  SQL query
- * @param array  $params  SQL parameters
- * @param array  $types  SQL parameters types
+ * @param array or null  $params  SQL parameters
+ * @param array or null  $types  SQL parameters types
  * @return  bool
  */
 function makeQuery($sql,$params,$types) {
@@ -44,10 +44,12 @@ function makeQuery($sql,$params,$types) {
     if ($stmt = $conn->prepare($sql)) {
 
         //binds parameters to statement
-        for ($i=0; $i<count($params); $i++) {
-            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
-                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                die();
+        if ($params != null) {
+            for ($i = 0; $i < count($params); $i++) {
+                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
+                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                    die();
+                }
             }
         }
 
@@ -73,8 +75,8 @@ function makeQuery($sql,$params,$types) {
 /**
  * Returns an array of data corresponding to the $sql SQL query
  * @param string  $sql  SQL query
- * @param array  $params  SQL parameters
- * @param array  $types  SQL parameters types
+ * @param array or null  $params  SQL parameters
+ * @param array or null  $types  SQL parameters types
  * @return  array
  */
 function fetchDataArray($sql,$params,$types) {
@@ -86,10 +88,12 @@ function fetchDataArray($sql,$params,$types) {
     if ($stmt = $conn->prepare($sql)) {
 
         //binds parameters to statement
-        for ($i=0; $i<count($params); $i++) {
-            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
-                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                die();
+        if ($params != null) {
+            for ($i = 0; $i < count($params); $i++) {
+                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
+                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                    die();
+                }
             }
         }
 
@@ -134,26 +138,16 @@ function fetchRow($sql,$params,$types) {
     //gets database connection
     $conn = getConnection();
 
-    /*
-     * //Establish Connection
-    $conn = new mysqli(CONFIG['db_host'], CONFIG['db_username'], CONFIG['db_password'], CONFIG['db_name']);
-
-    // Check connection
-    if ($conn->connect_error) {
-        echo "<script> alert('Database Connection Failed: " . $conn->connect_error . "'); </script>";
-        die();
-    }
-     */
-
     //creates prepared statement
     if ($stmt = $conn->prepare($sql." LIMIT 1")) {
 
         //binds parameters to statement
-        for ($i=0; $i<count($params); $i++) {
-            $test = "demo123";
-            if ($stmt->bind_param("s",$test) === FALSE) {
-                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                die();
+        if ($params != null) {
+            for ($i = 0; $i < count($params); $i++) {
+                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
+                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                    die();
+                }
             }
         }
 
@@ -199,10 +193,12 @@ function fetchRowCount($sql,$params,$types) {
     if ($stmt = $conn->prepare($sql." LIMIT 1")) {
 
         //binds parameters to statement
-        for ($i=0; $i<count($params); $i++) {
-            if ($stmt->bind_param($types[$i],$params[$i]) === FALSE) {
-                echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                die();
+        if ($params != null) {
+            for ($i = 0; $i < count($params); $i++) {
+                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
+                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
+                    die();
+                }
             }
         }
 
@@ -261,7 +257,7 @@ function getCountryRow($id) {
  * @return int
  */
 function getCountryCount() {
-    return fetchRowCount("SELECT * FROM countries");
+    return fetchRowCount("SELECT * FROM countries",null,null);
 }
 
 
@@ -270,7 +266,7 @@ function getCountryCount() {
  * @return array
  */
 function getCountryArray() {
-    return fetchDataArray("SELECT * FROM countries");
+    return fetchDataArray("SELECT * FROM countries",null,null);
 }
 
 
@@ -279,7 +275,7 @@ function getCountryArray() {
  * @return array
  */
 function getSettingsRow() {
-    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)");
+    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)",null,null);
 }
 
 
@@ -329,7 +325,7 @@ function getAmendmentCountByResolutionNum($num) {
  * @return int
  */
 function getNextAmendmentID() {
-    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)")['amendment_id'];
+    return 1 + fetchRow("SELECT amendment_id FROM amendments WHERE amendment_id=(SELECT MAX(amendment_id) FROM amendments)",null,null)['amendment_id'];
 }
 
 
@@ -382,5 +378,5 @@ function getResolutionRow($num) {
  * @return int
  */
 function getResolutionCount() {
-    return fetchRowCount("SELECT * FROM resolutions");
+    return fetchRowCount("SELECT * FROM resolutions",null,null);
 }
