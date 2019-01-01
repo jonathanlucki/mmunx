@@ -13,10 +13,10 @@
 define("CONFIG", array(
 
     //database config
-    'db_host' => 'localhost',
-    'db_name' => 'jonat653_mmunx_test',
-    'db_username' => 'jonat653_user1',
-    'db_password' => 'mmunx1',
+    'db_host' => getenv('DB_HOST'),
+    'db_name' => getenv('DB_DATABASE'),
+    'db_username' => getenv('DB_USERNAME'),
+    'db_password' => getenv('DB_PASSWORD'),
 
     //url config
     'base_URL' => 'http://mmun.jonathanlucki.ca',
