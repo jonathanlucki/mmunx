@@ -42,16 +42,6 @@ function makeQuery($sql,$params) {
     //creates prepared statement
     if ($stmt = $conn->prepare($sql)) {
 
-        /*//binds parameters to statement
-        if ($params != null) {
-            for ($i = 0; $i < count($params); $i++) {
-                if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
-                    echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
-                    die();
-                }
-            }
-        }*/
-
         //binds parameters to statement
         if ($params != null) {
             if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
