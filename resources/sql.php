@@ -35,7 +35,7 @@ function getConnection() {
  * @param array or null  $types  SQL parameters types
  * @return  bool
  */
-function makeQuery($sql,$params,$types) {
+function makeQuery($sql,$types,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -79,7 +79,7 @@ function makeQuery($sql,$params,$types) {
  * @param array or null  $types  SQL parameters types
  * @return  array
  */
-function fetchDataArray($sql,$params,$types) {
+function fetchDataArray($sql,$types,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -133,7 +133,7 @@ function fetchDataArray($sql,$params,$types) {
  * @param array  $types  SQL parameters types
  * @return  array
  */
-function fetchRow($sql,$params,$types) {
+function fetchRow($sql,$types,$params) {
 
     //gets database connection
     $conn = getConnection();
@@ -144,8 +144,6 @@ function fetchRow($sql,$params,$types) {
         //binds parameters to statement
         if ($params != null) {
             for ($i = 0; $i < count($params); $i++) {
-                echo $types[$i];
-                echo $params[$i];
                 if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
                     echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                     die();
@@ -186,7 +184,7 @@ function fetchRow($sql,$params,$types) {
  * @param array  $types  SQL parameters types
  * @return  int
  */
-function fetchRowCount($sql,$params,$types) {
+function fetchRowCount($sql,$types,$params) {
 
     //gets database connection
     $conn = getConnection();
