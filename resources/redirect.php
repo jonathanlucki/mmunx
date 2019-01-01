@@ -10,5 +10,5 @@
 
 //Check if logged in and redirect if not
 if (!(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)) {
-    header("Location: http://mmun.jonathanlucki.ca/index.php");
+    header("Location: ".CONFIG['base_URL']);
 }

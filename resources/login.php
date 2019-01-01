@@ -25,7 +25,7 @@ if(isset($_POST['loginButton'])){
         //set up logged in admin session
         $_SESSION['loggedIn'] = true;
         $_SESSION['admin'] = true;
-        header("Location: http://mmun.jonathanlucki.ca/pages/admin");
+        header("Location: ".CONFIG['base_URL']); //fix later
 
     }
 
@@ -39,7 +39,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = $countryRow['id'];
         $_SESSION['admin'] = false;
-        header("Location: http://mmun.jonathanlucki.ca/pages/delegation");
+        header("Location: ".CONFIG['base_URL']."/pages/delegation");
 
     } else {
 
