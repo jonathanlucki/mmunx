@@ -180,7 +180,7 @@ function fetchRowCount($sql,$params) {
     $conn = getConnection();
 
     //creates prepared statement
-    if ($stmt = $conn->prepare($sql." LIMIT 1")) {
+    if ($stmt = $conn->prepare($sql)) {
 
         //binds parameters to statement
         if ($params != null) {
