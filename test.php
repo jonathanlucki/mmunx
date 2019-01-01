@@ -11,6 +11,8 @@
 //Includes initialization file (init.php)
 include_once('resources/init.php');
 
-$countryRow = getCountryRowByCode("demo123");
+//$countryRow = getCountryRowByCode("demo123");
 
-echo $countryRow['name'];
+//echo $countryRow['name'];
+
+header("Location: ".CONFIG['base_URL']."/pages/delegation");
