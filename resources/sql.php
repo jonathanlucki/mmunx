@@ -252,7 +252,7 @@ function getCountryRowByCode($code) {
  * @return array
  */
 function getCountryRow($id) {
-    return fetchRow("SELECT * FROM countries WHERE id='$id'");
+    return fetchRow("SELECT * FROM countries WHERE id=?",array("i"),array($id));
 }
 
 
@@ -290,7 +290,7 @@ function getSettingsRow() {
  * @return array
  */
 function getAmendmentRow($CountryID,$resolution) {
-    return fetchRow("SELECT * FROM amendments WHERE country_id='$CountryID' AND resolution='$resolution'");
+    return fetchRow("SELECT * FROM amendments WHERE country_id=? AND resolution=?",array("i","i"),array($CountryID,$resolution));
 }
 
 
@@ -300,17 +300,17 @@ function getAmendmentRow($CountryID,$resolution) {
  * @return array
  */
 function getAmendmentRowByID($amendmentID) {
-    return fetchRow("SELECT * FROM amendments WHERE amendment_id='$amendmentID'");
+    return fetchRow("SELECT * FROM amendments WHERE amendment_id=?",array("i"),array($amendmentID));
 }
 
 
 /**
  * Returns the number of amendments for country with id in the database
- * @param int  $CountryID  Country ID number
+ * @param int  $countryID  Country ID number
  * @return int
  */
-function getAmendmentCountByCountryID($CountryID) {
-    return fetchRowCount("SELECT * FROM amendments WHERE country_id='$CountryID'");
+function getAmendmentCountByCountryID($countryID) {
+    return fetchRowCount("SELECT * FROM amendments WHERE country_id=?",array("i"),array($countryID));
 }
 
 
@@ -320,7 +320,7 @@ function getAmendmentCountByCountryID($CountryID) {
  * @return int
  */
 function getAmendmentCountByResolutionNum($num) {
-    return fetchRowCount("SELECT * FROM amendments WHERE resolution='$num'");
+    return fetchRowCount("SELECT * FROM amendments WHERE resolution=?",array("i"),array($num));
 }
 
 
@@ -339,7 +339,7 @@ function getNextAmendmentID() {
  * @return bool
  */
 function deleteAmendmentByID($amendmentID) {
-    return makeQuery("DELETE FROM amendments WHERE amendment_id='$amendmentID'");
+    return makeQuery("DELETE FROM amendments WHERE amendment_id=?",array("i"),array($amendmentID));
 }
 
 
@@ -348,8 +348,8 @@ function deleteAmendmentByID($amendmentID) {
  * @param int  $countryID  Country ID number
  * @param int  $resolutionNum  Resolution number
  * @param string  $type  type of amendment - either 'add', 'strike', or 'amend'
- * @param int or null  $clause
- * @param string  $details  Country ID number
+ * @param int or null  $clause Clause number for amendment
+ * @param string  $details  Amendment details
  * @return bool
  */
 function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
@@ -357,9 +357,9 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
         $amendmentID = getNextAmendmentID();
         $status = 'pending';
         if ($type == 'add') {
-            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$status','$details')");
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,status,details) VALUES (?,?,?,?,?,?)",array("i","i","i","s","s","s"),array($amendmentID,$countryID,$resolutionNum,$type,$status,$details));
         } else if (($type == 'strike') || ($type == 'amend')) {
-            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES ('$amendmentID','$countryID','$resolutionNum','$type','$clause','$status','$details')");
+            return makeQuery("INSERT INTO amendments (amendment_id,country_id,resolution,type,clause,status,details) VALUES (?,?,?,?,?,?,?)",array("i","i","i","s","i","s","s"),array($amendmentID,$countryID,$resolutionNum,$type,$clause,$status,$details));
         } else {
             return false;
         }
@@ -373,7 +373,7 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
  * @return array
  */
 function getResolutionRow($num) {
-    return fetchRow("SELECT * FROM resolutions WHERE num='$num'");
+    return fetchRow("SELECT * FROM resolutions WHERE num=?",array("i"),array($num));
 }
 
 
