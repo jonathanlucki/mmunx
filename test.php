@@ -15,4 +15,6 @@ include_once('resources/init.php');
 
 //echo $countryRow['name'];
 
-header("Location: ".CONFIG['base_URL']."/pages/delegation");
+//header("Location: ".CONFIG['base_URL']."/pages/delegation");
+
+echo getSettingsRow()['admin_code'];
