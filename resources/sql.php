@@ -144,6 +144,8 @@ function fetchRow($sql,$params,$types) {
         //binds parameters to statement
         if ($params != null) {
             for ($i = 0; $i < count($params); $i++) {
+                echo $types[$i];
+                echo $params[$i];
                 if ($stmt->bind_param($types[$i], $params[$i]) === FALSE) {
                     echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                     die();
