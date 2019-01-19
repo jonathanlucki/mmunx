@@ -19,7 +19,7 @@ define("CONFIG", array(
     'db_password' => getenv('DB_PASSWORD'),
 
     //url config
-    'base_URL' => 'https://mmunx.herokuapp.com',
+    'base_URL' => getenv('BASE_URL'),
 
     //path config
     'path_css' => '/css',
