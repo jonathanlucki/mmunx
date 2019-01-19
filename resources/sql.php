@@ -44,7 +44,9 @@ function makeQuery($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            $ref    = new ReflectionClass('mysqli_stmt');
+            $method = $ref->getMethod("bind_param");
+            if ($method->invokeArgs($stmt,$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -62,7 +64,7 @@ function makeQuery($sql,$params) {
         }
 
     } else {
-        echo "<script> alert('Database Connection Failed: Failure created prepared statement'); </script>";
+        echo "<script> alert('Database Connection Failed: Failure creating prepared statement'); </script>";
         die();
     }
 
@@ -85,7 +87,9 @@ function fetchDataArray($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            $ref    = new ReflectionClass('mysqli_stmt');
+            $method = $ref->getMethod("bind_param");
+            if ($method->invokeArgs($stmt,$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -136,7 +140,9 @@ function fetchRow($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            $ref    = new ReflectionClass('mysqli_stmt');
+            $method = $ref->getMethod("bind_param");
+            if ($method->invokeArgs($stmt,$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -174,7 +180,7 @@ function fetchRow($sql,$params) {
  * @param array or null  $params  parameters for SQL statement for bind_param
  * @return  int
  */
-function fetchRowCount($sql,$params) {
+function fetchRowCount($sql,$paramsArr) {
 
     //gets database connection
     $conn = getConnection();
@@ -184,7 +190,9 @@ function fetchRowCount($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            $ref    = new ReflectionClass('mysqli_stmt');
+            $method = $ref->getMethod("bind_param");
+            if ($method->invokeArgs($stmt,$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
