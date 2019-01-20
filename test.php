@@ -11,12 +11,30 @@
 //Includes initialization file (init.php)
 include_once('resources/init.php');
 
-//$countryRow = getCountryRowByCode("demo123");
+$countryRow = getCountryRowByCode("demo123");
 
-//echo $countryRow['name'];
+echo $countryRow['name'];
 
 //header("Location: ".CONFIG['base_URL']."/pages/delegation");
 
 //echo getSettingsRow()['admin_code'];
 
-echo getResolutionCount();
+//echo getResolutionCount();
+
+/*
+if($countryRow != null) {
+    echo "yeah";
+    $_SESSION['loggedIn'] = true;
+    echo true;
+    echo $_SESSION['loggedIn'];
+    $_SESSION['countryID'] = $countryRow['id'];
+    echo $_SESSION['countryID'];
+    $_SESSION['admin'] = false;
+    echo "Location: ".CONFIG['base_URL']."/pages/delegation";
+    ob_start();
+    header("Location: ".CONFIG['base_URL']."/pages/delegation");
+    ob_end_flush();
+    die();
+} else {
+    echo "rats";
+}*/
