@@ -44,7 +44,7 @@ function makeQuery($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            if ($stmt->bind_param(...$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -85,7 +85,7 @@ function fetchDataArray($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            if ($stmt->bind_param(...$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -136,7 +136,7 @@ function fetchRow($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            if ($stmt->bind_param(...$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
@@ -184,7 +184,7 @@ function fetchRowCount($sql,$params) {
 
         //binds parameters to statement
         if ($params != null) {
-            if (call_user_func_array(array($stmt,'bind_param'),$params) === FALSE) {
+            if ($stmt->bind_param(...$params) === FALSE) {
                 echo "<script> alert('Database Connection Failed: Failure binding parameter to statement'); </script>";
                 die();
             }
