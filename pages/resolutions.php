@@ -17,7 +17,7 @@ include('../layouts/content-pane-start.php');
 ?>
 
 
-<?php include('../elements/resolutions-table.php')?>
+<?php include('../elements/resolutions-table.php') ?>
 
 
 <?php

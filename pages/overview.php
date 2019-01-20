@@ -36,7 +36,7 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     <p class="lead">Country: <?php echo $countryRow['name']?></p>
     <p class="lead">Speaker Points: <?php echo $countryRow['points']?></p>
     <br>
-    <?php include('../elements/delegates-table.php')?>
+    <?php include('../elements/delegates-table.php') ?>
     <br>
     <p class="lead">Amendments:</p>
 

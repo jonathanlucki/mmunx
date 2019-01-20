@@ -17,7 +17,7 @@ include('../layouts/content-pane-start.php');
 ?>
 
 
-<?php include('../elements/country-table.php')?>
+<?php include('../elements/country-table.php') ?>
 
 
 <?php
