@@ -9,10 +9,10 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../../resources/init.php');
+include_once('../resources/init.php');
 
-include('../layouts/header.php');
-include('../layouts/content-pane-start.php');
+include('layouts/header.php');
+include('layouts/content-pane-start.php');
 ?>
 
     <div class="text-center">
