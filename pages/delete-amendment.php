@@ -5,7 +5,7 @@
  * File: delete-amendment.php
  * Purpose:
  * Created: 10/09/18
- * Last Modified: 10/09/18
+ * Last Modified: 21/01/19
  */
 
 //Includes initialization file (init.php)
@@ -40,5 +40,5 @@ if(isset($_POST['deleteButton'])){
 
 
 <?php
-include('../layouts/content-pane-end.php');
-include('../layouts/footer.php');
+include('layouts/content-pane-end.php');
+include('layouts/footer.php');
