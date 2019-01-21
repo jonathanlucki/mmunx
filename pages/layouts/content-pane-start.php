@@ -8,8 +8,8 @@
  * Last Modified: 9/15/18
  */
 
-//Includes redirect file (redirect.php)
-include_once('../../resources/redirect.php');
+//redirect if not logged in
+redirect(false);
 
 //Includes logout file (logout.php)
 include('../../resources/logout.php');
