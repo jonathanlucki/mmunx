@@ -26,7 +26,7 @@
                 <a class="nav-link" href="/pages/delegation/countries.php">Countries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo '/pages/overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>
+                <a class="nav-link" href="<?php echo '/pages/delegation/overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
