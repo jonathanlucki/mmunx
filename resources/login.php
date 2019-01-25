@@ -24,6 +24,7 @@ if(isset($_POST['loginButton'])){
 
         //set up logged in admin session
         $_SESSION['loggedIn'] = true;
+        $_SESSION['countryID'] = null;
         $_SESSION['admin'] = true;
         header("Location: ".CONFIG['base_URL']); //fix later
 
