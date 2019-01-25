@@ -12,7 +12,7 @@
 include_once('../resources/init.php');
 
 include('layouts/header.php');
-include('layouts/content-pane-start.php');
+include('layouts/delegation-navbar.php');
 ?>
 
     <div class="text-center">
@@ -39,5 +39,4 @@ include('layouts/content-pane-start.php');
 
 
 <?php
-include('layouts/content-pane-end.php');
 include('layouts/footer.php');

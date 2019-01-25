@@ -12,7 +12,7 @@
 include_once('../resources/init.php');
 
 include('layouts/header.php');
-include('layouts/content-pane-start.php');
+include('layouts/delegation-navbar.php');
 
 //Sets country row
 $countryRow = getCountryRow($_SESSION['countryID']);
@@ -26,5 +26,4 @@ $countryRow = getCountryRow($_SESSION['countryID']);
 <p class="lead text-center">To get started, navigate to <em>Country Overview</em> to submit an amendment.</p>
 
 <?php
-include('layouts/content-pane-end.php');
 include('layouts/footer.php');
