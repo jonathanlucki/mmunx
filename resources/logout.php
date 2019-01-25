@@ -11,5 +11,5 @@
 //Check if login form submitted
 if(isset($_POST['logoutButton'])){
     $_SESSION['loggedIn'] = false;
-    header("Location: http://mmun.jonathanlucki.ca/");
+    header("Location: ".CONFIG['base_URL']);
 }

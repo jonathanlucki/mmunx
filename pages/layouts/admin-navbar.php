@@ -7,6 +7,13 @@
  * Created: 24/01/19
  * Last Modified: 24/01/19
  */
+
+//redirect if not logged in
+redirect(true);
+
+//Includes logout file (logout.php)
+include('../../resources/logout.php');
+
 ?>
 
 <div class="container" id="content-pane">
