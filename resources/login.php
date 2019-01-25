@@ -40,7 +40,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = $countryRow['id'];
         $_SESSION['admin'] = false;
-        header("Location: ".CONFIG['base_URL']."/pages");
+        header("Location: ".CONFIG['base_URL']."/pages/delegation");
 
     } else {
 

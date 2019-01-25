@@ -4,8 +4,8 @@
  * MMUNx
  * File: delegation-navbar.php
  * Purpose:
- * Created: 1/24/19
- * Last Modified: 1/24/19
+ * Created: 24/01/19
+ * Last Modified: 24/01/19
  */
 ?>
 
@@ -17,13 +17,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/pages/index.php">Home</a>
+                <a class="nav-link" href="/pages/delegation/index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/resolutions.php">Resolutions</a>
+                <a class="nav-link" href="/pages/delegation/resolutions.php">Resolutions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/countries.php">Countries</a>
+                <a class="nav-link" href="/pages/delegation/countries.php">Countries</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo '/pages/overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>

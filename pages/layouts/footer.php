@@ -5,7 +5,7 @@
  * File: footer.php
  * Purpose: Template for application footer
  * Created: 08/07/18
- * Last Modified: 15/09/18
+ * Last Modified: 24/01/19
  */
 ?>
 
