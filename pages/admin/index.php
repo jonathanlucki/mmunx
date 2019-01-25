@@ -16,7 +16,7 @@ include('../layouts/admin-navbar.php');
 
 ?>
 
-    <h1 class="display-4 text-center">Welcome, admin.</h1>
+    <h1 class="text-center">Welcome, admin.</h1>
 
 <?php
 include('../layouts/footer.php');
