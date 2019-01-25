@@ -9,10 +9,10 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../resources/init.php');
+include_once('../../resources/init.php');
 
-include('layouts/header.php');
-include('layouts/delegation-navbar.php');
+include('../layouts/header.php');
+include('../layouts/delegation-navbar.php');
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
@@ -20,7 +20,7 @@ $resolutionRow = getResolutionRow($_GET['num']);
 
 //RESOLUTION BOXES
 //Includes resolution-box-class.php
-include('elements/resolution-box-class.php');
+include('../elements/resolution-box-class.php');
 
 //resolution-box object array
 $resolutionBox = array();
@@ -68,4 +68,4 @@ for ($i=0; $i < count($resolutionBox); $i++) {
     $resolutionBox[$i]->echoModals();
 }
 
-include('layouts/footer.php');
+include('../layouts/footer.php');

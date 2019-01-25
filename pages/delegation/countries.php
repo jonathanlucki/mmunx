@@ -9,13 +9,13 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../resources/init.php');
+include_once('../../resources/init.php');
 
-include('layouts/header.php');
-include('layouts/delegation-navbar.php');
-
-
-include('elements/country-table.php');
+include('../layouts/header.php');
+include('../layouts/delegation-navbar.php');
 
 
-include('layouts/footer.php');
+include('../elements/country-table.php');
+
+
+include('../layouts/footer.php');

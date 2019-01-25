@@ -9,10 +9,10 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../resources/init.php');
+include_once('../../resources/init.php');
 
-include('layouts/header.php');
-include('layouts/delegation-navbar.php');
+include('../layouts/header.php');
+include('../layouts/delegation-navbar.php');
 
 //Sets country row
 $countryRow = getCountryRow($_GET['countryID']);
@@ -20,7 +20,7 @@ $countryRow = getCountryRow($_GET['countryID']);
 
 //RESOLUTION BOXES
 //Includes resolution-box-class.php
-include('elements/resolution-box-class.php');
+include('../elements/resolution-box-class.php');
 
 //resolution-box object array
 $resolutionBox = array();
@@ -36,7 +36,7 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     <p class="lead">Country: <?php echo $countryRow['name']?></p>
     <p class="lead">Speaker Points: <?php echo $countryRow['points']?></p>
     <br>
-    <?php include('elements/delegates-table.php') ?>
+    <?php include('../elements/delegates-table.php') ?>
     <br>
     <p class="lead">Amendments:</p>
 
@@ -71,4 +71,4 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     $resolutionBox[$i]->echoModals();
 }
 
-include('layouts/footer.php');
+include('../layouts/footer.php');

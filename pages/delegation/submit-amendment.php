@@ -9,10 +9,10 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../resources/init.php');
+include_once('../../resources/init.php');
 
-include('layouts/header.php');
-include('layouts/delegation-navbar.php');
+include('../layouts/header.php');
+include('../layouts/delegation-navbar.php');
 ?>
 
     <div class="text-center">
@@ -39,4 +39,4 @@ include('layouts/delegation-navbar.php');
 
 
 <?php
-include('layouts/footer.php');
+include('../layouts/footer.php');
