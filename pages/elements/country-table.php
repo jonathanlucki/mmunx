@@ -21,7 +21,7 @@
     for ($rowNum=1; $rowNum <= getCountryCount(); $rowNum++) {
         echo '<tr>';
         echo '<td>';
-        echo '<a href="/pages/delegation/overview.php?countryID=' . $rowNum . '"> ' . getCountryRow($rowNum)['name'] . '</a>';
+        echo '<a href="overview.php?countryID=' . $rowNum . '"> ' . getCountryRow($rowNum)['name'] . '</a>';
         echo '</td>';
         echo '<td>';
         echo getAmendmentCountByCountryID($rowNum);

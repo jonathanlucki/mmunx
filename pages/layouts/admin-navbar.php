@@ -19,20 +19,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/pages/delegation/index.php">Home</a>
+                <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/delegation/resolutions.php">Resolutions</a>
+                <a class="nav-link" href="resolutions.php">Resolutions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/delegation/countries.php">Countries</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo '/pages/delegation/overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>
+                <a class="nav-link" href="countries.php">Countries</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echo getCountryRow($_SESSION['countryID'])['name']?></span>
             <form id="logout" action="" method="post">
                 <button type="submit" class="btn btn-outline-danger" name="logoutButton">Log out</button>
             </form>

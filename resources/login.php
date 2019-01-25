@@ -26,7 +26,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = null;
         $_SESSION['admin'] = true;
-        header("Location: ".CONFIG['base_URL']); //fix later
+        header("Location: ".CONFIG['base_URL']."/pages/admin"); //fix later
 
     }
 
