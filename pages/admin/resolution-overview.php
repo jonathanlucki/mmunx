@@ -4,15 +4,15 @@
  * MMUNx
  * File: resolution-overview.php
  * Purpose:
- * Created: 10/1/18
- * Last Modified: 24/01/19
+ * Created: 26/01/19
+ * Last Modified: 26/01/19
  */
 
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/admin-navbar.php');
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
@@ -39,24 +39,24 @@ for ($i=0; $i < count(getCountryArray()); $i++) {
 
     <div class="container">
 
-<?php
-for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
-    echo '<div class="row no-gutters">';
-    for ($colNum = 1; $colNum <= 2; $colNum++) {
+        <?php
+        for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
+            echo '<div class="row no-gutters">';
+            for ($colNum = 1; $colNum <= 2; $colNum++) {
 
-        $resolutionNum = (($rowNum - 1) * 2) + $colNum;
+                $resolutionNum = (($rowNum - 1) * 2) + $colNum;
 
-        echo '<div class="col-lg">';
-        if ($resolutionNum <= getResolutionCount()) {
-            $resolutionBox[($resolutionNum-1)]->echoBox(true);
-        } else {
-            echo '<br>';
-        }
-        echo '</div>';
+                echo '<div class="col-lg">';
+                if ($resolutionNum <= getResolutionCount()) {
+                    $resolutionBox[($resolutionNum-1)]->echoBox(true);
+                } else {
+                    echo '<br>';
+                }
+                echo '</div>';
 
-    }
-    echo '</div>';
-} ?>
+            }
+            echo '</div>';
+        } ?>
 
     </div>
 
