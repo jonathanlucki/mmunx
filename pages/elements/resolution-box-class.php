@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 10/09/18
+ * Last Modified: 26/01/18
  */
 
 class resolution_box {
@@ -76,7 +76,7 @@ class resolution_box {
 
         //for create form
         if ($type == 'create') {
-            echo '<form id="submission" action="http://mmun.jonathanlucki.ca/pages/delegation/submit-amendment.php" method="post">';
+            echo '<form id="submission" action="submit-amendment.php" method="post">';
         }
 
         echo '<div class="modal-body">';
@@ -126,7 +126,7 @@ class resolution_box {
                 break;
             case 'delete':
                 //delete button
-                echo '<form id="delete" action="http://mmun.jonathanlucki.ca/pages/delegation/delete-amendment.php" method="post">';
+                echo '<form id="delete" action="delete-amendment.php" method="post">';
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
                 $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
