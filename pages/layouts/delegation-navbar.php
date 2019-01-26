@@ -35,7 +35,7 @@ include('../../resources/logout.php');
                 <a class="nav-link" href="countries.php">Countries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo 'overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>
+                <a class="nav-link" href="<?php echo 'country-overview.php?countryID='.$_SESSION['countryID']?>">Country Overview</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
