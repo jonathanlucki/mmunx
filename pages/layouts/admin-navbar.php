@@ -36,6 +36,7 @@ include('../../resources/logout.php');
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <span class="navbar-text" style="margin-right:5px;">Logged in as: ADMIN</span>
             <form id="logout" action="" method="post">
                 <button type="submit" class="btn btn-outline-danger" name="logoutButton">Log out</button>
             </form>
