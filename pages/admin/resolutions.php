@@ -12,7 +12,7 @@
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/admin-navbar.php');
 
 
 include('../elements/resolutions-table.php');
