@@ -4,7 +4,7 @@
  * MMUNx
  * File: countries.php
  * Purpose:
- * Created: 26/01/19
+ * Created: 9/25/18
  * Last Modified: 26/01/19
  */
 
@@ -12,10 +12,11 @@
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/admin-navbar.php');
+include('../layouts/content-pane-start.php');
 
 
 include('../elements/country-table.php');
 
 
+include('../layouts/content-pane-end.php');
 include('../layouts/footer.php');

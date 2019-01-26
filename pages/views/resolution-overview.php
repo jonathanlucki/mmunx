@@ -5,14 +5,14 @@
  * File: resolution-overview.php
  * Purpose:
  * Created: 10/1/18
- * Last Modified: 24/01/19
+ * Last Modified: 26/01/19
  */
 
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/content-pane-start.php');
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
@@ -62,6 +62,8 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
 
 
 <?php
+
+include('../layouts/content-pane-end.php');
 
 //modals for resolution box
 for ($i=0; $i < count($resolutionBox); $i++) {

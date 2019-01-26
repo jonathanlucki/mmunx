@@ -12,7 +12,7 @@
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/content-pane-start.php');
 
 //Sets country row
 $countryRow = getCountryRow($_GET['countryID']);
@@ -65,6 +65,8 @@ for ($i=0; $i < getResolutionCount(); $i++) {
 
 
 <?php
+
+include('../layouts/content-pane-end.php');
 
 //modals for resolution box
 for ($i=0; $i < getResolutionCount(); $i++) {

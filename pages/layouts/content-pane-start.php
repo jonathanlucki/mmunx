@@ -2,17 +2,33 @@
 /**
  * Jonathan Lucki
  * MMUNx
- * File: admin-navbar.php
+ * File: content-pane-start.php
  * Purpose:
  * Created: 24/01/19
  * Last Modified: 26/01/19
  */
 
 //redirect if not logged in
-redirect(true);
+redirect(false);
 
 //Includes logout file (logout.php)
 include('../../resources/logout.php');
+
+function echoNavBarItem($href,$text) {
+    echo '<li class="nav-item">';
+    echo '<a class="nav-link" href="'.$href.'">'.$text.'</a>';
+    echo '</li>';
+}
+
+function echoSessionUsername() {
+    if ($_SESSION['loggedIn']) {
+        if ($_SESSION['admin']) {
+            echo 'ADMIN';
+        } else {
+            echo getCountryRow($_SESSION['countryID'])['name'];
+        }
+    }
+}
 
 ?>
 
@@ -25,18 +41,17 @@ include('../../resources/logout.php');
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="resolutions.php">Resolutions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="countries.php">Countries</a>
-            </li>
+            <?php
+            echoNavBarItem("index.php","Home");
+            echoNavBarItem("resolutions.php","Resolutions");
+            echoNavBarItem("countries.php","Countries");
+            if (!$_SESSION['admin']) {
+                echoNavBarItem('country-overview.php?countryID='.$_SESSION['countryID'],"Country Overview");
+            }
+            ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <span class="navbar-text" style="margin-right:5px;">Logged in as: ADMIN</span>
+            <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echoSessionUsername()?></span>
             <form id="logout" action="" method="post">
                 <button type="submit" class="btn btn-outline-danger" name="logoutButton">Log out</button>
             </form>

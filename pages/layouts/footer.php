@@ -5,12 +5,9 @@
  * File: footer.php
  * Purpose: Template for application footer
  * Created: 08/07/18
- * Last Modified: 24/01/19
+ * Last Modified: 26/01/19
  */
 ?>
-
-</div>
-</div>
 
 <!-- jQuery slim -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

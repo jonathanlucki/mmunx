@@ -5,14 +5,14 @@
  * File: delete-amendment.php
  * Purpose:
  * Created: 10/09/18
- * Last Modified: 24/01/19
+ * Last Modified: 26/01/19
  */
 
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/content-pane-start.php');
 ?>
 
     <div class="text-center">
@@ -39,4 +39,5 @@ include('../layouts/delegation-navbar.php');
 
 
 <?php
+include('../layouts/content-pane-end.php');
 include('../layouts/footer.php');

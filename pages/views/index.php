@@ -5,14 +5,14 @@
  * File: index.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 24/01/19
+ * Last Modified: 26/01/19
  */
 
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/content-pane-start.php');
 
 //Sets country row
 $countryRow = getCountryRow($_SESSION['countryID']);
@@ -26,4 +26,5 @@ $countryRow = getCountryRow($_SESSION['countryID']);
 <p class="lead text-center">To get started, navigate to <em>Country Overview</em> to submit an amendment.</p>
 
 <?php
+include('../layouts/content-pane-end.php');
 include('../layouts/footer.php');

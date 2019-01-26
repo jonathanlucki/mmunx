@@ -4,8 +4,8 @@
  * MMUNx
  * File: logout.php
  * Purpose:
- * Created: 10/1/18
- * Last Modified: 10/1/18
+ * Created: 01/10/18
+ * Last Modified: 01/10/18
  */
 
 //Check if login form submitted

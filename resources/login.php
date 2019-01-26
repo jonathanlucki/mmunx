@@ -5,7 +5,7 @@
  * File: login.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 9/16/18
+ * Last Modified: 26/01/19
  */
 
 //Sets up error variable
@@ -26,7 +26,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = null;
         $_SESSION['admin'] = true;
-        header("Location: ".CONFIG['base_URL']."/pages/admin"); //fix later
+        header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
 
     }
 
@@ -40,7 +40,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = $countryRow['id'];
         $_SESSION['admin'] = false;
-        header("Location: ".CONFIG['base_URL']."/pages/delegation");
+        header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
 
     } else {
 

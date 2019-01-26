@@ -2,9 +2,9 @@
 /**
  * Jonathan Lucki
  * MMUNx
- * File: countries.php
+ * File: resolutions.php
  * Purpose:
- * Created: 9/25/18
+ * Created: 10/1/18
  * Last Modified: 26/01/19
  */
 
@@ -12,10 +12,11 @@
 include_once('../../resources/init.php');
 
 include('../layouts/header.php');
-include('../layouts/delegation-navbar.php');
+include('../layouts/content-pane-start.php');
 
 
-include('../elements/country-table.php');
+include('../elements/resolutions-table.php');
 
 
+include('../layouts/content-pane-end.php');
 include('../layouts/footer.php');
