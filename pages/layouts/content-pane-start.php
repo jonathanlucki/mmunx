@@ -12,7 +12,7 @@
 redirect(false);
 
 //Includes logout file (logout.php)
-include('../../resources/logout.php');
+include(PATHS['logout.php']);
 
 function echoNavBarItem($href,$text) {
     echo '<li class="nav-item">';
@@ -42,11 +42,13 @@ function echoSessionUsername() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <?php
-            echoNavBarItem("index.php","Home");
-            echoNavBarItem("resolutions.php","Resolutions");
-            echoNavBarItem("countries.php","Countries");
+            echoNavBarItem("/pages/views/index.php","Home");
+            echoNavBarItem("/pages/views/resolutions.php","Resolutions");
+            echoNavBarItem("/pages/views/countries.php","Countries");
             if (!$_SESSION['admin']) {
-                echoNavBarItem('country-overview.php?countryID='.$_SESSION['countryID'],"Country Overview");
+                echoNavBarItem("/pages/views/country-overview.php?countryID=".$_SESSION['countryID'],"Country Overview");
+            } else {
+                echoNavBarItem("/pages/views/admin/settings.php","Settings");
             }
             ?>
         </ul>

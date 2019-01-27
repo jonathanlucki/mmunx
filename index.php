@@ -12,9 +12,9 @@
 include_once('resources/init.php');
 
 //Includes login file (login.php)
-include_once(__DIR__ . CONFIG['path_resources'] . '/login.php');
+include_once(PATHS['login.php']);
 
-include(__DIR__ . CONFIG['path_layouts'] . '/header.php');
+include(PATHS['header.php']);
 ?>
 
 <div class="container" id="login-container">
@@ -44,4 +44,4 @@ include(__DIR__ . CONFIG['path_layouts'] . '/header.php');
 </div>
 
 <?php
-include(__DIR__ . CONFIG['path_layouts'] . '/footer.php');
+include(PATHS['footer.php']);

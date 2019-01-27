@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 26/01/19
+ * Last Modified: 27/01/19
  */
 
 
@@ -259,11 +259,13 @@ function getCountryArray() {
 
 
 /**
- * Returns the settings row from the settings database (newest version)
+ * Returns the amendment row from the amendments database for country id and resolution number
+ * @param int  $CountryID  Country ID number
+ * @param int  $resolution  Resolution ID number
  * @return array
  */
-function getSettingsRow() {
-    return fetchRow("SELECT * FROM settings WHERE version=(SELECT MAX(version) FROM settings)",null);
+function getAmendmentRow($CountryID,$resolution) {
+    return fetchRow("SELECT * FROM amendments WHERE country_id=? AND resolution=?",array("ii",$CountryID,$resolution));
 }
 
 

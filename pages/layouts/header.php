@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
         <!-- Load CSS -->
-        <link rel="stylesheet" type="text/css" href=<?php echo CONFIG['path_css'] . "/main.css" ?>>
+        <link rel="stylesheet" type="text/css" href="<?php echo "/css/main.css" ?>">
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39349093-5"></script>

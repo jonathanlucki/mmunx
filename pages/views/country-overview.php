@@ -11,8 +11,8 @@
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
-include('../layouts/header.php');
-include('../layouts/content-pane-start.php');
+include(PATHS['header.php']);
+include(PATHS['content-pane-start.php']);
 
 //Sets country row
 $countryRow = getCountryRow($_GET['countryID']);
@@ -20,7 +20,7 @@ $countryRow = getCountryRow($_GET['countryID']);
 
 //RESOLUTION BOXES
 //Includes resolution-box-class.php
-include('../elements/resolution-box-class.php');
+include(PATHS['resolution-box-class.php']);
 
 //resolution-box object array
 $resolutionBox = array();
@@ -36,7 +36,7 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     <p class="lead">Country: <?php echo $countryRow['name']?></p>
     <p class="lead">Speaker Points: <?php echo $countryRow['points']?></p>
     <br>
-    <?php include('../elements/delegates-table.php') ?>
+    <?php include(PATHS['delegates-table.php']) ?>
     <br>
     <p class="lead">Amendments:</p>
 
@@ -66,11 +66,11 @@ for ($i=0; $i < getResolutionCount(); $i++) {
 
 <?php
 
-include('../layouts/content-pane-end.php');
+include(PATHS['content-pane-end.php']);
 
 //modals for resolution box
 for ($i=0; $i < getResolutionCount(); $i++) {
     $resolutionBox[$i]->echoModals();
 }
 
-include('../layouts/footer.php');
+include(PATHS['footer.php']);

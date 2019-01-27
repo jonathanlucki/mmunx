@@ -5,7 +5,7 @@
  * File: config.php
  * Purpose: Defines $config array with all configurable constants
  * Created: 08/07/18
- * Last Modified: 26/01/19
+ * Last Modified: 27/01/19
  */
 
 // Config Data Array
@@ -23,14 +23,4 @@ define("CONFIG", array(
 
     //admin access code
     'admin_code' => getenv('ADMIN_CODE'),
-
-    //path config
-    'path_css' => '/css',
-    'path_img' => '/img',
-    'path_js' => '/js',
-    'path_pages' => '/pages',
-    'path_layouts' => '/pages/layouts',
-    'path_resources' => '/resources',
-    'path_admin_pages' => '/pages/admin',
-    'path_delegation_pages' => '/pages/delegation',
 ));

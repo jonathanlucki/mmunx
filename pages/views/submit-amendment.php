@@ -11,8 +11,8 @@
 //Includes initialization file (init.php)
 include_once('../../resources/init.php');
 
-include('../layouts/header.php');
-include('../layouts/content-pane-start.php');
+include(PATHS['header.php']);
+include(PATHS['content-pane-start.php']);
 ?>
 
     <div class="text-center">
@@ -39,5 +39,5 @@ include('../layouts/content-pane-start.php');
 
 
 <?php
-include('../layouts/content-pane-end.php');
-include('../layouts/footer.php');
+include(PATHS['content-pane-end.php']);
+include(PATHS['footer.php']);
