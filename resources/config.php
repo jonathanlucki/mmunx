@@ -5,7 +5,7 @@
  * File: config.php
  * Purpose: Defines $config array with all configurable constants
  * Created: 08/07/18
- * Last Modified: 09/07/18
+ * Last Modified: 26/01/19
  */
 
 // Config Data Array
