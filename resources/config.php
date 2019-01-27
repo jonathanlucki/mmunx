@@ -21,6 +21,9 @@ define("CONFIG", array(
     //url config
     'base_URL' => getenv('BASE_URL'),
 
+    //admin access code
+    'admin_code' => getenv('ADMIN_CODE'),
+
     //path config
     'path_css' => '/css',
     'path_img' => '/img',

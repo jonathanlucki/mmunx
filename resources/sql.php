@@ -268,17 +268,6 @@ function getSettingsRow() {
 
 
 /**
- * Returns the amendment row from the amendments database for country id and resolution number
- * @param int  $CountryID  Country ID number
- * @param int  $resolution  Resolution ID number
- * @return array
- */
-function getAmendmentRow($CountryID,$resolution) {
-    return fetchRow("SELECT * FROM amendments WHERE country_id=? AND resolution=?",array("ii",$CountryID,$resolution));
-}
-
-
-/**
  * Returns the amendment row from the amendments database for amendmentID
  * @param int  $amendmentID  Amendment ID number
  * @return array

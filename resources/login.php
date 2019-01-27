@@ -20,7 +20,7 @@ if(isset($_POST['loginButton'])){
 
     //Check if access code is admin code
     //If so, redirect to admin index
-    if($code == getSettingsRow()['admin_code']) {
+    if($code == CONFIG['admin_code']) {
 
         //set up logged in admin session
         $_SESSION['loggedIn'] = true;
