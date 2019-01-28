@@ -11,6 +11,9 @@
 //Requires initialization file (init.php)
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
+//redirect users
+redirect('user');
+
 require(PATHS['header.php']);
 require(PATHS['content-pane-start.php']);
 ?>

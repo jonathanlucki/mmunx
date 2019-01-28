@@ -8,9 +8,6 @@
  * Last Modified: 26/01/19
  */
 
-//redirect if not logged in
-redirect(false);
-
 //Requires logout file (logout.php)
 require(PATHS['logout.php']);
 

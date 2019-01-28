@@ -41,25 +41,38 @@ function echoAmendmentText($amendmentID) {
 
 /**
  * Redirects page if not logged in or not a admin page
- * @param bool  $admin  Is page for admin only
+ * @param string  $page  The type of page, either 'admin', 'user', or 'other'
  */
-function redirect($admin) {
+function redirect($page) {
 
-    //check if logged in
-    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+    //check page type
+    switch ($page) {
 
-        //check if admin page but not admin user
-        if ($admin && !(isset($_SESSION['admin']) && $_SESSION['admin'])) {
+        case 'admin':
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+                if (!(isset($_SESSION['admin']) || !$_SESSION['admin'])) {
+                    //redirect to home page
+                    header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+                }
+            } else {
+                //redirect to login page
+                header("Location: ".CONFIG['base_URL']);
+            }
+            break;
 
-            //redirect to home page
-            header("Location: ".CONFIG['base_URL']."/pages");
+        case 'user':
+            if (!(isset($_SESSION['loggedIn'])) || !$_SESSION['loggedIn']) {
+                //redirect to login page
+                header("Location: ".CONFIG['base_URL']);
+            }
+            break;
 
-        }
-
-    } else {
-
-        //redirect to login page
-        header("Location: ".CONFIG['base_URL']);
+        case 'other':
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+                //redirect to home page
+                header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+            }
+            break;
 
     }
 

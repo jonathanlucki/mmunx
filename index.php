@@ -11,6 +11,9 @@
 //Requires initialization file (init.php)
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
+//redirect users
+redirect('other');
+
 //Requires login file (login.php)
 require_once(PATHS['login.php']);
 
