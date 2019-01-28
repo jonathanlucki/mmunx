@@ -8,13 +8,13 @@
  * Last Modified: 16/09/18
  */
 
-//Includes initialization file (init.php)
-include_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
+//Requires initialization file (init.php)
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
-//Includes login file (login.php)
-include_once(PATHS['login.php']);
+//Requires login file (login.php)
+require_once(PATHS['login.php']);
 
-include(PATHS['header.php']);
+require(PATHS['header.php']);
 ?>
 
 <div class="container" id="login-container">
@@ -44,4 +44,4 @@ include(PATHS['header.php']);
 </div>
 
 <?php
-include(PATHS['footer.php']);
+require(PATHS['footer.php']);

@@ -8,19 +8,19 @@
  * Last Modified: 26/01/19
  */
 
-//Includes initialization file (init.php)
-include_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
+//Requires initialization file (init.php)
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
-include(PATHS['header.php']);
-include(PATHS['content-pane-start.php']);
+require(PATHS['header.php']);
+require(PATHS['content-pane-start.php']);
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
 
 
 //RESOLUTION BOXES
-//Includes resolution-box-class.php
-include_once(PATHS['resolution-box-class.php']);
+//Requires resolution-box-class.php
+require_once(PATHS['resolution-box-class.php']);
 
 //resolution-box object array
 $resolutionBox = array();
@@ -63,11 +63,11 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
 
 <?php
 
-include(PATHS['content-pane-end.php']);
+require(PATHS['content-pane-end.php']);
 
 //modals for resolution box
 for ($i=0; $i < count($resolutionBox); $i++) {
     $resolutionBox[$i]->echoModals();
 }
 
-include(PATHS['footer.php']);
+require(PATHS['footer.php']);

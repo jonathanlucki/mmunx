@@ -11,8 +11,8 @@
 //redirect if not logged in
 redirect(false);
 
-//Includes logout file (logout.php)
-include(PATHS['logout.php']);
+//Requires logout file (logout.php)
+require(PATHS['logout.php']);
 
 function echoNavBarItem($href,$text) {
     echo '<li class="nav-item">';

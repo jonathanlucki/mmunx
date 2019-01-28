@@ -8,13 +8,13 @@
  * Last Modified: 26/01/19
  */
 
-//Includes initialization file (init.php)
-include_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
+//Requires initialization file (init.php)
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
-include(PATHS['header.php']);
-include(PATHS['content-pane-start.php']);
+require(PATHS['header.php']);
+require(PATHS['content-pane-start.php']);
 
-include(PATHS['welcome-message.php']);
+require(PATHS['welcome-message.php']);
 
-include(PATHS['content-pane-end.php']);
-include(PATHS['footer.php']);
+require(PATHS['content-pane-end.php']);
+require(PATHS['footer.php']);
