@@ -9,7 +9,7 @@
  */
 
 //Includes initialization file (init.php)
-include_once('../../resources/init.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
 include(PATHS['header.php']);
 include(PATHS['content-pane-start.php']);

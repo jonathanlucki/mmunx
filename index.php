@@ -9,7 +9,7 @@
  */
 
 //Includes initialization file (init.php)
-include_once('resources/init.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
 //Includes login file (login.php)
 include_once(PATHS['login.php']);
