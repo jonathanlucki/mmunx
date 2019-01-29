@@ -19,7 +19,9 @@ define("PATHS",array(
     // pages/elements folder
     'country-table.php' => '/pages/elements/country-table.php',
     'create-country-button.php' => '/pages/elements/create-country-button.php',
+    'create-resolution-button.php' => '/pages/elements/create-resolution-button.php',
     'delegates-table.php' => '/pages/elements/delegates-table.php',
+    'edit-country-button.php' => '/pages/elements/edit-country-button.php',
     'resolution-box-class.php' => '/pages/elements/resolution-box-class.php',
     'resolutions-table.php' => '/pages/elements/resolutions-table.php',
     'welcome-message.php' => '/pages/elements/welcome-message.php',
@@ -32,6 +34,7 @@ define("PATHS",array(
 
     // pages/views/admin folder
     'create-country.php' => '/pages/views/admin/create-country.php',
+    'create-resolution.php' => '/pages/views/admin/create-country.php',
 
     // pages/views folder
     'countries.php' => '/pages/views/countries.php',
