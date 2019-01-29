@@ -11,5 +11,5 @@
 
 <form id="edit-country" action="<?php echo getLocalFilePath('edit-country.php')?>" method="post">
     <input type="hidden" value="<?php echo getCurrentURL() ?>" name="lastURL" />
-    <button type="submit" name="editCountryButton" class="btn btn-success">Edit Country</button>
+    <button type="submit" name="editCountryButton" class="btn btn-warning">Edit Country</button>
 </form>
