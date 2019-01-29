@@ -116,8 +116,7 @@ class resolution_box {
         switch($type){
             case 'create':
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
-                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
+                echo '<input type="hidden" value="' . getCurrentURL() . '" name="lastURL" />';
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
                 echo '<button type="submit" name="submitButton"  style="margin-right:5px;" class="btn btn-primary">Submit Amendment</button>';
                 break;
@@ -128,8 +127,7 @@ class resolution_box {
                 //delete button
                 echo '<form id="delete" action="delete-amendment.php" method="post">';
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
-                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                echo '<input type="hidden" value="' . $currentURL . '" name="lastURL" />';
+                echo '<input type="hidden" value="' . getCurrentURL() . '" name="lastURL" />';
                 echo '<button type="submit" name="deleteButton" style="margin-right:5px;" class="btn btn-danger">Yes</button>';
                 echo '</form>';
                 //non delete button

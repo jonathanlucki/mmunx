@@ -77,3 +77,11 @@ function redirect($page) {
     }
 
 }
+
+
+/**
+ * Returns current URL of the active page
+ */
+function getCurrentURL() {
+    return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+}
