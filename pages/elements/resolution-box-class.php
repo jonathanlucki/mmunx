@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 26/01/18
+ * Last Modified: 29/01/18
  */
 
 class resolution_box {

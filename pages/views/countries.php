@@ -20,6 +20,10 @@ require(PATHS['content-pane-start.php']);
 
 require(PATHS['country-table.php']);
 
+if($_SESSION['admin']) {
+    require(PATHS['create-country-button.php']);
+}
+
 
 require(PATHS['content-pane-end.php']);
 require(PATHS['footer.php']);

@@ -18,6 +18,7 @@ define("PATHS",array(
 
     // pages/elements folder
     'country-table.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/elements/country-table.php',
+    'create-country-button.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/elements/create-country-button.php',
     'delegates-table.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/elements/delegates-table.php',
     'resolution-box-class.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/elements/resolution-box-class.php',
     'resolutions-table.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/elements/resolutions-table.php',
@@ -30,7 +31,7 @@ define("PATHS",array(
     'header.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/layouts/header.php',
 
     // pages/views/admin folder
-    'create-country.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/views/admin/create-country.php',
+    'create-country-submission.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/views/admin/create-country-submission.php',
     'settings.php' => $_SERVER['DOCUMENT_ROOT'].'/pages/views/admin/settings.php',
 
     // pages/views folder
