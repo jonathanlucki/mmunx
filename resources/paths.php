@@ -22,6 +22,7 @@ define("PATHS",array(
     'create-resolution-button.php' => '/pages/elements/create-resolution-button.php',
     'delegates-table.php' => '/pages/elements/delegates-table.php',
     'delete-country-button.php' => '/pages/elements/delete-country-button.php',
+    'delete-resolution-button.php' => '/pages/elements/delete-resolution-button.php',
     'edit-country-button.php' => '/pages/elements/edit-country-button.php',
     'edit-resolution-button.php' => '/pages/elements/edit-resolution-button.php',
     'resolution-box-class.php' => '/pages/elements/resolution-box-class.php',
