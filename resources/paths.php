@@ -31,7 +31,7 @@ define("PATHS",array(
     'header.php' => '/pages/layouts/header.php',
 
     // pages/views/admin folder
-    'create-country-submission.php' => '/pages/views/admin/create-country-submission.php',
+    'create-country.php' => '/pages/views/admin/create-country.php',
 
     // pages/views folder
     'countries.php' => '/pages/views/countries.php',
