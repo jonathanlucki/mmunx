@@ -9,7 +9,7 @@
  */
 ?>
 
-<form id="create-country" action="/pages/views/admin/create-country-submission.php" method="post">
+<form id="create-country" action="<?php echo getLocalFilePath('create-country-submission.php')?>" method="post">
     <input type="hidden" value="<?php echo getCurrentURL() ?>" name="lastURL" />
     <button type="submit" name="createCountryButton" class="btn btn-success">+ Create New Country</button>
 </form>

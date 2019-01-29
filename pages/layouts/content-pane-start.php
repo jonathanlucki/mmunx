@@ -9,7 +9,7 @@
  */
 
 //Requires logout file (logout.php)
-require(PATHS['logout.php']);
+require(getServerFilePath('logout.php'));
 
 function echoNavBarItem($href,$text) {
     echo '<li class="nav-item">';
@@ -39,13 +39,13 @@ function echoSessionUsername() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <?php
-            echoNavBarItem("/pages/views/index.php","Home");
-            echoNavBarItem("/pages/views/resolutions.php","Resolutions");
-            echoNavBarItem("/pages/views/countries.php","Countries");
-            if (!$_SESSION['admin']) {
-                echoNavBarItem("/pages/views/country-overview.php?countryID=".$_SESSION['countryID'],"Country Overview");
+            echoNavBarItem(getLocalFilePath('index.php'),"Home");
+            echoNavBarItem(getLocalFilePath('resolutions.php'),"Resolutions");
+            echoNavBarItem(getLocalFilePath('countries.php'),"Countries");
+            if ($_SESSION['admin']) {
+
             } else {
-                echoNavBarItem("/pages/views/admin/settings.php","Settings");
+                echoNavBarItem(getLocalFilePath('country-overview.php')."?countryID=".$_SESSION['countryID'],"Country Overview");
             }
             ?>
         </ul>

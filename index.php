@@ -15,9 +15,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 redirect('other');
 
 //Requires login file (login.php)
-require_once(PATHS['login.php']);
+require_once(getServerFilePath('login.php'));
 
-require(PATHS['header.php']);
+require(getServerFilePath('header.php'));
 ?>
 
 <div class="container" id="login-container">
@@ -47,4 +47,4 @@ require(PATHS['header.php']);
 </div>
 
 <?php
-require(PATHS['footer.php']);
+require(getServerFilePath('footer.php'));

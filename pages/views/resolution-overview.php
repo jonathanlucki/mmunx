@@ -14,8 +14,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 //redirect users
 redirect('user');
 
-require(PATHS['header.php']);
-require(PATHS['content-pane-start.php']);
+require(getServerFilePath('header.php'));
+require(getServerFilePath('content-pane-start.php'));
 
 //Sets resolution row
 $resolutionRow = getResolutionRow($_GET['num']);
@@ -23,7 +23,7 @@ $resolutionRow = getResolutionRow($_GET['num']);
 
 //RESOLUTION BOXES
 //Requires resolution-box-class.php
-require_once(PATHS['resolution-box-class.php']);
+require_once(getServerFilePath('resolution-box-class.php'));
 
 //resolution-box object array
 $resolutionBox = array();
@@ -66,11 +66,11 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
 
 <?php
 
-require(PATHS['content-pane-end.php']);
+require(getServerFilePath('content-pane-end.php'));
 
 //modals for resolution box
 for ($i=0; $i < count($resolutionBox); $i++) {
     $resolutionBox[$i]->echoModals();
 }
 
-require(PATHS['footer.php']);
+require(getServerFilePath('footer.php'));

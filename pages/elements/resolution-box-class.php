@@ -76,7 +76,7 @@ class resolution_box {
 
         //for create form
         if ($type == 'create') {
-            echo '<form id="submission" action="submit-amendment.php" method="post">';
+            echo '<form id="submission" action="'.getLocalFilePath('submit-amendment.php').'" method="post">';
         }
 
         echo '<div class="modal-body">';
@@ -125,7 +125,7 @@ class resolution_box {
                 break;
             case 'delete':
                 //delete button
-                echo '<form id="delete" action="delete-amendment.php" method="post">';
+                echo '<form id="delete" action="'.getLocalFilePath('delete-amendment.php').'" method="post">';
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
                 echo '<input type="hidden" value="' . getCurrentURL() . '" name="lastURL" />';
                 echo '<button type="submit" name="deleteButton" style="margin-right:5px;" class="btn btn-danger">Yes</button>';

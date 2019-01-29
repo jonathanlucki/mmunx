@@ -21,7 +21,7 @@
     for ($rowNum=1; $rowNum <= getResolutionCount(); $rowNum++) {
         echo '<tr>';
         echo '<td>';
-        echo '<a href="resolution-overview.php?num=' . $rowNum . '"> Resolution ' . $rowNum . ': ' . getResolutionRow($rowNum)['title'] . '</a>';
+        echo '<a href="'.getLocalFilePath('resolution-overview.php').'?num=' . $rowNum . '"> Resolution ' . $rowNum . ': ' . getResolutionRow($rowNum)['title'] . '</a>';
         echo '</td>';
         echo '<td>';
         echo getAmendmentCountByResolutionNum($rowNum);

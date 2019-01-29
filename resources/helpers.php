@@ -81,7 +81,30 @@ function redirect($page) {
 
 /**
  * Returns current URL of the active page
+ * @return string
  */
 function getCurrentURL() {
-    return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    return "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+}
+
+
+/**
+ * Returns the Local path of $fileName
+ * For use in HTML
+ * @param string  $fileName  The file name of the desired file
+ * @return string
+ */
+function getLocalFilePath($fileName) {
+    return PATHS[$fileName];
+}
+
+
+/**
+ * Returns the Server path of $fileName
+ * For use in PHP
+ * @param string  $fileName  The file name of the desired file
+ * @return string
+ */
+function getServerFilePath($fileName) {
+    return $_SERVER['DOCUMENT_ROOT'].PATHS[$fileName];
 }
