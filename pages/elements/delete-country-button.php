@@ -11,5 +11,6 @@
 
 <form id="delete-country" action="<?php echo getLocalFilePath('delete-country.php')?>" method="post">
     <input type="hidden" value="<?php echo getCurrentURL() ?>" name="lastURL" />
+    <input type="hidden" value="<?php echo $_GET['countryID'] ?>" name="countryID" />
     <button type="submit" name="deleteCountryButton" class="btn btn-danger">Delete Country</button>
 </form>

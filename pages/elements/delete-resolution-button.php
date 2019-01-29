@@ -11,5 +11,6 @@
 
 <form id="delete-country" action="<?php echo getLocalFilePath('delete-resolution.php')?>" method="post">
     <input type="hidden" value="<?php echo getCurrentURL() ?>" name="lastURL" />
+    <input type="hidden" value="<?php echo $_GET['num'] ?>" name="num" />
     <button type="submit" name="deleteResolutionButton" class="btn btn-danger">Delete Resolution</button>
 </form>
