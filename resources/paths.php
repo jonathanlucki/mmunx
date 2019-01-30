@@ -37,7 +37,11 @@ define("PATHS",array(
 
     // pages/views/admin folder
     'create-country.php' => '/pages/views/admin/create-country.php',
-    'create-resolution.php' => '/pages/views/admin/create-country.php',
+    'create-resolution.php' => '/pages/views/admin/create-resolution.php',
+    'delete-country.php' => '/pages/views/admin/delete-country.php',
+    'delete-resolution.php' => '/pages/views/admin/delete-resolution.php',
+    'edit-country.php' => '/pages/views/admin/edit-country.php',
+    'edit-resolution.php' => '/pages/views/admin/edit-resolution.php',
 
     // pages/views folder
     'countries.php' => '/pages/views/countries.php',
