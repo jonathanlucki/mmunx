@@ -17,16 +17,6 @@ function echoNavBarItem($href,$text) {
     echo '</li>';
 }
 
-function echoSessionUsername() {
-    if ($_SESSION['loggedIn']) {
-        if ($_SESSION['admin']) {
-            echo 'ADMIN';
-        } else {
-            echo getCountryRow($_SESSION['countryID'])['name'];
-        }
-    }
-}
-
 ?>
 
 <div class="container" id="content-pane">
@@ -50,7 +40,7 @@ function echoSessionUsername() {
             ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echoSessionUsername()?></span>
+            <span class="navbar-text" style="margin-right:5px;">Logged in as: <?php echo getSessionUsername()?></span>
             <form id="logout" action="" method="post">
                 <button type="submit" class="btn btn-outline-danger" name="logoutButton">Log out</button>
             </form>

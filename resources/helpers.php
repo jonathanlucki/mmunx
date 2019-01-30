@@ -89,6 +89,21 @@ function getCurrentURL() {
 
 
 /**
+ * Returns the username for the current session
+ * @return string
+ */
+function getSessionUsername() {
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+            echo 'ADMIN';
+        } else {
+            echo getCountryRow($_SESSION['countryID'])['name'];
+        }
+    }
+}
+
+
+/**
  * Returns the Local path of $fileName
  * For use in HTML
  * @param string  $fileName  The file name of the desired file
