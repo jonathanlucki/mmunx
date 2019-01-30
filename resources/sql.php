@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 27/01/19
+ * Last Modified: 30/01/19
  */
 
 
@@ -358,4 +358,31 @@ function getResolutionRow($num) {
  */
 function getResolutionCount() {
     return fetchRowCount("SELECT * FROM resolutions",null);
+}
+
+
+/**
+ * Returns the next country ID number
+ * @return int
+ */
+function getNextCountryID() {
+    return 1 + fetchRow("SELECT id FROM countries WHERE id=(SELECT MAX(id) FROM countries)",null)['id'];
+}
+
+
+/**
+ * Inserts a new country into the country table based on default settings
+ * @return int or false  country id if successful, false if not successful
+ */
+function insertNewCountry() {
+    $newID = getNextCountryID();
+    $newName = "Country".$newID;
+    $newCode = strval(rand(10000,99999));
+    $newPoints = 0;
+    $newOrderNum = rand(1,1000);
+    if (makeQuery("INSERT INTO countries (id,name,code,points,order_num) VALUES (?,?,?,?,?)",array("issii",$newID,$newName,$newCode,$newPoints,$newOrderNum))) {
+        return $newID;
+    } else {
+        return false;
+    }
 }
