@@ -20,6 +20,10 @@ require(getServerFilePath('content-pane-start.php'));
 
 require(getServerFilePath('resolutions-table.php'));
 
+if($_SESSION['admin']) {
+    require(getServerFilePath('create-resolution-button.php'));
+}
+
 
 require(getServerFilePath('content-pane-end.php'));
 require(getServerFilePath('footer.php'));
