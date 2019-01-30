@@ -386,3 +386,28 @@ function insertNewCountry() {
         return false;
     }
 }
+
+/**
+ * Returns the next resolution number
+ * @return int
+ */
+function getNextResolutionNum() {
+    return 1 + fetchRow("SELECT num FROM resolutions WHERE num=(SELECT MAX(num) FROM resolutions)",null)['num'];
+}
+
+
+/**
+ * Inserts a new resolution into the resolution table based on default settings
+ * @return int or false  resolution num if successful, false if not successful
+ */
+function insertNewResolution() {
+    $newNum = getNextResolutionNum();
+    $newTitle = "Resolution".$newNum;
+    $newStatus = "pending";
+    if (makeQuery("INSERT INTO resolutions (num,title,status) VALUES (?,?,?)",array("iss",$newNum,$newTitle,$newStatus))) {
+        return $newNum;
+    } else {
+        return false;
+    }
+}
+
