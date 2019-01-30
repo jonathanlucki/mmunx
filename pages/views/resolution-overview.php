@@ -47,11 +47,11 @@ for ($rowNum = 1; $rowNum <= (round(count($resolutionBox) / 2)); $rowNum++) {
     echo '<div class="row no-gutters">';
     for ($colNum = 1; $colNum <= 2; $colNum++) {
 
-        $resolutionNum = (($rowNum - 1) * 2) + $colNum;
+        $countryIndex = (($rowNum - 1) * 2) + $colNum;
 
         echo '<div class="col-lg">';
-        if ($resolutionNum <= getResolutionCount()) {
-            $resolutionBox[($resolutionNum-1)]->echoBox(true);
+        if ($countryIndex <= count($resolutionBox)) {
+            $resolutionBox[($countryIndex-1)]->echoBox(true);
         } else {
             echo '<br>';
         }
