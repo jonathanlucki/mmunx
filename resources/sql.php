@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 30/01/19
+ * Last Modified: 31/01/19
  */
 
 
@@ -420,4 +420,15 @@ function insertNewResolution() {
  */
 function deleteCountry($countryID) {
     return makeQuery("DELETE FROM countries WHERE id=?",array("i",$countryID));
+}
+
+
+/**
+ * Deletes the resolution row for resolution with num $num from the resolutions table
+ * Returns true if successful, otherwise returns false
+ * @param int  $num  Resolution num
+ * @return bool
+ */
+function deleteResolution($num) {
+    return makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num));
 }

@@ -34,7 +34,7 @@ require(getServerFilePath('content-pane-start.php'));
 
         <br>
 
-        <a class="btn btn-outline-secondary" href="<?php echo getLocalFilePath('home.php')?>" role="button">Return to to home</a>
+        <a class="btn btn-outline-secondary" href="<?php echo getLocalFilePath('home.php')?>" role="button">Return to home</a>
 
         <br>
 

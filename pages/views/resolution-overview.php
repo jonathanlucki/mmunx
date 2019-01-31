@@ -5,7 +5,7 @@
  * File: resolution-overview.php
  * Purpose:
  * Created: 10/1/18
- * Last Modified: 30/01/19
+ * Last Modified: 31/01/19
  */
 
 //Requires initialization file (init.php)
@@ -37,6 +37,11 @@ for ($i=0; $i < count(getCountryArray()); $i++) {
 ?>
 
     <p class="lead">Resolution <?php echo $resolutionRow['num'] . ': ' . $resolutionRow['title']?></p>
+    <?php
+    if ($_SESSION['admin']) {
+        require(getServerFilePath('delete-resolution-button.php'));
+    }
+    ?>
     <br>
     <p class="lead">Amendments:</p>
 
