@@ -2,7 +2,7 @@
 /**
  * Jonathan Lucki
  * MMUNx
- * File: index.php
+ * File: home.php
  * Purpose:
  * Created: 9/16/18
  * Last Modified: 26/01/19

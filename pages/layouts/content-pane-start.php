@@ -29,7 +29,7 @@ function echoNavBarItem($href,$text) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <?php
-            echoNavBarItem(getLocalFilePath('index.php'),"Home");
+            echoNavBarItem(getLocalFilePath('home.php'),"Home");
             echoNavBarItem(getLocalFilePath('resolutions.php'),"Resolutions");
             echoNavBarItem(getLocalFilePath('countries.php'),"Countries");
             if ($_SESSION['admin']) {

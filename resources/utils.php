@@ -52,25 +52,25 @@ function redirect($page) {
             if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
                 if (!(isset($_SESSION['admin']) || !$_SESSION['admin'])) {
                     //redirect to home page
-                    header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+                    header("Location: ".getLocalFilePath("home.php"));
                 }
             } else {
                 //redirect to login page
-                header("Location: ".CONFIG['base_URL']);
+                header("Location: ".getLocalFilePath("index.php"));
             }
             break;
 
         case 'user':
             if (!(isset($_SESSION['loggedIn'])) || !$_SESSION['loggedIn']) {
                 //redirect to login page
-                header("Location: ".CONFIG['base_URL']);
+                header("Location: ".getLocalFilePath("index.php"));
             }
             break;
 
         case 'other':
             if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
                 //redirect to home page
-                header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+                header("Location: ".getLocalFilePath("home.php"));
             }
             break;
 

@@ -26,7 +26,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = null;
         $_SESSION['admin'] = true;
-        header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+        header("Location: ".getLocalFilePath("home.php"));
 
     }
 
@@ -40,7 +40,7 @@ if(isset($_POST['loginButton'])){
         $_SESSION['loggedIn'] = true;
         $_SESSION['countryID'] = $countryRow['id'];
         $_SESSION['admin'] = false;
-        header("Location: ".CONFIG['base_URL']."/pages/views/index.php");
+        header("Location: ".getLocalFilePath("home.php"));
 
     } else {
 
