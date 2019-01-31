@@ -411,3 +411,13 @@ function insertNewResolution() {
     }
 }
 
+
+/**
+ * Deletes the country row for $countryID from the countries table
+ * Returns true if successful, otherwise returns false
+ * @param int  $countryID  ID of country
+ * @return bool
+ */
+function deleteCountry($countryID) {
+    return makeQuery("DELETE FROM countries WHERE id=?",array("i",$countryID));
+}

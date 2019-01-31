@@ -39,7 +39,12 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     <p class="lead">Country: <?php echo $countryRow['name']?></p>
     <p class="lead">Speaker Points: <?php echo $countryRow['points']?></p>
     <br>
-    <?php require(getServerFilePath('delegates-table.php')) ?>
+    <?php
+        if ($_SESSION['admin']) {
+            require(getServerFilePath('delete-country-button.php'));
+        }
+        require(getServerFilePath('delegates-table.php'))
+    ?>
     <br>
     <p class="lead">Amendments:</p>
 
