@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 31/01/19
+ * Last Modified: 01/02/19
  */
 
 
@@ -431,4 +431,28 @@ function deleteCountry($countryID) {
  */
 function deleteResolution($num) {
     return makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num));
+}
+
+
+/**
+ * Updates country row corresponding to $countryID
+ * Returns true if successful, otherwise returns false
+ * @param int  $countryID  country id
+ * @param string  $name  country name
+ * @param string  $code  country access code
+ * @param int  $points  country speaker points
+ * @param int  $orderNum  country order num
+ * @param string  $person1  person1's name
+ * @param string  $email1  person1's email
+ * @param string  $person2  person2's name
+ * @param string  $email2  person2's email
+ * @param string  $person3  person3's name
+ * @param string  $email3  person3's email
+ * @param string  $person4  person4's name
+ * @param string  $email4  person4's email
+ * @return bool
+ */
+function updateCountryRow($countryID,$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4) {
+    return makeQuery("UPDATE countries SET name=?, code=?, points=?, order_num=?, person1=?, email1=?, person2=?, email2=?, person3=?, email3=?, person4=?, email4=? WHERE id=?",
+        array("ssiissssssssi",$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4,$countryID));
 }

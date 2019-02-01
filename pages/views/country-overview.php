@@ -5,7 +5,7 @@
  * File: country-overview.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 26/01/19
+ * Last Modified: 31/01/19
  */
 
 //Requires initialization file (init.php)
@@ -41,6 +41,7 @@ for ($i=0; $i < getResolutionCount(); $i++) {
     <br>
     <?php
         if ($_SESSION['admin']) {
+            require(getServerFilePath('edit-country-button.php'));
             require(getServerFilePath('delete-country-button.php'));
         }
         require(getServerFilePath('delegates-table.php'))
