@@ -5,7 +5,7 @@
  * File: delete-amendment.php
  * Purpose:
  * Created: 10/09/18
- * Last Modified: 26/01/19
+ * Last Modified: 01/02/18
  */
 
 //Requires initialization file (init.php)
@@ -23,7 +23,7 @@ require(getServerFilePath('content-pane-start.php'));
         <h3>
         <?php
 if(isset($_POST['deleteButton'])){
-    $amendmentRow = getAmendmentRow($_SESSION['countryID'],$_POST['resolution']);
+    $amendmentRow = getAmendmentRow($_POST['countryID'],$_POST['resolution']);
     if (deleteAmendmentByID($amendmentRow['amendment_id'])) {
         echo 'Amendment successfully deleted';
     } else {

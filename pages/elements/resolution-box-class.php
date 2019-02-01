@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 29/01/18
+ * Last Modified: 01/02/18
  */
 
 class resolution_box {
@@ -116,6 +116,7 @@ class resolution_box {
         switch($type){
             case 'create':
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                echo '<input type="hidden" value="' . $id . '" name="countryID" />';
                 echo '<input type="hidden" value="' . getCurrentURL() . '" name="lastURL" />';
                 echo '<button type="button" style="margin-right:5px;" class="btn btn-secondary" data-dismiss="modal">Close</button>';
                 echo '<button type="submit" name="submitButton"  style="margin-right:5px;" class="btn btn-primary">Submit Amendment</button>';
@@ -127,6 +128,7 @@ class resolution_box {
                 //delete button
                 echo '<form id="delete" action="'.getLocalFilePath('delete-amendment.php').'" method="post">';
                 echo '<input type="hidden" value="' . $resolution . '" name="resolution" />';
+                echo '<input type="hidden" value="' . $id . '" name="countryID" />';
                 echo '<input type="hidden" value="' . getCurrentURL() . '" name="lastURL" />';
                 echo '<button type="submit" name="deleteButton" style="margin-right:5px;" class="btn btn-danger">Yes</button>';
                 echo '</form>';

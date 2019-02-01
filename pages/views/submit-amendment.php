@@ -5,7 +5,7 @@
  * File: delete-amendment.php
  * Purpose:
  * Created: 10/09/18
- * Last Modified: 26/01/19
+ * Last Modified: 01/02/18
  */
 
 //Requires initialization file (init.php)
@@ -23,7 +23,7 @@ require(getServerFilePath('content-pane-start.php'));
         <h3>
             <?php
             if(isset($_POST['submitButton'])){
-                if (insertAmendment($_SESSION['countryID'],$_POST['resolution'],$_POST['type'],$_POST['clause'],$_POST['details'])) {
+                if (insertAmendment($_POST['countryID'],$_POST['resolution'],$_POST['type'],$_POST['clause'],$_POST['details'])) {
                     echo 'Amendment successfully created';
                 } else {
                     echo 'Error encountered creating amendment';
