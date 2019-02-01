@@ -413,24 +413,26 @@ function insertNewResolution() {
 
 
 /**
- * Deletes the country row for $countryID from the countries table
+ * Deletes the country row for $countryID from the countries table and all associated amendments from the amendments table
  * Returns true if successful, otherwise returns false
  * @param int  $countryID  ID of country
  * @return bool
  */
 function deleteCountry($countryID) {
-    return makeQuery("DELETE FROM countries WHERE id=?",array("i",$countryID));
+    return (makeQuery("DELETE FROM amendments WHERE country_id=?",array("i",$countryID)) &&
+        makeQuery("DELETE FROM countries WHERE id=?",array("i",$countryID)));
 }
 
 
 /**
- * Deletes the resolution row for resolution with num $num from the resolutions table
+ * Deletes the resolution row for resolution with num $num from the resolutions table and all associated amendments from the amendments table
  * Returns true if successful, otherwise returns false
  * @param int  $num  Resolution num
  * @return bool
  */
 function deleteResolution($num) {
-    return makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num));
+    return (makeQuery("DELETE FROM amendments WHERE resolution=?",array("i",$num)) &&
+        makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num)));
 }
 
 
