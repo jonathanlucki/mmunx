@@ -440,8 +440,18 @@ function deleteCountry($countryID) {
  * @return bool
  */
 function deleteResolution($num) {
-    return (makeQuery("DELETE FROM amendments WHERE resolution=?",array("i",$num)) &&
-        makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num)));
+    if (makeQuery("DELETE FROM amendments WHERE resolution=?",array("i",$num)) &&
+        makeQuery("DELETE FROM resolutions WHERE num=?",array("i",$num))) {
+        $resolutionCount = getResolutionCount();
+        for ($i = $num+1; $i <= ($resolutionCount+1); $i++) {
+            if(!makeQuery("UPDATE resolutions SET num=? WHERE num=?",array("ii",$i-1,$i))) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
