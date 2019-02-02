@@ -5,7 +5,7 @@
  * File: resolutions-table.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 01/02/19
+ * Last Modified: 9/25/18
  */
 ?>
 
@@ -18,13 +18,13 @@
     </thead>
     <tbody>
     <?php
-    foreach (getResolutionArray() as $resolutionRow) {
+    for ($rowNum=1; $rowNum <= getResolutionCount(); $rowNum++) {
         echo '<tr>';
         echo '<td>';
-        echo '<a href="'.getLocalFilePath('resolution-overview.php').'?num=' . $resolutionRow['num'] . '"> Resolution ' . $resolutionRow['num'] . ': ' . $resolutionRow['title'] . '</a>';
+        echo '<a href="'.getLocalFilePath('resolution-overview.php').'?num=' . $rowNum . '"> Resolution ' . $rowNum . ': ' . getResolutionRow($rowNum)['title'] . '</a>';
         echo '</td>';
         echo '<td>';
-        echo getAmendmentCountByResolutionNum($resolutionRow['num']);
+        echo getAmendmentCountByResolutionNum($rowNum);
         echo '</td>';
         echo '</tr>';
     }
