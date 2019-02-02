@@ -362,6 +362,15 @@ function getResolutionCount() {
 
 
 /**
+ * Returns an array of all resolution rows
+ * @return array
+ */
+function getResolutionArray() {
+    return fetchDataArray("SELECT * FROM resolutions", null);
+}
+
+
+/**
  * Returns the next country ID number
  * @return int
  */

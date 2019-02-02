@@ -5,7 +5,7 @@
  * File: country-table.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 9/25/18
+ * Last Modified: 01/02/19
  */
 ?>
 
@@ -18,13 +18,13 @@
     </thead>
     <tbody>
     <?php
-    for ($rowNum=1; $rowNum <= getCountryCount(); $rowNum++) {
+    foreach (getCountryArray() as $countryRow) {
         echo '<tr>';
         echo '<td>';
-        echo '<a href="' . getLocalFilePath('country-overview.php') . '?countryID=' . $rowNum . '"> ' . getCountryRow($rowNum)['name'] . '</a>';
+        echo '<a href="' . getLocalFilePath('country-overview.php') . '?countryID=' . $countryRow['id'] . '"> ' . $countryRow['name'] . '</a>';
         echo '</td>';
         echo '<td>';
-        echo getAmendmentCountByCountryID($rowNum);
+        echo getAmendmentCountByCountryID($countryRow['id']);
         echo '</td>';
         echo '</tr>';
     }
