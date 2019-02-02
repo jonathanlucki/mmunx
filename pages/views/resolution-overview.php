@@ -39,6 +39,7 @@ foreach (getCountryArray() as $countryRow) {
     <p class="lead">Resolution <?php echo $resolutionRow['num'] . ': ' . $resolutionRow['title']?></p>
     <?php
     if ($_SESSION['admin']) {
+        require(getServerFilePath('edit-resolution-button.php'));
         require(getServerFilePath('delete-resolution-button.php'));
     }
     ?>

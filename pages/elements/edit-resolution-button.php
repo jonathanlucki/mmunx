@@ -9,8 +9,7 @@
  */
 ?>
 
-<form id="edit-resolution" action="<?php echo getLocalFilePath('edit-resolution.php')?>" method="post">
+<form id="edit-resolution" action="<?php echo getLocalFilePath('edit-resolution.php')."?num=".$_GET['num']?>" method="post">
     <input type="hidden" value="<?php echo getCurrentURL() ?>" name="lastURL" />
-    <input type="hidden" value="<?php echo $_GET['num'] ?>" name="num" />
     <button type="submit" name="editResolutionButton" class="btn btn-warning">Edit Resolution</button>
 </form>

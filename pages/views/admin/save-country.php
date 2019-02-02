@@ -36,9 +36,9 @@ require(getServerFilePath('content-pane-start.php'));
                     $_POST['person-three-email'],
                     $_POST['person-four-name'],
                     $_POST['person-four-email'])) {
-                    echo "Country changed saved successfully";
+                    echo "Country changes saved successfully";
                 } else {
-                    echo 'Error encountered saving country changed';
+                    echo 'Error encountered saving country changes';
                 }
             }
             ?>

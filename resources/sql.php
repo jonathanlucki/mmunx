@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 01/02/19
+ * Last Modified: 02/02/19
  */
 
 
@@ -476,4 +476,29 @@ function deleteResolution($num) {
 function updateCountryRow($countryID,$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4) {
     return makeQuery("UPDATE countries SET name=?, code=?, points=?, order_num=?, person1=?, email1=?, person2=?, email2=?, person3=?, email3=?, person4=?, email4=? WHERE id=?",
         array("ssiissssssssi",$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4,$countryID));
+}
+
+
+/**
+ * Updates resolution row corresponding to $original_num
+ * Returns true if successful, otherwise returns false
+ * @param int  $original_num  Original resolution num
+ * @param int  $num  New resolution num
+ * @param string  $title  Resolution title
+ * @param string  $status  Resolution status
+ * @return bool
+ */
+function updateResolutionRow($original_num,$num,$title,$status) {
+    if($original_num == $num) {
+        return makeQuery("UPDATE resolutions SET title=?, status=? WHERE num=?", array("ssi",$title,$status,$num));
+    } else {
+        $temp = getResolutionCount() + 1;
+        if (makeQuery("UPDATE resolutions SET num=? WHERE num=?", array("ii",$temp,$num)) &&
+            makeQuery("UPDATE resolutions SET title=?, status=?, num=? WHERE num=?", array("ssii",$title,$status,$num,$original_num)) &&
+            makeQuery("UPDATE resolutions SET num=? WHERE num=?", array("ii",$original_num,$temp))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
