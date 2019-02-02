@@ -5,7 +5,7 @@
  * File: country-overview.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 01/02/19
+ * Last Modified: 02/02/19
  */
 
 //Requires initialization file (init.php)
@@ -29,8 +29,8 @@ require(getServerFilePath('resolution-box-class.php'));
 $resolutionBox = array();
 
 //Constructs resolution boxes
-foreach (getResolutionArray() as $resolutionRow) {
-    $newResolutionBox = new resolution_box($countryRow['id'],$resolutionRow['num']);
+for ($i=0; $i < getResolutionCount(); $i++) {
+    $newResolutionBox = new resolution_box($countryRow['id'],($i+1));
     array_push($resolutionBox,$newResolutionBox);
 }
 
