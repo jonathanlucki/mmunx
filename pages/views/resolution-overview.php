@@ -36,15 +36,24 @@ foreach (getCountryArray() as $countryRow) {
 
 ?>
 
-    <p class="lead">Resolution <?php echo $resolutionRow['num'] . ': ' . $resolutionRow['title']?></p>
+    <h3>Resolution <?php echo $resolutionRow['num'] . ': ' . $resolutionRow['title']?></h3>
+
+    <h5>Status: <?php echo $resolutionRow['status']?></h5>
+
+    <hr>
+
+    <h5>Submitter: <?php echo getCountryRow($resolutionRow['submitter'])['name']?></h5>
+    <h5>Seconder: <?php echo getCountryRow($resolutionRow['seconder'])['name']?></h5>
+    <h5>Negator: <?php echo getCountryRow($resolutionRow['negator'])['name']?></h5>
+
     <?php
     if ($_SESSION['admin']) {
         require(getServerFilePath('edit-resolution-button.php'));
         require(getServerFilePath('delete-resolution-button.php'));
     }
     ?>
-    <br>
-    <p class="lead">Amendments:</p>
+    <hr>
+    <h5>Amendments:</h5>
 
     <div class="container">
 

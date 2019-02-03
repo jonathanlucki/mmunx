@@ -36,9 +36,9 @@ for ($i=0; $i < getResolutionCount(); $i++) {
 
 ?>
 
-    <p class="lead">Country: <?php echo $countryRow['name']?></p>
-    <p class="lead">Speaker Points: <?php echo $countryRow['points']?></p>
-    <br>
+    <h3>Country: <?php echo $countryRow['name']?></h3>
+    <h5>Speaker Points: <?php echo $countryRow['points']?></h5>
+    <hr>
     <?php
         if ($_SESSION['admin']) {
             require(getServerFilePath('edit-country-button.php'));
@@ -46,8 +46,8 @@ for ($i=0; $i < getResolutionCount(); $i++) {
         }
         require(getServerFilePath('delegates-table.php'))
     ?>
-    <br>
-    <p class="lead">Amendments:</p>
+    <hr>
+    <h5>Amendments:</h5>
 
     <div class="container">
 

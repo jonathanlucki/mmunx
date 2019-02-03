@@ -21,6 +21,9 @@ require(getServerFilePath('content-pane-start.php'));
 $countryRow = getCountryRow($_GET['countryID']);
 ?>
 
+<h3>Edit Country</h3>
+
+<hr>
 
 <form id="country-edit-form" action="<?php echo getLocalFilePath('save-country.php')?>" method="post">
 

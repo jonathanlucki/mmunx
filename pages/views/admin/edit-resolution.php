@@ -21,8 +21,9 @@ require(getServerFilePath('content-pane-start.php'));
 $resolutionRow = getResolutionRow($_GET['num']);
 ?>
 
+    <h3>Edit Resolution</h3>
 
-
+    <hr>
 
 <form id="resolution-edit-form" action="<?php echo getLocalFilePath('save-resolution.php')?>" method="post">
 

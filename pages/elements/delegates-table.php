@@ -28,7 +28,7 @@ return;
 }
 ?>
 
-<p class="lead">Delegates:</p>
+<h5>Delegates:</h5>
 <table class="table">
     <tbody>
     <?php
