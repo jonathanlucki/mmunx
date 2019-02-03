@@ -35,18 +35,73 @@ $resolutionRow = getResolutionRow($_GET['num']);
 
     <div class="form-group row">
         <label for="num" class="col-md-2">Number</label>
-        <input type="number" min="1" max="<?php echo getResolutionCount() ?>" class="form-control col-md-4" id="num" name="num" value="<?php echo $resolutionRow['num']?>">
+        <select name="num" class="form-control col-md-2" id="num">
+            <?php 
+            $resolutionCount = getResolutionCount();
+            for ($i=1;$i<=$resolutionCount;$i++) {
+                if ($i == $resolutionRow['num']) {
+                    echo '<option selected value="'.$i.'">'.$i.'</option>';
+                } else {
+                    echo '<option value="'.$i.'">'.$i.'</option>';
+                }
+            }
+            ?>
+        </select>
+        
         <label for="status" class="col-md-2">Status</label>
-        <select name="status" class="form-control col-md-4" id="status">
+        <select name="status" class="form-control col-md-2" id="status">
             <option value="pending">Pending</option>
             <option value="active">Active</option>
             <option value="passed">Passed</option>
             <option value="failed">Failed</option>
             <option value="shelved">Shelved</option>
         </select>
+        <label for="clauses" class="col-md-2">Clauses</label>
+        <input type="number" min="1" class="form-control col-md-2" id="clauses" name="clauses" value="<?php echo $resolutionRow['clauses']?>">
     </div>
 
     <p><i>Switching the resolution number will swap the two existing resolutions</i></p>
+
+    <hr>
+
+    <div class="form-group row">
+        <label for="submitter" class="col-md-2">Submitter</label>
+        <select name="submitter" class="form-control col-md-2" id="submitter">
+            <?php
+            foreach (getCountryArray() as $countryRow) {
+                if ($countryRow['id'] == $resolutionRow['submitter']) {
+                    echo '<option selected value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                } else {
+                    echo '<option value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                }
+            }
+            ?>
+        </select>
+        <label for="seconder" class="col-md-2">Seconder</label>
+        <select name="seconder" class="form-control col-md-2" id="seconder">
+            <?php
+            foreach (getCountryArray() as $countryRow) {
+                if ($countryRow['id'] == $resolutionRow['seconder']) {
+                    echo '<option selected value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                } else {
+                    echo '<option value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                }
+            }
+            ?>
+        </select>
+        <label for="negator" class="col-md-2">Negator</label>
+        <select name="negator" class="form-control col-md-2" id="negator">
+            <?php
+            foreach (getCountryArray() as $countryRow) {
+                if ($countryRow['id'] == $resolutionRow['negator']) {
+                    echo '<option selected value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                } else {
+                    echo '<option value="'.$countryRow['id'].'">'.$countryRow['name'].'</option>';
+                }
+            }
+            ?>
+        </select>
+    </div>
 
     <hr>
 

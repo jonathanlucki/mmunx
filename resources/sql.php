@@ -413,7 +413,11 @@ function insertNewResolution() {
     $newNum = getNextResolutionNum();
     $newTitle = "Resolution".$newNum;
     $newStatus = "pending";
-    if (makeQuery("INSERT INTO resolutions (num,title,status) VALUES (?,?,?)",array("iss",$newNum,$newTitle,$newStatus))) {
+    $newClauses = 1;
+    $newSubmitter = 1;
+    $newSeconder = 1;
+    $newNegator = 1;
+    if (makeQuery("INSERT INTO resolutions (num,title,status,clauses,submitter,seconder,negator) VALUES (?,?,?,?,?,?,?)",array("issiiii",$newNum,$newTitle,$newStatus,$newClauses,$newSubmitter,$newSeconder,$newNegator))) {
         return $newNum;
     } else {
         return false;
@@ -486,15 +490,19 @@ function updateCountryRow($countryID,$name,$code,$points,$orderNum,$person1,$ema
  * @param int  $num  New resolution num
  * @param string  $title  Resolution title
  * @param string  $status  Resolution status
+ * @param int  $clauses  Number of resolution clauses
+ * @param int  $submitter  Resolution submitter country id
+ * @param int  $seconder  Resolution seconder country id
+ * @param int  $negator  Resolution negator country id
  * @return bool
  */
-function updateResolutionRow($original_num,$num,$title,$status) {
+function updateResolutionRow($original_num,$num,$title,$status,$clauses,$submitter,$seconder,$negator) {
     if($original_num == $num) {
-        return makeQuery("UPDATE resolutions SET title=?, status=? WHERE num=?", array("ssi",$title,$status,$num));
+        return makeQuery("UPDATE resolutions SET title=?, status=?, clauses=?, submitter=?, seconder=?, negator=? WHERE num=?", array("ssiiiii",$title,$status,$clauses,$submitter,$seconder,$negator,$num));
     } else {
         $temp = getResolutionCount() + 1;
         if (makeQuery("UPDATE resolutions SET num=? WHERE num=?", array("ii",$temp,$num)) &&
-            makeQuery("UPDATE resolutions SET title=?, status=?, num=? WHERE num=?", array("ssii",$title,$status,$num,$original_num)) &&
+            makeQuery("UPDATE resolutions SET title=?, status=?, clauses=?, submitter=?, seconder=?, negator=? WHERE num=?", array("ssiiiii",$title,$status,$clauses,$submitter,$seconder,$negator,$num,$original_num)) &&
             makeQuery("UPDATE resolutions SET num=? WHERE num=?", array("ii",$original_num,$temp))) {
             return true;
         } else {
