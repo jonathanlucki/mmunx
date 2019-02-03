@@ -76,3 +76,7 @@ body {
 .navbar {
     position: relative;
 }
+
+.modal-body p {
+    word-wrap: break-word;
+}

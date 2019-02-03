@@ -99,7 +99,8 @@ class resolution_box {
 
                 echo '<div class="form-group">';
                 echo '<label for="details">Details</label>';
-                echo '<textarea name="details" class="form-control" id="details" rows="5"></textarea>';
+                echo '<textarea name="details" class="form-control" id="details" rows="5" maxlength="500" aria-describedby="detailsMaxLength"></textarea>';
+                echo '<small id="detailsMaxLength" class="form-text">Max characters: 500</small>';
                 echo '</div>';
 
                 break;
