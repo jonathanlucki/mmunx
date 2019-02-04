@@ -5,15 +5,19 @@
  * File: content-pane-start.php
  * Purpose:
  * Created: 24/01/19
- * Last Modified: 26/01/19
+ * Last Modified: 04/02/19
  */
 
 //Requires logout file (logout.php)
 require(getServerFilePath('logout.php'));
 
-function echoNavBarItem($href,$text) {
+function echoNavBarItem($href,$text,$notifications) {
     echo '<li class="nav-item">';
-    echo '<a class="nav-link" href="'.$href.'">'.$text.'</a>';
+    echo '<a class="nav-link" href="'.$href.'">'.$text;
+    if ($notifications > 0) {
+        echo ' <span class="badge badge-danger">'.$notifications.'</span>';
+    }
+    echo '</a>';
     echo '</li>';
 }
 
@@ -29,13 +33,13 @@ function echoNavBarItem($href,$text) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <?php
-            echoNavBarItem(getLocalFilePath('home.php'),"Home");
-            echoNavBarItem(getLocalFilePath('resolutions.php'),"Resolutions");
-            echoNavBarItem(getLocalFilePath('countries.php'),"Countries");
+            echoNavBarItem(getLocalFilePath('home.php'),"Home",0);
+            echoNavBarItem(getLocalFilePath('resolutions.php'),"Resolutions",0);
+            echoNavBarItem(getLocalFilePath('countries.php'),"Countries",0);
             if ($_SESSION['admin']) {
-
+                echoNavBarItem(getLocalFilePath('review.php'),"Review",getPendingAmendmentsCount());
             } else {
-                echoNavBarItem(getLocalFilePath('country-overview.php')."?countryID=".$_SESSION['countryID'],"Country Overview");
+                echoNavBarItem(getLocalFilePath('country-overview.php')."?countryID=".$_SESSION['countryID'],"Country Overview",0);
             }
             ?>
         </ul>

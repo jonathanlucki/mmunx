@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 01/02/18
+ * Last Modified: 04/02/18
  */
 
 class resolution_box {
@@ -172,7 +172,7 @@ class resolution_box {
             $status = '<span class="badge badge-warning">Pending approval</span>';
         } elseif ($amendmentRow['status'] == 'approved') {
             $status = '<span class="badge badge-success">Approved</span>';
-        } elseif ($amendmentRow['status'] == 'declined') {
+        } elseif ($amendmentRow['status'] == 'denied') {
             $status = '<span class="badge badge-danger">Denied (See Tech Desk for Information)</span>';
         } else {
             $status = null;

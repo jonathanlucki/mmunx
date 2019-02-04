@@ -5,7 +5,7 @@
  * File: utils.php
  * Purpose: Defines common helper functions
  * Created: 08/07/18
- * Last Modified: 29/01/19
+ * Last Modified: 03/02/19
  */
 
 
@@ -21,13 +21,13 @@ function echoAmendmentText($amendmentID) {
     //echo amendment header
     switch($amendmentRow['type']) {
         case 'add':
-            echo '<h4>Amendment to add clause</h4>';
+            echo '<h4>'.getCountryRow($amendmentRow['country_id'])['name'].'\'s amendment to add clause</h4>';
             break;
         case 'amend':
-            echo '<h4>Amendment to amend clause ' . $amendmentRow['clause'] . '</h4>';
+            echo '<h4>'.getCountryRow($amendmentRow['country_id'])['name'].'\'s amendment to amend clause ' . $amendmentRow['clause'] . '</h4>';
             break;
         case 'strike':
-            echo '<h4>Amendment to strike clause ' . $amendmentRow['clause'] . '</h4>';
+            echo '<h4>'.getCountryRow($amendmentRow['country_id'])['name'].'\'s amendment to strike clause ' . $amendmentRow['clause'] . '</h4>';
             break;
     }
 

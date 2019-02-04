@@ -5,7 +5,7 @@
  * File: paths.php
  * Purpose:
  * Created: 27/01/19
- * Last Modified: 27/01/19
+ * Last Modified: 04/02/19
  */
 
 define("PATHS",array(
@@ -42,8 +42,10 @@ define("PATHS",array(
     'delete-resolution.php' => '/pages/views/admin/delete-resolution.php',
     'edit-country.php' => '/pages/views/admin/edit-country.php',
     'edit-resolution.php' => '/pages/views/admin/edit-resolution.php',
+    'review.php' => '/pages/views/admin/review.php',
     'save-country.php' => '/pages/views/admin/save-country.php',
     'save-resolution.php' => '/pages/views/admin/save-resolution.php',
+    'submit-review.php' => '/pages/views/admin/submit-review.php',
 
     // pages/views folder
     'countries.php' => '/pages/views/countries.php',

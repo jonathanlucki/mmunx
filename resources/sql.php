@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 02/02/19
+ * Last Modified: 03/02/19
  */
 
 
@@ -509,4 +509,52 @@ function updateResolutionRow($original_num,$num,$title,$status,$clauses,$submitt
             return false;
         }
     }
+}
+
+
+/**
+ * Returns next pending amendment row, if no pending amendment row returns null
+ * @return array or bool
+ */
+function getNextPendingAmendmentRow() {
+    return fetchRow("SELECT * FROM amendments WHERE status=?",array("s","pending"));
+}
+
+
+/**
+ * Sets the amendment with id $amendmentID's status to $status
+ * @param int  $amendmentID  Amendment ID
+ * @param string  $status  new amendment status
+ * @return bool
+ */
+function updateAmendmentStatus($amendmentID,$status) {
+    $newStatus = null;
+    switch ($status) {
+        case 'pending':
+            $newStatus = 'pending';
+            break;
+        case 'approved':
+            $newStatus = 'approved';
+            break;
+        case 'denied':
+            $newStatus = 'denied';
+            break;
+        default:
+            return false;
+            break;
+    }
+    if ($newStatus != null) {
+        return makeQuery("UPDATE amendments SET status=? WHERE amendment_id=?", array("si", $newStatus, $amendmentID));
+    } else {
+        return false;
+    }
+}
+
+
+/**
+ * Returns the number of pending amendments in the amendments table
+ * @return int
+ */
+function getPendingAmendmentsCount() {
+    return fetchRowCount("SELECT * FROM amendments WHERE status=?",array("s","pending"));
 }
