@@ -169,7 +169,7 @@ class resolution_box {
         if($amendmentRow == null){
             $status = '<span class="badge badge-secondary">None submitted</span>';
         } elseif ($amendmentRow['status'] == 'pending') {
-            $status = '<span class="badge badge-warning">Pending tech desk approval</span>';
+            $status = '<span class="badge badge-warning">Pending Tech Desk Approval</span>';
         } elseif ($amendmentRow['status'] == 'approved') {
             $status = '<span class="badge badge-primary">Approved</span>';
         } elseif ($amendmentRow['status'] == 'denied') {
