@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 03/02/19
+ * Last Modified: 05/02/19
  */
 
 
@@ -245,7 +245,7 @@ function getCountryRow($id) {
  * @return int
  */
 function getCountryCount() {
-    return fetchRowCount("SELECT * FROM countries",null);
+    return fetchRowCount("SELECT id FROM countries",null);
 }
 
 
@@ -285,7 +285,7 @@ function getAmendmentRowByID($amendmentID) {
  * @return int
  */
 function getAmendmentCountByCountryID($countryID) {
-    return fetchRowCount("SELECT * FROM amendments WHERE country_id=?",array("i",$countryID));
+    return fetchRowCount("SELECT amendment_id FROM amendments WHERE country_id=?",array("i",$countryID));
 }
 
 
@@ -295,7 +295,7 @@ function getAmendmentCountByCountryID($countryID) {
  * @return int
  */
 function getAmendmentCountByResolutionNum($num) {
-    return fetchRowCount("SELECT * FROM amendments WHERE resolution=?",array("i",$num));
+    return fetchRowCount("SELECT amendment_id FROM amendments WHERE resolution=?",array("i",$num));
 }
 
 
@@ -348,7 +348,7 @@ function insertAmendment($countryID,$resolutionNum,$type,$clause,$details) {
  * @return array
  */
 function getResolutionRow($num) {
-    return fetchRow("SELECT * FROM resolutions WHERE num=?",array("i",$num));
+    return fetchRow("SELECT num, title, status, clauses, submitter, seconder, negator FROM resolutions WHERE num=?",array("i",$num));
 }
 
 
@@ -357,7 +357,7 @@ function getResolutionRow($num) {
  * @return int
  */
 function getResolutionCount() {
-    return fetchRowCount("SELECT * FROM resolutions",null);
+    return fetchRowCount("SELECT num FROM resolutions",null);
 }
 
 
@@ -366,7 +366,7 @@ function getResolutionCount() {
  * @return array
  */
 function getResolutionArray() {
-    return fetchDataArray("SELECT * FROM resolutions", null);
+    return fetchDataArray("SELECT num, title, status, clauses, submitter, seconder, negator FROM resolutions", null);
 }
 
 
@@ -556,5 +556,27 @@ function updateAmendmentStatus($amendmentID,$status) {
  * @return int
  */
 function getPendingAmendmentsCount() {
-    return fetchRowCount("SELECT * FROM amendments WHERE status=?",array("s","pending"));
+    return fetchRowCount("SELECT amendment_id FROM amendments WHERE status=?",array("s","pending"));
+}
+
+
+/**
+ * Inserts resolution pdf into resolutions table
+ * Returns true if successful, otherwise returns false
+ * @param int  $num  Resolution Number
+ * @param string  $data  PDF data (use file_get_contents)
+ * @return bool
+ */
+function insertResolutionPDF($num,$data) {
+    return makeQuery("UPDATE resolutions SET pdf=? WHERE num=?",array("si",$data,$num));
+}
+
+
+/**
+ * Returns the pdf for resolution $num
+ * @param int  $num  Resolution Number
+ * @return array
+ */
+function getResolutionPDF($num) {
+    return fetchRow("SELECT pdf FROM resolutions WHERE num=?",array("i",$num));
 }

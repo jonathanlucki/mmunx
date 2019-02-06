@@ -40,6 +40,8 @@ foreach (getCountryArray() as $countryRow) {
 
     <h5>Status: <?php echo $resolutionRow['status']?></h5>
 
+    <?php include(getServerFilePath("get-resolution-pdf-button.php")) ?>
+
     <hr>
 
     <h5>Submitter: <?php echo getCountryRow($resolutionRow['submitter'])['name']?></h5>

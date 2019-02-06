@@ -5,7 +5,7 @@
  * File: edit-resolution.php
  * Purpose:
  * Created: 02/02/19
- * Last Modified: 02/02/19
+ * Last Modified: 05/02/19
  */
 
 //Requires initialization file (init.php)
@@ -25,7 +25,7 @@ $resolutionRow = getResolutionRow($_GET['num']);
 
     <hr>
 
-<form id="resolution-edit-form" action="<?php echo getLocalFilePath('save-resolution.php')?>" method="post">
+<form id="resolution-edit-form" action="<?php echo getLocalFilePath('save-resolution.php')?>" method="post" enctype="multipart/form-data">
 
     <input type="hidden" value="<?php echo $_GET['num'] ?>" name="original_num" />
 
@@ -102,6 +102,19 @@ $resolutionRow = getResolutionRow($_GET['num']);
             }
             ?>
         </select>
+    </div>
+
+    <hr>
+
+    <div class="form-group row">
+        <label for="pdfUpload">Resolution PDF upload</label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+        <input type="file" name="pdfUpload" id="pdfUpload" class="form-control col-md-12" accept=".pdf"/>
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" name="pdfDelete" class="form-check-input" id="pdfDelete">
+        <label class="form-check-label" for="pdfDelete">Check to delete currently stored PDF file</label>
     </div>
 
     <hr>
