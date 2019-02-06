@@ -5,7 +5,7 @@
  * File: resolution-box-class.php
  * Purpose:
  * Created: 9/25/18
- * Last Modified: 04/02/18
+ * Last Modified: 06/02/18
  */
 
 class resolution_box {
@@ -169,11 +169,15 @@ class resolution_box {
         if($amendmentRow == null){
             $status = '<span class="badge badge-secondary">None submitted</span>';
         } elseif ($amendmentRow['status'] == 'pending') {
-            $status = '<span class="badge badge-warning">Pending approval</span>';
+            $status = '<span class="badge badge-warning">Pending tech desk approval</span>';
         } elseif ($amendmentRow['status'] == 'approved') {
-            $status = '<span class="badge badge-success">Approved</span>';
+            $status = '<span class="badge badge-primary">Approved</span>';
         } elseif ($amendmentRow['status'] == 'denied') {
-            $status = '<span class="badge badge-danger">Denied (See Tech Desk for Information)</span>';
+            $status = '<span class="badge badge-dark">Denied (See Tech Desk for Information)</span>';
+        }elseif ($amendmentRow['status'] == 'passed') {
+            $status = '<span class="badge badge-success">Passed</span>';
+        }elseif ($amendmentRow['status'] == 'failed') {
+            $status = '<span class="badge badge-danger">Failed</span>';
         } else {
             $status = null;
         }

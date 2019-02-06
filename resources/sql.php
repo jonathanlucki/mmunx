@@ -5,7 +5,7 @@
  * File: sql.php
  * Purpose:
  * Created: 9/16/18
- * Last Modified: 05/02/19
+ * Last Modified: 06/02/19
  */
 
 
@@ -538,6 +538,12 @@ function updateAmendmentStatus($amendmentID,$status) {
             break;
         case 'denied':
             $newStatus = 'denied';
+            break;
+        case 'passed':
+            $newStatus = 'passed';
+            break;
+        case 'failed':
+            $newStatus = 'failed';
             break;
         default:
             return false;
