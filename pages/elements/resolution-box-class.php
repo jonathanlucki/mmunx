@@ -186,9 +186,9 @@ class resolution_box {
         echo '<div class="card h-100">';
         echo '<div class="card-body">';
         if ($displayCountryName) {
-            echo '<h4 class="card-title">' . getCountryRow($id)['name'] . '</h4>';
+            echo '<h4 class="card-title"><a href="' . getLocalFilePath('country-overview.php') . '?countryID=' . $id . '">' . getCountryRow($id)['name'] . '</a></h4>';
         } else {
-            echo '<h4 class="card-title">Resolution ' . $resolutionRow['num'] . '</h4>';
+            echo '<h4 class="card-title"><a href="' . getLocalFilePath('resolution-overview.php') . '?num=' . $resolution . '">Resolution ' . $resolutionRow['num'] . '</a></h4>';
             echo '<h6 class="card-subtitle mb-2"><em>' . $resolutionRow['title'] . '</em></h6>';
         }
         echo '<p class="card-text">Status: ' . $status . '</p>';
