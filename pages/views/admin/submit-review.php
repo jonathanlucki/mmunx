@@ -5,7 +5,7 @@
  * File: submit-review.php
  * Purpose:
  * Created: 04/02/19
- * Last Modified: 04/02/19
+ * Last Modified: 07/02/19
  */
 
 //Requires initialization file (init.php)
@@ -28,7 +28,7 @@ require(getServerFilePath('content-pane-start.php'));
                 } else {
                     echo 'Error encountered saving amendment approval';
                 }
-            } else if ($_POST['denyAmendment']) {
+            } else if (isset($_POST['denyAmendment'])) {
                 if (updateAmendmentStatus($_POST['amendmentID'],'denied')) {
                     echo "Amendment Denied";
                 } else {
