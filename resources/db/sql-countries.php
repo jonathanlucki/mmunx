@@ -43,7 +43,7 @@ function getCountryCount() {
  * @return array
  */
 function getCountryArray() {
-    return fetchDataArray("SELECT * FROM countries",null);
+    return fetchDataArray("SELECT * FROM countries ORDER BY name",null);
 }
 
 
