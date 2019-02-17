@@ -117,3 +117,14 @@ function updateCountryRow($countryID,$name,$code,$points,$orderNum,$person1,$ema
 function getSpeakersListOrder() {
     return fetchDataArray("SELECT id FROM countries ORDER BY points ASC, order_num ASC",null);
 }
+
+
+/**
+ * Adds a speaker point to country with $countryID
+ * Returns true if successful, otherwise returns false
+ * @param int  $countryID  Country ID
+ * @return bool
+ */
+function addSpeakerPoint($countryID) {
+    return makeQuery("UPDATE countries SET points=points+1 WHERE id=?",array("i",$countryID));
+}
