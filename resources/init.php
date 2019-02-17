@@ -5,7 +5,7 @@
  * File: init.php
  * Purpose: Requires all resource files at once
  * Created: 08/07/18
- * Last Modified: 09/02/19
+ * Last Modified: 10/02/19
  */
 
 //Start session
@@ -21,3 +21,4 @@ require_once('db/sql-amendments.php');
 require_once('db/sql-conn.php');
 require_once('db/sql-countries.php');
 require_once('db/sql-resolutions.php');
+require_once('db/sql-screen.php');

@@ -5,7 +5,7 @@
  * File: utils.php
  * Purpose: Defines common helper functions
  * Created: 08/07/18
- * Last Modified: 03/02/19
+ * Last Modified: 16/02/19
  */
 
 
@@ -122,4 +122,24 @@ function getLocalFilePath($fileName) {
  */
 function getServerFilePath($fileName) {
     return $_SERVER['DOCUMENT_ROOT'].PATHS[$fileName];
+}
+
+
+/**
+ * Returns array of all country id's with approved amendments for resolution $num in order of the speakers list
+ * @param int  $num  Resolution number
+ * @return array
+ */
+function getSpeakersListForResolution($num) {
+    $speakerOrder = getSpeakersListOrder();
+    $resSpeakerOrder = array();
+    foreach ($speakerOrder as $speaker) {
+        $amendmentRow = getAmendmentRow($speaker['id'],$num);
+        if ($amendmentRow != null) {
+            if ($amendmentRow['status'] == 'approved') {
+                array_push($resSpeakerOrder,$amendmentRow['country_id']);
+            }
+        }
+    }
+    return $resSpeakerOrder;
 }

@@ -5,7 +5,7 @@
  * File: sql-countries.php
  * Purpose:
  * Created: 09/02/19
- * Last Modified: 09/02/19
+ * Last Modified: 16/02/19
  */
 
 
@@ -107,4 +107,13 @@ function deleteCountry($countryID) {
 function updateCountryRow($countryID,$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4) {
     return makeQuery("UPDATE countries SET name=?, code=?, points=?, order_num=?, person1=?, email1=?, person2=?, email2=?, person3=?, email3=?, person4=?, email4=? WHERE id=?",
         array("ssiissssssssi",$name,$code,$points,$orderNum,$person1,$email1,$person2,$email2,$person3,$email3,$person4,$email4,$countryID));
+}
+
+
+/**
+ * Returns array of all country id's in order of the speakers list
+ * @return array
+ */
+function getSpeakersListOrder() {
+    return fetchDataArray("SELECT id FROM countries ORDER BY points ASC, order_num ASC",null);
 }

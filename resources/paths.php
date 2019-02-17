@@ -5,7 +5,7 @@
  * File: paths.php
  * Purpose:
  * Created: 27/01/19
- * Last Modified: 04/02/19
+ * Last Modified: 17/02/19
  */
 
 define("PATHS",array(
@@ -16,25 +16,49 @@ define("PATHS",array(
     // img folder
     'background.jpeg' => '/img/background.jpeg',
 
+    //js folder
+    'util.js' => '/js/util.js',
+
     // pages/elements folder
     'country-table.php' => '/pages/elements/country-table.php',
-    'create-country-button.php' => '/pages/elements/create-country-button.php',
-    'create-resolution-button.php' => '/pages/elements/create-resolution-button.php',
     'delegates-table.php' => '/pages/elements/delegates-table.php',
-    'delete-country-button.php' => '/pages/elements/delete-country-button.php',
-    'delete-resolution-button.php' => '/pages/elements/delete-resolution-button.php',
-    'edit-country-button.php' => '/pages/elements/edit-country-button.php',
-    'edit-resolution-button.php' => '/pages/elements/edit-resolution-button.php',
     'get-resolution-pdf-button.php' => '/pages/elements/get-resolution-pdf-button.php',
     'resolution-box-class.php' => '/pages/elements/resolution-box-class.php',
     'resolutions-table.php' => '/pages/elements/resolutions-table.php',
     'welcome-message.php' => '/pages/elements/welcome-message.php',
+
+    // pages/elements/admin folder
+    'create-country-button.php' => '/pages/elements/admin/create-country-button.php',
+    'create-resolution-button.php' => '/pages/elements/admin/create-resolution-button.php',
+    'delete-country-button.php' => '/pages/elements/admin/delete-country-button.php',
+    'delete-resolution-button.php' => '/pages/elements/admin/delete-resolution-button.php',
+    'edit-country-button.php' => '/pages/elements/admin/edit-country-button.php',
+    'edit-resolution-button.php' => '/pages/elements/admin/edit-resolution-button.php',
+
+    // pages/elements/admin/screen folder
+    'active-resolution-options.php' => '/pages/elements/admin/screen/active-resolution-options.php',
+    'active-screen-options.php' => '/pages/elements/admin/screen/active-screen-options.php',
+    'amendment-resolution-options.php' => '/pages/elements/admin/screen/amendment-resolution-options.php',
+    'message-options.php' => '/pages/elements/admin/screen/message-options.php',
+    'open-resolution-options.php' => '/pages/elements/admin/screen/open-resolution-options.php',
+    'paging-system-options.php' => '/pages/elements/admin/screen/paging-system-options.php',
+    'speakers-list-limit-options.php' => '/pages/elements/admin/screen/speakers-list-limit-options.php',
+    'temp-speakers-options.php' => '/pages/elements/admin/screen/temp-speakers-options.php',
+    'vote-active-resolution-options.php' => '/pages/elements/admin/screen/vote-active-resolution-options.php',
+    'vote-amendment-resolution-options.php' => '/pages/elements/admin/screen/vote-amendment-resolution-options.php',
+    'vote-open-resolution-options.php' => '/pages/elements/admin/screen/vote-open-resolution-options.php',
+    'vote-result-options.php' => '/pages/elements/admin/screen/vote-result-options.php',
 
     // pages/layouts folder
     'content-pane-end.php' => '/pages/layouts/content-pane-end.php',
     'content-pane-start.php' => '/pages/layouts/content-pane-start.php',
     'footer.php' => '/pages/layouts/footer.php',
     'header.php' => '/pages/layouts/header.php',
+
+    // pages/views/admin/screen folder
+    'screen.php' => '/pages/views/admin/screen/screen.php',
+    'screen-control.php' => '/pages/views/admin/screen/screen-control.php',
+    'submit-screen.php' => '/pages/views/admin/screen/submit-screen.php',
 
     // pages/views/admin folder
     'create-country.php' => '/pages/views/admin/create-country.php',
@@ -59,8 +83,10 @@ define("PATHS",array(
     'submit-amendment.php' => '/pages/views/submit-amendment.php',
 
     // resources folder
+    'init.php' => '/resources/init.php',
     'login.php' => '/resources/login.php',
     'logout.php' => '/resources/logout.php',
+    //other resources not included as they should only be included/required from init.php
 
     // server root
     'index.php' => '/index.php',

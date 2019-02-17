@@ -5,7 +5,7 @@
  * File: sql-resolutions.php
  * Purpose:
  * Created: 09/02/19
- * Last Modified: 09/02/19
+ * Last Modified: 16/02/19
  */
 
 
@@ -15,7 +15,7 @@
  * @return array
  */
 function getResolutionRow($num) {
-    return fetchRow("SELECT num, title, status, clauses, submitter, seconder, negator FROM resolutions WHERE num=?",array("i",$num));
+    return fetchRow("SELECT num, title, status, clauses, submitter, seconder, negator, speakers FROM resolutions WHERE num=?",array("i",$num));
 }
 
 
@@ -33,7 +33,7 @@ function getResolutionCount() {
  * @return array
  */
 function getResolutionArray() {
-    return fetchDataArray("SELECT num, title, status, clauses, submitter, seconder, negator FROM resolutions", null);
+    return fetchDataArray("SELECT num, title, status, clauses, submitter, seconder, negator, speakers FROM resolutions", null);
 }
 
 
@@ -136,4 +136,50 @@ function insertResolutionPDF($num,$data) {
  */
 function getResolutionPDF($num) {
     return fetchRow("SELECT pdf FROM resolutions WHERE num=?",array("i",$num));
+}
+
+
+/**
+ * Increments speakers for resolution $num by one
+ * @param int  $num  Resolution Number
+ * @return bool
+ */
+function incrementSpeakers($num) {
+    return makeQuery("UPDATE resolutions SET speakers=speakers+1 WHERE num=?",array("i",$num));
+}
+
+
+/**
+ * Sets the resolution with num $nums's status to $status
+ * @param int  $num  Resolution num
+ * @param string  $status  new resolution status
+ * @return bool
+ */
+function updateResolutionStatus($num,$status) {
+    $newStatus = null;
+    switch ($status) {
+        case 'pending':
+            $newStatus = 'pending';
+            break;
+        case 'passed':
+            $newStatus = 'passed';
+            break;
+        case 'failed':
+            $newStatus = 'failed';
+            break;
+        case 'in_session':
+            $newStatus = 'in_session';
+            break;
+        case 'shelved':
+            $newStatus = 'shelved';
+            break;
+        default:
+            return false;
+            break;
+    }
+    if ($newStatus != null) {
+        return makeQuery("UPDATE resolutions SET status=? WHERE num=?", array("si", $newStatus, $num));
+    } else {
+        return false;
+    }
 }
