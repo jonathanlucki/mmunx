@@ -5,7 +5,7 @@
  * File: header.php
  * Purpose: Template for application header
  * Created: 08/07/18
- * Last Modified: 24/01/19
+ * Last Modified: 17/02/19
  */
 ?>
 
@@ -21,6 +21,9 @@
         <meta name="description" content="FIX LATER">
         <meta name="author" content = "Jonathan Lucki">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Set favicon -->
+        <link rel="shortcut icon" href="<?php echo getLocalFilePath('favicon.ico') ?>" type="image/x-icon">
 
         <!-- Load bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
