@@ -15,6 +15,7 @@ define("PATHS",array(
 
     // img folder
     'background.jpeg' => '/img/background.jpeg',
+    'favicon.ico' => '/img/favicon.ico',
 
     //js folder
     'util.js' => '/js/util.js',
