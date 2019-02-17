@@ -29,13 +29,13 @@
         <link rel="stylesheet" type="text/css" href="<?php echo getLocalFilePath('main.css') ?>">
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39349093-5"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo CONFIG['gtag_id'] ?>"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-39349093-5');
+            gtag('config', '<?php echo CONFIG['gtag_id'] ?>');
         </script>
 
     </head>

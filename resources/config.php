@@ -23,4 +23,7 @@ define("CONFIG", array(
 
     //admin access code
     'admin_code' => getenv('ADMIN_CODE'),
+
+    //Google analytics gtag id
+    'gtag_id' => getenv('GTAG_ID'),
 ));
