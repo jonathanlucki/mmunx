@@ -128,3 +128,13 @@ function getSpeakersListOrder() {
 function addSpeakerPoint($countryID) {
     return makeQuery("UPDATE countries SET points=points+1 WHERE id=?",array("i",$countryID));
 }
+
+
+/**
+ * Randomizes all country order_num's
+ * Returns true if successful, otherwise returns false
+ * @return bool
+ */
+function randomizeOrderNumbers() {
+    return makeQuery("UPDATE countries SET order_num = (FLOOR( 1 + (RAND() * 1000)))",null);
+}

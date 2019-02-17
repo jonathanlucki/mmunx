@@ -133,7 +133,8 @@ function checkPosts ($screenData) {
         return (updateScreenData('active_resolution',$screenData['voting']) &&
             updateResolutionStatus($screenData['voting'],'in_session') &&
             updateScreenData('voting',null) &&
-            updateScreenData('vote_result','passed'));
+            updateScreenData('vote_result','passed') &&
+            randomizeOrderNumbers());
 
     } else if (isset($_POST['fail-vote-open-resolution-button'])) {
 
