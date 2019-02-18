@@ -18,7 +18,7 @@
         <!-- Meta tags -->
         <meta charset="UTF-8">
         <title>MMUNx</title>
-        <meta name="description" content="FIX LATER">
+        <meta name="description" content="Martingrove Model United Nations">
         <meta name="author" content = "Jonathan Lucki">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
