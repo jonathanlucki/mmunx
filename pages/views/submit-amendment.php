@@ -24,7 +24,7 @@ require(getServerFilePath('content-pane-start.php'));
             <?php
             if(isset($_POST['submitButton'])){
                 if (getResolutionRow($_POST['resolution'])['status'] == 'pending') {
-                    if (insertAmendment($_POST['countryID'], $_POST['resolution'], $_POST['type'], $_POST['clause'], $_POST['details'])) {
+                    if (insertAmendment($_POST['countryID'], $_POST['resolution'], $_POST['type'], $_POST['clause'], strip_tags($_POST['details']))) {
                         echo 'Amendment successfully created';
                     } else {
                         echo 'Error encountered creating amendment';
