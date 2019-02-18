@@ -51,11 +51,11 @@ $resolutionRow = getResolutionRow($_GET['num']);
         
         <label for="status" class="col-md-2">Status</label>
         <select name="status" class="form-control col-md-2" id="status">
-            <option value="pending">Pending</option>
-            <option value="active">Active</option>
-            <option value="passed">Passed</option>
-            <option value="failed">Failed</option>
-            <option value="shelved">Shelved</option>
+            <option <?php if ($resolutionRow['status'] == 'pending') { echo 'selected';} ?> value="pending">Pending</option>
+            <option <?php if ($resolutionRow['status'] == 'in_session') { echo 'selected';} ?> value="in_session">In Session</option>
+            <option <?php if ($resolutionRow['status'] == 'passed') { echo 'selected';} ?> value="passed">Passed</option>
+            <option <?php if ($resolutionRow['status'] == 'failed') { echo 'selected';} ?> value="failed">Failed</option>
+            <option <?php if ($resolutionRow['status'] == 'shelved') { echo 'selected';} ?> value="shelved">Shelved</option>
         </select>
         <label for="clauses" class="col-md-2">Clauses</label>
         <input type="number" min="1" class="form-control col-md-2" id="clauses" name="clauses" value="<?php echo $resolutionRow['clauses']?>">

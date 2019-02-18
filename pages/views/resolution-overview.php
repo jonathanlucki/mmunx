@@ -38,7 +38,7 @@ foreach (getCountryArray() as $countryRow) {
 
     <h3>Resolution <?php echo $resolutionRow['num'] . ': ' . $resolutionRow['title']?></h3>
 
-    <h5>Status: <?php echo $resolutionRow['status']?></h5>
+    <h5>Status: <?php echo convertResolutionStatus($resolutionRow['status'])?></h5>
 
     <?php include(getServerFilePath("get-resolution-pdf-button.php")) ?>
 

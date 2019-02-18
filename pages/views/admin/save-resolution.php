@@ -46,7 +46,7 @@ require(getServerFilePath('content-pane-start.php'));
                             echo "Error encountered uploaded PDF";
                         }
                     } else {
-                        echo "PDF file either too large or not pdf";
+                        echo " PDF file either too large or not pdf - If not uploading a PDF please ignore";
                     }
                 }
             }
