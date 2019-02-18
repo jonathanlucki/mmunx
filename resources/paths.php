@@ -12,6 +12,7 @@ define("PATHS",array(
 
     // css folder
     'main.css' => '/css/main.css',
+    'screen.css' => '/css/screen.css',
 
     // img folder
     'background.jpeg' => '/img/background.jpeg',
@@ -57,6 +58,9 @@ define("PATHS",array(
     'header.php' => '/pages/layouts/header.php',
 
     // pages/views/admin/screen folder
+    'get-main-view.php' => '/pages/views/admin/screen/get-main-view.php',
+    'get-paging-system.php' => '/pages/views/admin/screen/get-paging-system.php',
+    'get-speakers-list.php' => '/pages/views/admin/screen/get-speakers-list.php',
     'screen.php' => '/pages/views/admin/screen/screen.php',
     'screen-control.php' => '/pages/views/admin/screen/screen-control.php',
     'submit-screen.php' => '/pages/views/admin/screen/submit-screen.php',

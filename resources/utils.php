@@ -5,7 +5,7 @@
  * File: utils.php
  * Purpose: Defines common helper functions
  * Created: 08/07/18
- * Last Modified: 16/02/19
+ * Last Modified: 17/02/19
  */
 
 
@@ -142,4 +142,49 @@ function getSpeakersListForResolution($num) {
         }
     }
     return $resSpeakerOrder;
+}
+
+
+/**
+ * Gets current resolution tag for resolution $num
+ * Ex: 3 => "GA003"
+ * @param int  $num  Resolution number
+ * @return string
+ */
+function getResolutionTag($num) {
+    $digits = strlen($num);
+    if ($digits == 1) {
+        return "GA00".(string)$num;
+    } else if ($digits == 2) {
+        return "GA0".(string)$num;
+    } else {
+        return "GA".(string)$num;
+    }
+}
+
+
+/**
+ * Converts resolution status to proper format
+ * Ex: "in_session => "In Session"
+ * @param string  $status  Resolution status
+ * @return string
+ */
+function convertResolutionStatus($status) {
+    switch ($status) {
+        case 'pending':
+            return 'Pending';
+            break;
+        case 'passed':
+            return 'Passed';
+            break;
+        case 'failed':
+            return 'Failed';
+            break;
+        case 'in_session':
+            return 'In Session';
+            break;
+        case 'shelved':
+            return 'Shelved';
+            break;
+    }
 }

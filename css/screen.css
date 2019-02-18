@@ -1,0 +1,22 @@
+/**
+ * Jonathan Lucki
+ * MMUNx
+ * File: screen.css
+ * Purpose: Stylesheet for screen
+ * Created: 17/02/19
+ * Last Modified: 17/02/19
+ */
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    color: white;
+    height: 100%;
+}
+
+.screen-pane {
+
+}

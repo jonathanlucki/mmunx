@@ -29,7 +29,16 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
         <!-- Load CSS -->
-        <link rel="stylesheet" type="text/css" href="<?php echo getLocalFilePath('main.css') ?>">
+        <?php
+        if (isset($screen)) {
+            echo '<link rel="stylesheet" type="text/css" href="'.getLocalFilePath('screen.css').'">';
+        } else {
+            echo '<link rel="stylesheet" type="text/css" href="'.getLocalFilePath('main.css').'">';
+        }
+        ?>
+
+        <!-- Load utility javascript (util.js) -->
+        <script src="<?php echo getLocalFilePath('util.js') ?>"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo CONFIG['gtag_id'] ?>"></script>

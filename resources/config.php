@@ -5,7 +5,7 @@
  * File: config.php
  * Purpose: Defines $config array with all configurable constants
  * Created: 08/07/18
- * Last Modified: 27/01/19
+ * Last Modified: 17/02/19
  */
 
 // Config Data Array
@@ -26,4 +26,7 @@ define("CONFIG", array(
 
     //Google analytics gtag id
     'gtag_id' => getenv('GTAG_ID'),
+
+    //maximum displayed speakers
+    'max_speakers_displayed' => 8,
 ));
