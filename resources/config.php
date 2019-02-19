@@ -28,5 +28,5 @@ define("CONFIG", array(
     'gtag_id' => getenv('GTAG_ID'),
 
     //maximum displayed speakers
-    'max_speakers_displayed' => 8,
+    'max_speakers_displayed' => 10,
 ));
