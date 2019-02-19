@@ -83,7 +83,7 @@ function sendEmails() {
     foreach ($countryArray as $countryRow) {
         echo 'HEY';
 
-        if ($countryRow['name'] = 'Peru') {
+        if ($countryRow['name'] == 'Peru') {
             $resume = true;
         }
 
