@@ -81,15 +81,13 @@ function sendEmails() {
     $resume = false;
 
     foreach ($countryArray as $countryRow) {
-        echo 'HEY';
 
-        if ($countryRow['name'] == 'Peru') {
+        if ($countryRow['name'] == 'Sweden') {
             $resume = true;
         }
 
         if ($resume) {
             if ($countryRow['email1'] != null) {
-                echo 'HEY2';
                 if (sendEmail($countryRow['email1'], $countryRow['person1'], $countryRow['name'], $countryRow['code'])) {
                     $success = true;
                 }
