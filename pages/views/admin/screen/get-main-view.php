@@ -69,8 +69,11 @@ function echoAmendment($amendmentRow,$voting) {
     echo '<h2>' . $amendmentRow['details'] . '</h2>';
 
 }
+?>
 
+<div class="main-view-box" style="display: block; margin: auto; text-align: left;">
 
+<?php
 if ($screenData['active_screen'] == 'title') {
 
     echo '<h1>MMUN</h1>';
@@ -122,3 +125,6 @@ if ($screenData['active_screen'] == 'title') {
         }
     }
 }
+?>
+
+</div>
