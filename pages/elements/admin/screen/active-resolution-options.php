@@ -11,7 +11,7 @@ $resolutionRow = getResolutionRow($screenData['active_resolution']);
 ?>
 
 <h5>Active Resolution: <?php echo $screenData['active_resolution'] ?></h5>
-<h5># of Amendments debated: <?php echo max(0,$resolutionRow['speakers']) ?></h5>
+<h5># of Amendments debated: <?php echo max(0,$resolutionRow['speakers'] - 3) ?></h5>
 
     <div class="btn-group" role="group">
 <?php
