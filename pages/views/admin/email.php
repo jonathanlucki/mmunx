@@ -78,28 +78,36 @@ function sendEmails() {
 
     $success = false;
 
+    $resume = false;
+
     foreach ($countryArray as $countryRow) {
         echo 'HEY';
 
-        if ($countryRow['email1'] != null) {
-            echo 'HEY2';
-            if (sendEmail($countryRow['email1'],$countryRow['person1'],$countryRow['name'],$countryRow['code'])) {
-                $success = true;
-            }
+        if ($countryRow['name'] = 'Peru') {
+            $resume = true;
         }
-        if ($countryRow['email2'] != null) {
-            if (sendEmail($countryRow['email2'],$countryRow['person2'],$countryRow['name'],$countryRow['code'])) {
-                $success = true;
+
+        if ($resume) {
+            if ($countryRow['email1'] != null) {
+                echo 'HEY2';
+                if (sendEmail($countryRow['email1'], $countryRow['person1'], $countryRow['name'], $countryRow['code'])) {
+                    $success = true;
+                }
             }
-        }
-        if ($countryRow['email3'] != null) {
-            if (sendEmail($countryRow['email3'],$countryRow['person3'],$countryRow['name'],$countryRow['code'])) {
-                $success = true;
+            if ($countryRow['email2'] != null) {
+                if (sendEmail($countryRow['email2'], $countryRow['person2'], $countryRow['name'], $countryRow['code'])) {
+                    $success = true;
+                }
             }
-        }
-        if ($countryRow['email4'] != null) {
-            if (sendEmail($countryRow['email4'],$countryRow['person4'],$countryRow['name'],$countryRow['code'])) {
-                $success = true;
+            if ($countryRow['email3'] != null) {
+                if (sendEmail($countryRow['email3'], $countryRow['person3'], $countryRow['name'], $countryRow['code'])) {
+                    $success = true;
+                }
+            }
+            if ($countryRow['email4'] != null) {
+                if (sendEmail($countryRow['email4'], $countryRow['person4'], $countryRow['name'], $countryRow['code'])) {
+                    $success = true;
+                }
             }
         }
 
