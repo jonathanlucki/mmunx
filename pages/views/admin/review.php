@@ -31,6 +31,9 @@ if ($amendmentRow != null) {
 
     echo '<hr>';
 
+    echo '<p>Please only screen for profanity - we dont care how stupid the amendment is (bad amendments can be fun debates!)</p>';
+    echo '<p>Note: Check for valid clause number for amendments to amend/strike (not zero and not a big number)</p>';
+
     echo '<form id="edit-country" action="'.getLocalFilePath('submit-review.php').'" method="post">';
     echo '<input type="hidden" value="'.$amendmentRow['amendment_id'].'" name="amendmentID" />';
     echo '<input type="hidden" value="'.getCurrentURL().'" name="lastURL" />';
