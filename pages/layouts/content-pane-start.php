@@ -39,6 +39,7 @@ function echoNavBarItem($href,$text,$notifications) {
             if ($_SESSION['admin']) {
                 echoNavBarItem(getLocalFilePath('review.php'),"Review",getPendingAmendmentsCount());
                 echoNavBarItem(getLocalFilePath('screen-control.php'),"Screen",0);
+                echoNavBarItem(getLocalFilePath('advanced.php'),"Advanced",0);
             } else {
                 echoNavBarItem(getLocalFilePath('country-overview.php')."?countryID=".$_SESSION['countryID'],"Country Overview",0);
             }
