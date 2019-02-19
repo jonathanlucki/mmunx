@@ -43,7 +43,6 @@ function sendEmail($to,$name,$countryName,$countryCode) {
 
 
     $mail = new PHPMailer(true);
-    try {
         //Server settings
         $mail->SMTPDebug = 2;
         $mail->isSMTP();
@@ -66,12 +65,9 @@ function sendEmail($to,$name,$countryName,$countryCode) {
         if ($mail->send()) {
             return true;
         } else {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
             return false;
         }
-    } catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-        return false;
-    }
 
 }
 
