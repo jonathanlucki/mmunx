@@ -19,9 +19,9 @@ require(getServerFilePath('header.php'));
 
     <div class="row" style="height: 85%;">
 
-        <div class="h-100 col-3 text-center align-middle screen-pane" id="speakers-list"></div>
+        <div class="h-100 col-4 text-center align-middle screen-pane" id="speakers-list"></div>
 
-        <div class="h-100 col-9 align-middle screen-pane">
+        <div class="h-100 col-8 align-middle screen-pane">
             <div id="main-view" style="width: 100%;height: 100%;display: flex;"></div>
         </div>
 
@@ -29,9 +29,9 @@ require(getServerFilePath('header.php'));
 
     <div class="row" style="height: 15%;">
 
-        <div class="h-100 col-3 text-center align-middle screen-pane" id="timer"></div>
+        <div class="h-100 col-4 text-center align-middle screen-pane" id="timer"></div>
 
-        <div class="h-100 col-9 align-middle screen-pane">
+        <div class="h-100 col-8 align-middle screen-pane">
             <div id="paging-system" style="width: 100%;height: 100%;display: flex;"></div>
         </div>
 
