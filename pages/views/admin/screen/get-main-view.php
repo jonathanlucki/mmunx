@@ -106,7 +106,7 @@ if ($screenData['active_screen'] == 'title') {
     } else if ($screenData['active_amendment'] == null) {
         if ($screenData['voting']) {
 
-            echo '<h1>Voting on Resolution ' . getResolutionTag($resolutionRow['num']) . ': ' . $resolutionRow['name'] . '</h1>';
+            echo '<h1>Voting on Resolution ' . getResolutionTag($screenData['voting']) . ': ' . getResolutionRow($screenData['voting'])['title'] . '</h1>';
 
         } else {
 
