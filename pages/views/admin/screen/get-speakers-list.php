@@ -89,7 +89,7 @@ if($screenData['active_resolution'] != null) {
 if ($screenData['active_resolution'] != null) {
     $i = 0;
     while ($speakersCount < $speakersNum) {
-        if ($amendmentRow != null) {
+        if ($screenData['active_amendment'] != null) {
             if ($speakerOrder[$i] != $amendmentRow['country_id']) {
                 echoSpeakersListItem($speakerOrder[$i]);
                 $speakersCount++;
