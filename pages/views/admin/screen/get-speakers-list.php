@@ -73,14 +73,15 @@ if ($screenData['temp_speaker_3'] != null) {
 
 //submitter, seconder, and negator
 if($screenData['active_resolution'] != null) {
-    if ($resolutionRow['speakers'] < 3) {
+    if ($resolutionRow['speakers'] == 0) {
+        echoSpeakersListItem($resolutionRow['submitter']);
+        echoSpeakersListItem($resolutionRow['seconder']);
         echoSpeakersListItem($resolutionRow['negator']);
-        if ($resolutionRow['speakers'] < 2) {
-            echoSpeakersListItem($resolutionRow['seconder']);
-            if ($resolutionRow['speakers'] < 1) {
-                echoSpeakersListItem($resolutionRow['submitter']);
-            }
-        }
+    } else if ($resolutionRow['speakers'] == 1) {
+        echoSpeakersListItem($resolutionRow['seconder']);
+        echoSpeakersListItem($resolutionRow['negator']);
+    } else if ($resolutionRow['speakers'] == 2) {
+        echoSpeakersListItem($resolutionRow['negator']);
     }
 }
 
