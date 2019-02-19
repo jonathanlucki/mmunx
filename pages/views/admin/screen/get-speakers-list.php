@@ -45,9 +45,6 @@ if ($screenData['active_resolution'] != null) {
     $speakersNum = 0;
 }
 
-//speakers count
-$speakersCount = 0;
-
 echo '<ul style="list-style-type: none;">';
 echo '<li><h1>Speaker\'s List</h1></li>';
 echo '</ul>';
@@ -57,7 +54,6 @@ echo '<ul>';
 //current amendment speaker
 if ($screenData['active_amendment'] != null) {
     echoSpeakersListItem($amendmentRow['country_id']);
-    $speakersCount++;
 }
 
 //temporary speakers
@@ -87,20 +83,15 @@ if($screenData['active_resolution'] != null) {
 
 //main speakers list
 if ($screenData['active_resolution'] != null) {
-    $i = 0;
-    while ($speakersCount < $speakersNum) {
-        if ($screenData['active_amendment'] != null) {
-            if ($speakerOrder[$i] != $amendmentRow['country_id']) {
-                echoSpeakersListItem($speakerOrder[$i]);
-                $speakersCount++;
-                $i++;
-            }
-        } else {
-            echoSpeakersListItem($speakerOrder[$i]);
-            $speakersCount++;
-            $i++;
-        }
-    }
+   for ($i=0; $i < $speakersNum; $i++) {
+       if ($screenData['active_amendment'] != null) {
+           if ($speakerOrder[$i] != $amendmentRow['country_id']) {
+               echoSpeakersListItem($speakerOrder[$i]);
+           }
+       } else {
+           echoSpeakersListItem($speakerOrder[$i]);
+       }
+   }
 }
 
 echo '</ul>';
