@@ -65,6 +65,7 @@ function sendEmail($to,$name,$countryName,$countryCode) {
         if ($mail->send()) {
             return true;
         } else {
+            error_log($mail->ErrorInfo);
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
             return false;
         }
