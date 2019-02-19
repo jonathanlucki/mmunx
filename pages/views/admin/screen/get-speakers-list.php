@@ -48,8 +48,9 @@ if ($screenData['active_resolution'] != null) {
 //speakers count
 $speakersCount = 0;
 
-
-echo '<h1>Speaker\'s List</h1>';
+echo '<ul style="list-style-type: none;">';
+echo '<li><h1>Speaker\'s List</h1></li>';
+echo '</ul>';
 
 echo '<ul>';
 

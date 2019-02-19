@@ -71,7 +71,7 @@ function echoAmendment($amendmentRow,$voting) {
 }
 ?>
 
-<div class="main-view-box" style="display: block; margin: auto; text-align: left;">
+<div class="main-view-box" style="display: block; margin: auto; text-align: left; word-wrap: break-word;">
 
 <?php
 if ($screenData['active_screen'] == 'title') {

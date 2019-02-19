@@ -31,7 +31,9 @@ require(getServerFilePath('header.php'));
 
         <div class="h-100 col-3 text-center align-middle screen-pane" id="timer"></div>
 
-        <div class="h-100 col-9 text-center align-middle screen-pane" id="paging-system"></div>
+        <div class="h-100 col-9 align-middle screen-pane">
+            <div id="paging-system" style="width: 100%;height: 100%;display: flex;"></div>
+        </div>
 
     </div>
 
