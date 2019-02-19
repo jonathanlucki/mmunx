@@ -110,7 +110,8 @@ function checkPosts ($screenData) {
 
     } else if (isset($_POST['pass-vote-amendment-resolution-button'])) {
 
-        return (updateAmendmentStatus($screenData['active_amendment'],'passed') &&
+        return (incrementSpeakers($screenData['active_resolution']) &&
+            updateAmendmentStatus($screenData['active_amendment'],'passed') &&
             addSpeakerPoint(getAmendmentRowByID($screenData['active_amendment'])['country_id']) &&
             updateScreenData('active_amendment',null) &&
             updateScreenData('voting',null) &&
@@ -118,7 +119,8 @@ function checkPosts ($screenData) {
 
     } else if (isset($_POST['fail-vote-amendment-resolution-button'])) {
 
-        return (updateAmendmentStatus($screenData['active_amendment'],'failed') &&
+        return (incrementSpeakers($screenData['active_resolution']) &&
+            updateAmendmentStatus($screenData['active_amendment'],'failed') &&
             addSpeakerPoint(getAmendmentRowByID($screenData['active_amendment'])['country_id']) &&
             updateScreenData('active_amendment',null) &&
             updateScreenData('voting',null) &&
