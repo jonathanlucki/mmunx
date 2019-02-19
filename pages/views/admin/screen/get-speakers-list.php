@@ -40,7 +40,7 @@ if ($screenData['active_amendment'] != null) {
 
 //number of speakers for speakers list
 if ($screenData['active_resolution'] != null) {
-    $speakersNum = min($screenData['speakers_list_limit'], sizeof($speakerOrder), CONFIG['max_speakers_displayed']);
+    $speakersNum = min($screenData['speakers_list_limit'] - $resolutionRow['speakers'], sizeof($speakerOrder), CONFIG['max_speakers_displayed']);
 } else {
     $speakersNum = 0;
 }
@@ -63,28 +63,22 @@ if ($screenData['active_amendment'] != null) {
 //temporary speakers
 if ($screenData['temp_speaker_1'] != null) {
     echoSpeakersListItem($screenData['temp_speaker_1']);
-    $speakersCount++;
 }
 if ($screenData['temp_speaker_2'] != null) {
     echoSpeakersListItem($screenData['temp_speaker_2']);
-    $speakersCount++;
 }
 if ($screenData['temp_speaker_3'] != null) {
     echoSpeakersListItem($screenData['temp_speaker_3']);
-    $speakersCount++;
 }
 
 //submitter, seconder, and negator
 if($screenData['active_resolution'] != null) {
     if ($resolutionRow['speakers'] < 3) {
         echoSpeakersListItem($resolutionRow['negator']);
-        $speakersCount++;
         if ($resolutionRow['speakers'] < 2) {
             echoSpeakersListItem($resolutionRow['seconder']);
-            $speakersCount++;
             if ($resolutionRow['speakers'] < 1) {
                 echoSpeakersListItem($resolutionRow['submitter']);
-                $speakersCount++;
             }
         }
     }
