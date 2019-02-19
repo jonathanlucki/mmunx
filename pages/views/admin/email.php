@@ -53,8 +53,10 @@ function sendEmails() {
     $success = false;
 
     foreach ($countryArray as $countryRow) {
+        echo 'HEY';
 
         if ($countryRow['email1'] != null) {
+            echo 'HEY2';
             if (sendEmail($countryRow['email1'],$countryRow['person1'],$countryRow['name'],$countryRow['code'])) {
                 $success = true;
             }
