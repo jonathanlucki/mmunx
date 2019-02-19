@@ -44,7 +44,7 @@ function sendEmail($to,$name,$countryName,$countryCode) {
 
     $mail = new PHPMailer(true);
         //Server settings
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
