@@ -8,6 +8,12 @@
  * Last Modified: 18/02/19
  */
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
 //Requires initialization file (init.php)
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/init.php');
 
@@ -36,13 +42,36 @@ function sendEmail($to,$name,$countryName,$countryCode) {
 ';
 
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = 2;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'mmunx.noreply@gmail.com';                 // SMTP username
+        $mail->Password = 'mmun1234';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
 
-    // More headers
-    $headers .= 'From: <no-reply@mmun.ca>' . "\r\n";
+        //Recipients
+        $mail->setFrom('mmunx.noreply@gmail.com', 'MMUNx Admin');
+        $mail->addAddress($to);
 
-    return mail($to,$subject,$message,$headers);
+        //Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        if ($mail->send()) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        return false;
+    }
 
 }
 
