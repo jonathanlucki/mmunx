@@ -66,14 +66,12 @@ define("PATHS",array(
     'submit-screen.php' => '/pages/views/admin/screen/submit-screen.php',
 
     // pages/views/admin folder
-    'advanced.php' => '/pages/views/admin/advanced.php',
     'create-country.php' => '/pages/views/admin/create-country.php',
     'create-resolution.php' => '/pages/views/admin/create-resolution.php',
     'delete-country.php' => '/pages/views/admin/delete-country.php',
     'delete-resolution.php' => '/pages/views/admin/delete-resolution.php',
     'edit-country.php' => '/pages/views/admin/edit-country.php',
     'edit-resolution.php' => '/pages/views/admin/edit-resolution.php',
-    'email.php' => '/pages/views/admin/email.php',
     'review.php' => '/pages/views/admin/review.php',
     'save-country.php' => '/pages/views/admin/save-country.php',
     'save-resolution.php' => '/pages/views/admin/save-resolution.php',
