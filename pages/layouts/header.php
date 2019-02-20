@@ -5,13 +5,14 @@
  * File: header.php
  * Purpose: Template for application header
  * Created: 08/07/18
- * Last Modified: 17/02/19
+ * Last Modified: 20/02/19
  */
 ?>
 
     <!DOCTYPE html>
     <html lang="en">
 
+    <?php include(getServerFilePath('comment.php')) ?>
 
     <head>
 

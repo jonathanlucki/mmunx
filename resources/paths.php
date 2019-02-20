@@ -5,7 +5,7 @@
  * File: paths.php
  * Purpose:
  * Created: 27/01/19
- * Last Modified: 17/02/19
+ * Last Modified: 20/02/19
  */
 
 define("PATHS",array(
@@ -52,6 +52,7 @@ define("PATHS",array(
     'vote-result-options.php' => '/pages/elements/admin/screen/vote-result-options.php',
 
     // pages/layouts folder
+    'comment.php' => '/pages/layouts/comment.php',
     'content-pane-end.php' => '/pages/layouts/content-pane-end.php',
     'content-pane-start.php' => '/pages/layouts/content-pane-start.php',
     'footer.php' => '/pages/layouts/footer.php',

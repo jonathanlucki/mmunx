@@ -5,7 +5,7 @@
  * File: config.php
  * Purpose: Defines $config array with all configurable constants
  * Created: 08/07/18
- * Last Modified: 17/02/19
+ * Last Modified: 20/02/19
  */
 
 // Config Data Array
@@ -29,4 +29,9 @@ define("CONFIG", array(
 
     //maximum displayed speakers
     'max_speakers_displayed' => 10,
+
+    //version and last updated
+    'last_updated' => "20/02/19",
+    'version' => "v1.1"
+
 ));
