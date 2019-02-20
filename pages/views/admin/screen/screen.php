@@ -29,7 +29,13 @@ require(getServerFilePath('header.php'));
 
     <div class="row" style="height: 15%;">
 
-        <div class="h-100 col-4 text-center align-middle pt-2 pr-2 pb-3 pl-3 screen-pane"></div>
+        <div class="h-100 col-4 align-middle pt-2 pr-2 pb-3 pl-3 screen-pane">
+            <div style="width: 100%;height: 100%;display: flex;">
+                <div style="display: block; margin: auto; text-align: left; word-wrap: break-word;">
+                    <h2>Time: <span id="clock">00:00</span></h2>
+                </div>
+            </div>
+        </div>
 
         <div class="h-100 col-8 align-middle pt-2 pr-3 pb-3 pl-2 screen-pane">
             <div id="paging-system" style="width: 100%;height: 100%;display: flex;"></div>
@@ -43,6 +49,9 @@ require(getServerFilePath('header.php'));
             ajaxScreen('<?php echo getLocalFilePath('get-speakers-list.php') ?>','speakers-list');
             ajaxScreen('<?php echo getLocalFilePath('get-paging-system.php') ?>','paging-system');
         }, 1000)
+        setInterval(function () {
+            getClock('clock');
+        }, 10000)
     </script>
 
 <?php

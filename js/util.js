@@ -32,3 +32,30 @@ function ajaxScreen(url,elementID) {
     xmlhttp.send();
 
 }
+
+
+/**
+ * Sets elementID to a clock with the current time
+ * @param elementID  element ID to update
+ */
+function getClock(elementID) {
+
+    //create Date object
+    var date = new Date();
+
+    //get hours and minutes
+    var h = date.getHours();
+    var m = date.getMinutes();
+
+    //format m
+    if (m < 10) {
+        m = "0" + m;
+    }
+
+    //set up clock
+    var clock = h + ":" + m;
+
+    //set clock to elementID
+    document.getElementById(elementID).innerHTML = clock;
+
+}
