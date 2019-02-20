@@ -5,7 +5,7 @@
  * File: get-speakers-list.php
  * Purpose:
  * Created: 17/02/19
- * Last Modified: 17/02/19
+ * Last Modified: 20/02/19
  */
 
 //Requires initialization file (init.php)

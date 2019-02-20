@@ -4,7 +4,7 @@
  * File: util.js
  * Purpose: Utility Javascript functions
  * Created: 09/02/19
- * Last Modified: 17/02/19
+ * Last Modified: 20/02/19
  */
 
 
