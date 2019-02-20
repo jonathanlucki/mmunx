@@ -40,7 +40,7 @@ if ($screenData['active_amendment'] != null) {
 
 //number of speakers for speakers list
 if ($screenData['active_resolution'] != null) {
-    $speakersNum = min($screenData['speakers_list_limit'] - max(0,$resolutionRow['speakers'] - 3), sizeof($speakerOrder), CONFIG['max_speakers_displayed']);
+    $speakersNum = min($screenData['speakers_list_limit'] - max(0,$resolutionRow['speakers'] - 3), sizeof($speakerOrder), CONFIG['max_speakers_displayed'] - 3 + min(3,$resolutionRow['speakers']));
 } else {
     $speakersNum = 0;
 }
