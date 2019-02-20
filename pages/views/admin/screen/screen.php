@@ -19,7 +19,7 @@ require(getServerFilePath('header.php'));
 
     <div class="row" style="height: 85%;">
 
-        <div class="h-100 col-4 text-center align-middle pt-3 pr-2 pb-2 pl-3 screen-pane" id="speakers-list"></div>
+        <div class="h-100 col-4 pt-3 pr-2 pb-2 pl-3 screen-pane" id="speakers-list"></div>
 
         <div class="h-100 col-8 align-middle pt-3 pr-3 pb-2 pl-2 screen-pane">
             <div id="main-view" style="width: 100%;height: 100%;display: flex;"></div>
