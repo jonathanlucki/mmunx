@@ -1,8 +1,10 @@
-RewriteEngine On
+# Uncomment following lines to force ssl
 
-RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+#RewriteEngine On
 
-RewriteCond %{HTTP:X-Forwarded-Proto} =""
-RewriteCond %{HTTPS} !=on
+#RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTP:X-Forwarded-Proto} =""
+#RewriteCond %{HTTPS} !=on
+
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
