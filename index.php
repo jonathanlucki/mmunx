@@ -32,7 +32,7 @@ require(getServerFilePath('header.php'));
         <div class="form-group">
             <small id="loginError" class="form-text text-danger"><?php echo $error;?></small>
             <input type="password" class="form-control" id="accessCodeInput" placeholder="Access Code" name="accessCode">
-            <small id="accessCodeHelp" class="form-text text-muted">Please see Tech Desk if you forgot your access code</small>
+            <small id="accessCodeHelp" class="form-text text-muted">You may use the demo code 'demo123' to gain access.</small>
         </div>
 
         <button type="submit" name="loginButton" class="btn btn-dark btn-lg">Log in</button>
