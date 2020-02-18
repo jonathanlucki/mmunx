@@ -188,3 +188,19 @@ function convertResolutionStatus($status) {
             break;
     }
 }
+
+
+/**
+ * Returns true if submissions are open for resolution in $resolutionRow, otherwise returns false
+ * @param array  $resolutionRow  The resolution DB row for the desired resolution
+ * @return boolean
+ */
+function submissionsOpen($resolutionRow) {
+    if ($resolutionRow['status'] == 'pending') {
+        return true;
+    } else if (($resolutionRow['status'] == 'in_session') && ($resolutionRow['speakers'] < 2)) {
+        return true;
+    } else {
+        return false;
+    }
+}

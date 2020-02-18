@@ -193,7 +193,7 @@ class resolution_box {
         }
         echo '<p class="card-text">Status: ' . $status . '</p>';
         if(($amendmentRow == null) and $this->editable()) { //if amendment does not exist and is editable
-            if ($resolutionRow['status'] == 'pending') {
+            if (submissionsOpen($resolutionRow)) {
                 //#%id%%resolution%modelcreate
                 echo '<button type="button" style="margin-right:5px; margin-bottom:5px;" class="btn btn-primary" data-toggle="modal" data-target="#' . $id . $resolution . 'modalcreate"> Create Amendment </button>';
             } else {
