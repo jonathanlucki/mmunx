@@ -31,7 +31,7 @@ define("CONFIG", array(
     'max_speakers_displayed' => 10,
 
     //version and last updated
-    'last_updated' => "20/02/19",
-    'version' => "v1.1"
+    'last_updated' => "18/02/20",
+    'version' => "v1.2"
 
 ));
