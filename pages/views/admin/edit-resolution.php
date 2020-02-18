@@ -50,9 +50,8 @@ $resolutionRow = getResolutionRow($_GET['num']);
         </select>
         
         <label for="status" class="col-md-2">Status</label>
-        <select name="status" class="form-control col-md-2" id="status">
+        <select <?php if ($resolutionRow['status'] == 'in_session') { echo 'disabled';} ?> name="status" class="form-control col-md-2" id="status">
             <option <?php if ($resolutionRow['status'] == 'pending') { echo 'selected';} ?> value="pending">Pending</option>
-            <option <?php if ($resolutionRow['status'] == 'in_session') { echo 'selected';} ?> value="in_session">In Session</option>
             <option <?php if ($resolutionRow['status'] == 'passed') { echo 'selected';} ?> value="passed">Passed</option>
             <option <?php if ($resolutionRow['status'] == 'failed') { echo 'selected';} ?> value="failed">Failed</option>
             <option <?php if ($resolutionRow['status'] == 'shelved') { echo 'selected';} ?> value="shelved">Shelved</option>
@@ -62,6 +61,12 @@ $resolutionRow = getResolutionRow($_GET['num']);
     </div>
 
     <p><i>Switching the resolution number will swap the two existing resolutions</i></p>
+
+    <?php if ($resolutionRow['status'] == 'in_session') { 
+        echo '<p><b>The status may not be changed as this resolution is in session. To change, please vote to close then edit the status field.</b></p>';
+    } else {
+        echo '<p><i>To set a resolution into session, vote it open from the screen controls.</i></p>';
+    } ?>
 
     <hr>
 
