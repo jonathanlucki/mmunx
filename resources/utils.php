@@ -154,11 +154,14 @@ function getSpeakersListForResolution($num) {
 function getResolutionTag($num) {
     $digits = strlen($num);
     if ($digits == 1) {
-        return "GA00".(string)$num;
+        //return "GA00".(string)$num;
+        return "00".(string)$num;
     } else if ($digits == 2) {
-        return "GA0".(string)$num;
+        //return "GA0".(string)$num;
+        return "0".(string)$num;
     } else {
-        return "GA".(string)$num;
+       // return "GA".(string)$num;
+        return "".(string)$num;
     }
 }
 
