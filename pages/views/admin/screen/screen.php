@@ -48,7 +48,7 @@ require(getServerFilePath('header.php'));
             ajaxScreen('<?php echo getLocalFilePath('get-main-view.php') ?>','main-view');
             ajaxScreen('<?php echo getLocalFilePath('get-speakers-list.php') ?>','speakers-list');
             ajaxScreen('<?php echo getLocalFilePath('get-paging-system.php') ?>','paging-system');
-        }, 2400)
+        }, 1000)
         setInterval(function () {
             getClock('clock');
         }, 10000)
