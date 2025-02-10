@@ -40,7 +40,7 @@ require(getServerFilePath('header.php'));
     </form>
 
     <br>
-        <small><a href="http://www.jonathanlucki.ca">Created by Jonathan Lucki</a></small>
+        <small>Created by <a href="http://www.jonathanlucki.ca">Jonathan Lucki</a> in 2018</small>
 
     </div>
 
